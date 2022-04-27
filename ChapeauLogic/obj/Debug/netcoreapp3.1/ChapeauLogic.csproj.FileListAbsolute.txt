@@ -1,0 +1,10 @@
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.csproj.AssemblyReference.cache
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.AssemblyInfoInputs.cache
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.AssemblyInfo.cs
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.csproj.CoreCompileInputs.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.csproj.AssemblyReference.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.AssemblyInfoInputs.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.AssemblyInfo.cs
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauLogic\obj\Debug\netcoreapp3.1\ChapeauLogic.csproj.CoreCompileInputs.cache

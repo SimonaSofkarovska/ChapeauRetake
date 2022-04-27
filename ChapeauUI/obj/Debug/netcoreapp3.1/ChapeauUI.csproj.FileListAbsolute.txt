@@ -1,0 +1,34 @@
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.exe
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.dll.config
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.deps.json
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.runtimeconfig.json
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.runtimeconfig.dev.json
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.dll
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.pdb
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.csproj.AssemblyReference.cache
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.Form1.resources
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.csproj.GenerateResource.cache
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.AssemblyInfoInputs.cache
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.AssemblyInfo.cs
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.csproj.CoreCompileInputs.cache
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.dll
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.pdb
+C:\Users\simon\source\repos\RETAKE CHAPEAU\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.genruntimeconfig.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.exe
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.dll.config
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.deps.json
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.runtimeconfig.json
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.runtimeconfig.dev.json
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.dll
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\bin\Debug\netcoreapp3.1\ChapeauUI.pdb
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.csproj.AssemblyReference.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.Form1.resources
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.csproj.GenerateResource.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.AssemblyInfoInputs.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.AssemblyInfo.cs
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.csproj.CoreCompileInputs.cache
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.dll
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.pdb
+C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\obj\Debug\netcoreapp3.1\ChapeauUI.genruntimeconfig.cache
