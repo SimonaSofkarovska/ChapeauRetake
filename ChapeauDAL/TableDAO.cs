@@ -36,14 +36,14 @@ namespace ChapeauDAL
 
             return new Table(id, tableState);
         }
-        protected bool CheckColumnExist(DataRow dt, string columnName)
+        protected bool CheckColumnExist(DataRow dataRow, string columnName)
         {
-            return dt.Table.Columns.Contains(columnName);
+            return dataRow.Table.Columns.Contains(columnName);
         }
         //get occupied tables from database
         public List<Table> GetOccupiedTables()
         {
-            string query = "SELECT tableId, capacity, [status] FROM [table] Where [status] = 2;";
+            string query = "SELECT tableId, capacity, [status] FROM [Table] Where [status] = 2;";
             SqlParameter[] sqlParameter = new SqlParameter[0];
 
             return ReadTables(ExecuteSelectQuery(query, sqlParameter));
@@ -52,7 +52,7 @@ namespace ChapeauDAL
         public void UpdateTableState(int tableNumber, TableStatus status)
         {
             int tableStatus = (int)status;
-            string query = "UPDATE [table] SET [status] = @tableState WHERE tableId = @tableId;";
+            string query = "UPDATE [Table] SET [status] = @tableStatus WHERE tableId = @tableId;";
             SqlParameter[] sqlParameter =
             {
                 new SqlParameter("@tableId", tableNumber),

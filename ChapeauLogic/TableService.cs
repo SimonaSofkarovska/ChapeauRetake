@@ -51,7 +51,7 @@ namespace ChapeauLogic
             }
             catch (Exception exp)
             {
-                LogDAO.ErrorLog(exp, "Table_DAO");
+                LogDAO.ErrorLog(exp, "TableDAO");
                 throw new Exception($"Could not update table state in database");
             }
         }
