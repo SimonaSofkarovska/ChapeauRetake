@@ -102,6 +102,10 @@ namespace ChapeauDAL
                 CloseConnection();
             }
         }
+        protected bool CheckColumnExist(DataRow dt, string columnName)
+        {
+            return dt.Table.Columns.Contains(columnName);
+        }
 
     }
 }
