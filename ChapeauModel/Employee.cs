@@ -6,14 +6,14 @@ namespace ChapeauModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Enums Role { get; set; }
+        public Role Roles { get; set; }
         public string Password { private get; set; }
 
-        public Employee(int id, string name, Enums role, string password)
+        public Employee(int id, string name, Role roles, string password)
         {
             Id = id;
             Name = name;
-            Role = role;
+            roles = roles;
             Password = password;
         }
         public Employee()
