@@ -50,7 +50,7 @@ namespace ChapeauDAL
                 table.TableId = (int)(dr["tableID"]);
                 table.Capacity = (int)(dr["capacity"]);
                 table.TableNumber = (int)(dr["tableNumber"]);
-                table.IsOccupied = (bool)(dr["isOccupied"]);
+                table.Status = (TableStatus)(int)(dr["status"]);
 
                 tables.Add(table);
             }

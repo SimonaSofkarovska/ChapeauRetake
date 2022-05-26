@@ -20,7 +20,7 @@ namespace ChapeauUI
         {
             InitializeComponent();
             this.employee = employee;
-            lblEmployee.Text = $"Signed in: {employee.Name} ({employee.Role})";
+            lblEmployee.Text = $"Signed in: {employee.Name} ({employee.Roles})";
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace ChapeauUI
             //get state table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
-            if (!selectedTable.IsOccupied)
+            if (selectedTable.Status != TableStatus.Occupied)
             {
                 DialogResult dialogResult = MessageBox.Show($"Do you want to seat guests at table {tableNr}", "Seat guests", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -91,15 +91,15 @@ namespace ChapeauUI
             int i = 0;
             foreach (Table table in tables)
             {
-                if (table.IsOccupied)
+                if (table.Status == TableStatus.Occupied)
                 {
                     buttons[i].BackColor = Color.Red;
                 }
-                else
+                else if(table.Status == TableStatus.Free)
                 {
                     buttons[i].BackColor = Color.Green;
                 }
-
+                //orange for reserved and etc
                 i++;
             }
 

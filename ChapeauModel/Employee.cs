@@ -13,7 +13,7 @@ namespace ChapeauModel
         {
             Id = id;
             Name = name;
-            roles = roles;
+            Roles = roles;
             Password = password;
         }
         public Employee()

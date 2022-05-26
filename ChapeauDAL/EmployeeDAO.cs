@@ -40,7 +40,7 @@ namespace ChapeauDAL
 
                 employee.Id = (int)(dr["id"]);
                 employee.Name = (string)(dr["name"]);
-                employee.Role = (Role)(dr["role"]);
+                employee.Roles = (Role)(int)dr["role"];
                 employee.Password = (string)(dr["password"]);
 
                 employees.Add(employee);
