@@ -13,33 +13,12 @@ namespace ChapeauLogic
         {
             employeeDAO = new EmployeeDAO();
         }
-    
+
         //get specific employee
         public Employee GetEmployee(string username, string password)
         {
-            try
-            {
-                return employeeDAO.GetEmployee(username, password);
-            }
-            catch (Exception exp)
-            {
-                LogDAO.ErrorLog(exp, "EmployeeDAO");
-                throw new Exception($"Could not check employee in database");
-            }
-        }
-
-        //get a list of all employees or throw an exception
-        public List<Employee> GetAll()
-        {
-            try
-            {
-                return employeeDAO.GetAll();
-            }
-            catch (Exception exp)
-            {
-                LogDAO.ErrorLog(exp, "EmployeeDAO");
-                throw new Exception($"Could not retrieve employees from database");
-            }
+            Employee employee = employeeDAO.GetEmployee(username, password);
+            return employee;
         }
     }
 }

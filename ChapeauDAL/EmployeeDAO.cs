@@ -8,52 +8,45 @@ using System.Data.SqlClient;
 
 namespace ChapeauDAL
 {
-    public class EmployeeDAO :BaseDAO
+    public class EmployeeDAO : BaseDAO
     {
         public Employee GetEmployee(string username, string password)
         {
-            string query = $"SELECT Id, name, role, password FROM [Employee] WHERE name = @name AND password = @password";
+            string query = $"SELECT id, name, role, password FROM Employee WHERE employeeID = @username AND [password] = @password";
 
-            // SqlParameter[] sqlParameters = new SqlParameter[2];
-            // sqlParameters[0] = new SqlParameter("name", int.Parse(username));
-            // sqlParameters[1] = new SqlParameter("password", password);
-            SqlParameter[] sqlParameters =
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("username", int.Parse(username));
+            sqlParameters[1] = new SqlParameter("password", password);
+
+            List<Employee> employees = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+
+            if (employees.Count == 0)
             {
-                new SqlParameter("@name", username),
-                new SqlParameter("@password", password)
-            };
-
-            List<Employee> employees = ReadTableEmployees(ExecuteSelectQuery(query, sqlParameters));
-           
-            return employees[0];           
+                return null;
+            }
+            else
+            {
+                return employees[0];
+            }
         }
 
-        private List<Employee> ReadTableEmployees(DataTable dataTable)
+        private List<Employee> ReadTables(DataTable dataTable)
         {
             List<Employee> employees = new List<Employee>();
 
-            foreach (DataRow row in dataTable.Rows)
+            foreach (DataRow dr in dataTable.Rows)
             {
-                employees.Add(ReadEmployee(row));
+                Employee employee = new Employee();
+
+                employee.Id = (int)(dr["id"]);
+                employee.Name = (string)(dr["name"]);
+                employee.Role = (Role)(dr["role"]);
+                employee.Password = (string)(dr["password"]);
+
+                employees.Add(employee);
             }
 
             return employees;
-        }
-        //get all employees from the database
-        public List<Employee> GetAll()
-        {
-            string query = "SELECT Id, name, role, password FROM [Employee]";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
-            return ReadTableEmployees(ExecuteSelectQuery(query, sqlParameters));
-        }
-        protected Employee ReadEmployee(DataRow row)
-        {
-            int id = CheckColumnExist(row, "Id") ? (int)row["Id"] : 0;
-            string name = CheckColumnExist(row, "name") ? (string)row["name"] : null;
-            Role role = CheckColumnExist(row, "role") ? (Role)row["role"] : 0;
-            string password = CheckColumnExist(row, "password") ? (string)row["password"] : null;
-
-            return new Employee(id, name, role, password);
         }
     }
 }

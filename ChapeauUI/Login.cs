@@ -48,14 +48,14 @@ namespace ChapeauUI
 
         private void DisplayScreen(Employee employee)
         {
-            if (employee.Role == Role.Manager || employee.Role == Role.Waiter)
-            {
-                new TableOverview(employee).Show();
-            }
-            else if (employee.Role == Role.Chef || employee.Role == Role.Barman)
-            {
-               // new KitchenBar(employee).Show();
-            }
+            //if (employee.Role == 1 || employee.Role == 2)
+            //{
+            //    new listViewTableOrderOverview(employee).Show();
+            //}
+            //else if (employee.Role == 3 || employee.Role == 4)
+            //{
+            //   // new KitchenBar(employee).Show();
+            //}
         }
     }
 }

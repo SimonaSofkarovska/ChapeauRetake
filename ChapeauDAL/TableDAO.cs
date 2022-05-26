@@ -9,57 +9,53 @@ namespace ChapeauDAL
 {
     public class TableDAO:BaseDAO
     {
-        //gets tables from database
-        public List<Table> GetAll()
+        public List<Table> GetAllTables()
         {
-            string query = " SELECT tableId, capacity, status FROM [Table] ";
-            SqlParameter[] sqlParameters = new SqlParameter[0];
+            string query = $"SELECT tableID, capacity, tableNumber, isOccupied FROM [Table]";
 
-            return ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            List<Table> tables = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+
+            return tables;
         }
-        //Read tables and add them to a list of tables
-        private List<Table> ReadTables(DataTable table)
+
+        public void UpdateStateTableToTrue(int tableNR)
+        {
+            string query = $"UPDATE [Table] SET isOccupied=1 WHERE tableID=@tableNR";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("tableNR", tableNR);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
+
+        public Table GetTableByTableNr(int tableNR)
+        {
+            string query = "SELECT tableID, capacity, tableNumber, isOccupied FROM [Table] WHERE tableNumber=@tableNR;";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("tableNR", tableNR);
+
+            List<Table> tables = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            return tables[0];
+        }
+
+
+        private List<Table> ReadTables(DataTable dataTable)
         {
             List<Table> tables = new List<Table>();
 
-            foreach (DataRow row in table.Rows)
+            foreach (DataRow dr in dataTable.Rows)
             {
-                tables.Add(ReadTable(row));
+                Table table = new Table();
+
+                table.TableId = (int)(dr["tableID"]);
+                table.Capacity = (int)(dr["capacity"]);
+                table.TableNumber = (int)(dr["tableNumber"]);
+                table.IsOccupied = (bool)(dr["isOccupied"]);
+
+                tables.Add(table);
             }
+
             return tables;
-        }
-        //convert DataRow into table object
-        protected Table ReadTable(DataRow row)
-        {
-            int id = CheckColumnExist(row, "tableId") ? (int)row["tableId"] : 0;
-            TableStatus tableState = CheckColumnExist(row, "status") ? (TableStatus)row["status"] : 0;
-
-            return new Table(id, tableState);
-        }
-        protected bool CheckColumnExist(DataRow dataRow, string columnName)
-        {
-            return dataRow.Table.Columns.Contains(columnName);
-        }
-        //get occupied tables from database
-        public List<Table> GetOccupiedTables()
-        {
-            string query = "SELECT tableId, capacity, [status] FROM [Table] Where [status] = 2;";
-            SqlParameter[] sqlParameter = new SqlParameter[0];
-
-            return ReadTables(ExecuteSelectQuery(query, sqlParameter));
-        }
-        //update table status
-        public void UpdateTableState(int tableNumber, TableStatus status)
-        {
-            int tableStatus = (int)status;
-            string query = "UPDATE [Table] SET [status] = @tableStatus WHERE tableId = @tableId;";
-            SqlParameter[] sqlParameter =
-            {
-                new SqlParameter("@tableId", tableNumber),
-                new SqlParameter("@tableStatus", tableStatus)
-            };
-
-            ExecuteEditQuery(query, sqlParameter);
         }
 
     }
