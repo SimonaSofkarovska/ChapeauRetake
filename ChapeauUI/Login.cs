@@ -15,7 +15,7 @@ namespace ChapeauUI
 {
     public partial class Login : Form
     {
-       private EmployeeService employeeService = new EmployeeService();
+        private EmployeeService employeeService = new EmployeeService();
         private Employee employee;
         public Login()
         {
@@ -31,7 +31,7 @@ namespace ChapeauUI
         {
             try
             {
-                employee = employeeService.GetEmployee(username, password);
+                Employee employee = employeeService.GetEmployee(username, password);
             }
             catch
             {
@@ -40,22 +40,29 @@ namespace ChapeauUI
                 Console.ResetColor();
                 return;
             }
-           // txtboxUsername.Text = string.Empty;
-           // txtboxPassword.Text = string.Empty;
+            // txtboxUsername.Text = string.Empty;
+            // txtboxPassword.Text = string.Empty;
 
             DisplayScreen(employee);
         }
 
         private void DisplayScreen(Employee employee)
         {
-            //if (employee.Role == 1 || employee.Role == 2)
-            //{
-            //    new listViewTableOrderOverview(employee).Show();
-            //}
-            //else if (employee.Role == 3 || employee.Role == 4)
-            //{
-            //   // new KitchenBar(employee).Show();
-            //}
+            if (employee.Roles == Role.Chef || employee.Roles == Role.Barman)
+            {
+                new listViewTableOrderOverview(employee).Show();
+            }
+            else if (employee.Roles == Role.Waiter || employee.Roles == Role.Manager)
+            {
+                 new KitchenBar(employee).Show();
+            }
         }
+        //private void btnLogin_Click(object sender, EventArgs e)
+        //{
+        //    KitchenBar kitchenBar = new KitchenBar(employee);
+        //    kitchenBar.Show();
+        //    this.Hide();
+        //    kitchenBar.Closed += (s, args) => this.Close();
+        //}
     }
 }

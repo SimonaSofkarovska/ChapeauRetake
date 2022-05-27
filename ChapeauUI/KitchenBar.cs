@@ -21,7 +21,7 @@ namespace ChapeauUI
         {
             InitializeComponent();
 
-            if (employee.Roles == Role.Waiter)
+            if (employee.Roles == Role.Barman)
             {
                 //drinks = true;
             }
