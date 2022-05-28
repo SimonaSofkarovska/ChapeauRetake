@@ -1,7 +1,7 @@
 ﻿
 namespace ChapeauUI
 {
-    partial class listViewTableOrderOverview
+    partial class TableOverview
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace ChapeauUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(listViewTableOrderOverview));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableOverview));
             this.btnTable1 = new System.Windows.Forms.Button();
             this.btnTable2 = new System.Windows.Forms.Button();
             this.btnTable3 = new System.Windows.Forms.Button();
@@ -482,7 +482,7 @@ namespace ChapeauUI
             this.readyTable7.TabIndex = 46;
             this.readyTable7.TabStop = false;
             // 
-            // listViewTableOrderOverview
+            // TableOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -522,7 +522,7 @@ namespace ChapeauUI
             this.Controls.Add(this.btnTable3);
             this.Controls.Add(this.btnTable2);
             this.Controls.Add(this.btnTable1);
-            this.Name = "listViewTableOrderOverview";
+            this.Name = "TableOverview";
             this.Text = "TableOverview";
             this.pnlOrder.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.readyTable1)).EndInit();

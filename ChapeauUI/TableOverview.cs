@@ -10,13 +10,13 @@ using ChapeauModel;
 
 namespace ChapeauUI
 {
-    public partial class listViewTableOrderOverview : Form
+    public partial class TableOverview : Form
     {
         private Employee employee;
         private TableService tableService;
         private Table table;
         // private Order order;
-        public listViewTableOrderOverview(Employee employee)
+        public TableOverview(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
@@ -142,5 +142,6 @@ namespace ChapeauUI
             //}
         }
 
+      
     }
 }
