@@ -12,7 +12,7 @@ namespace ChapeauDAL
     {
         public List<MenuItem> GetMenu()
         {
-            string query = "SELECT ID, [name], [type], price, Mealtype FROM Menu";
+            string query = "SELECT ID, name, type, price, Mealtype FROM Menu";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             List<MenuItem> Menu = ReadTables(ExecuteSelectQuery(query, sqlParameters));

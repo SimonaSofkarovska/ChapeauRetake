@@ -34,7 +34,7 @@ namespace ChapeauUI
             Button button = (Button)sender;
 
             int tableNr = Convert.ToInt32(button.Tag);
-            btnAddItem.Tag = tableNr;
+            btnAddOrder.Tag = tableNr;
 
             btnTable2.Text = $"Table {tableNr}";
 
@@ -60,7 +60,7 @@ namespace ChapeauUI
             }
             else
             {
-                btnAddItem.Show();
+                btnAddOrder.Show();
                 btnPayForOrder.Show();
 
                 //listViewTableOrderOverview.Items.Clear();
