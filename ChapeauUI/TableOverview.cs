@@ -13,14 +13,17 @@ namespace ChapeauUI
     public partial class TableOverview : Form
     {
         private Employee employee;
-        private TableService tableService;
-        private Table table;
-        // private Order order;
         public TableOverview(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
             lblEmployee.Text = $"Signed in: {employee.Name} ({employee.Role})";
+
+            //create timer 
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Interval = 10000;
+            timer.Tick += new EventHandler(timer_Tick);
+            timer.Start();
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -44,7 +47,7 @@ namespace ChapeauUI
             //get state table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
-            if (!selectedTable.IsOccupied)
+            if (!selectedTable.Status)
             {
                 DialogResult dialogResult = MessageBox.Show($"Do you want to seat guests at table {tableNr}", "Seat guests", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -67,7 +70,7 @@ namespace ChapeauUI
 
                 // order = new Order();
 
-                // order = orderService.GetOrderByTableNR(tableNr);
+                // order = orderService. get an order by specific table
 
 
                 //if (order != null)
@@ -82,6 +85,10 @@ namespace ChapeauUI
                 }
             }
         }
+        void timer_Tick(object sender, EventArgs e)
+        {
+            
+        }
         private void RefreshTables()
         {
             TableService tableService = new TableService();
@@ -91,7 +98,7 @@ namespace ChapeauUI
             int i = 0;
             foreach (Table table in tables)
             {
-                if (table.IsOccupied)
+                if (table.Status)
                 {
                     buttons[i].BackColor = Color.Red;
                 }
@@ -142,6 +149,23 @@ namespace ChapeauUI
             //}
         }
 
-      
+        private void readyTable2_Click(object sender, EventArgs e)
+        {
+            //when the readyicon is clicked => update state orderitems to served
+
+            PictureBox icon = (PictureBox)sender;
+            int tableNR = Convert.ToInt32(icon.Tag);
+
+            //OrderItemService orderItemservice = new OrderItemService();
+           // OrderService orderservice = new OrderService();
+
+            DialogResult dialogResult = MessageBox.Show($"Do you want to update the food status from preparing to served for table {tableNR}?", "Serve food", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+               // Order order = orderservice.GetOrderByTableNR(tableNr);
+                //orderItemservice. update or sth
+                icon.Hide();
+            }
+        }
     }
 }

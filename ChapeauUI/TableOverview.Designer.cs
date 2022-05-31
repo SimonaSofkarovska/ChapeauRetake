@@ -313,6 +313,7 @@ namespace ChapeauUI
             this.readyTable2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable2.TabIndex = 36;
             this.readyTable2.TabStop = false;
+            this.readyTable2.Click += new System.EventHandler(this.readyTable2_Click);
             // 
             // preparingTable3
             // 

@@ -32,7 +32,7 @@ namespace ChapeauUI
             Employee employee = new Employee();
             EmployeeService employeeService = new EmployeeService();
 
-            //read user input
+            //read input from the user
             username = txtboxUsername.Text;
             password = txtboxPassword.Text;
 
@@ -42,13 +42,13 @@ namespace ChapeauUI
             {
                 if (employee != null)
                 {
-                    //open different forms according to the role of the employee
+                    //open the right forms according to the employee role
                     if (employee.Role == Role.Manager)
                     {
                         Form tableOverview = new TableOverview(employee);
                         this.Hide();
 
-                        //open new form same location and size as login form 
+                        //open new form same location and size as the login form 
                         tableOverview.StartPosition = FormStartPosition.Manual;
                         tableOverview.Location = this.Location;
                         tableOverview.Size = this.Size;
@@ -78,22 +78,8 @@ namespace ChapeauUI
                 Console.ResetColor();
                 return;
             }
-           // txtboxUsername.Text = string.Empty;
-           // txtboxPassword.Text = string.Empty;
-
-            DisplayScreen(employee);
+         
         }
-
-        private void DisplayScreen(Employee employee)
-        {
-            //if (employee.Role == 1 || employee.Role == 2)
-            //{
-            //    new listViewTableOrderOverview(employee).Show();
-            //}
-            //else if (employee.Role == 3 || employee.Role == 4)
-            //{
-            //   // new KitchenBar(employee).Show();
-            //}
-        }
+       
     }
 }
