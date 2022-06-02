@@ -52,19 +52,33 @@ namespace ChapeauUI
                         tableOverview.ShowDialog();
                     }
 
-                    else if (employee.Role == Role.Waiter || employee.Role == Role.Barman)
+                    else if (employee.Role == Role.Barman || employee.Role == Role.Chef)
                     {
-                       // BarKitchen barKitchenView = new BarKitchen(employee);
+                         KitchenBar kitchenBarView = new KitchenBar(employee);
 
                         //open new form same location and size as login form
-                        //barKitchenView.StartPosition = FormStartPosition.Manual;
-                        //barKitchenView.Location = this.Location;
-                        //barKitchenView.Size = this.Size;
+                        kitchenBarView.StartPosition = FormStartPosition.Manual;
+                        kitchenBarView.Location = this.Location;
+                        kitchenBarView.Size = this.Size;
 
-                        //this.Hide();
+                        this.Hide();
 
-                        //barKitchenView.Show();
+                        kitchenBarView.Show(); 
                     }
+                    else if (employee.Role == Role.Waiter)
+                    {
+                        WaiterView waiterView = new WaiterView(employee);
+
+                        //open new form same location and size as login form
+                        waiterView.StartPosition = FormStartPosition.Manual;
+                        waiterView.Location = this.Location;
+                        waiterView.Size = this.Size;
+
+                        this.Hide();
+
+                        waiterView.Show();
+                    }
+
                     else
                     {
                         Console.WriteLine("Oops, something went wrong!");

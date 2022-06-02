@@ -9,7 +9,7 @@ namespace ChapeauDAL
     {
         public void AddOrderItem(OrderItem orderItem)
         {
-            string query = "INSERT INTO Orderitem (OrderID, MenuID, Status, Requests"
+            string query = $"INSERT INTO Orderitem (OrderID, MenuID, Status, Requests";
         }
     }
 }

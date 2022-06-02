@@ -13,7 +13,7 @@ namespace ChapeauUI
     public partial class TableOverview : Form
     {
         private Employee employee;
-        TableService tableService;
+        private TableService tableService;
         public TableOverview(Employee employee)
         {
             tableService = new TableService();
@@ -92,6 +92,7 @@ namespace ChapeauUI
         void timer_Tick(object sender, EventArgs e)
         {
             // ...
+            RefreshTables();
         }
         private void RefreshTables()
         {

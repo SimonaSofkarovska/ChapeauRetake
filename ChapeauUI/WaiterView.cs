@@ -14,7 +14,7 @@ namespace ChapeauUI
 
         private List<MenuItem> currentItems;
 
-        public WaiterView()
+        public WaiterView(Employee employee)
         {
             InitializeComponent();
             menuService = new MenuService();
@@ -47,13 +47,14 @@ namespace ChapeauUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            Order order = new Order();
             foreach(MenuItem menuItem in currentItems)
             {
                 OrderItem orderItem = new OrderItem(menuItem.ID, menuItem.Name, menuItem.Type, menuItem.MealType, menuItem.Price);
                 orderItemService.AddOrderItem(orderItem);
             }
 
-            orderService.AddOrder()
+            orderService.AddOrder(order);
         }
     }
 }
