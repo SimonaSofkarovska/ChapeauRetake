@@ -36,14 +36,14 @@ namespace ChapeauUI
             new Login().Show();
         }
 
-        private void btnTable2_Click(object sender, EventArgs e)
+        private void btnSpecificTableOverview_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
 
             int tableNr = Convert.ToInt32(button.Tag);
             btnAddItem.Tag = tableNr;
 
-            btnTable2.Text = $"Table {tableNr}";
+            btnSpecificTableOverview.Text = $"Table {tableNr}";
 
            // TableService tableService = new TableService();
             // OrderService orderService = new OrderService();
@@ -97,7 +97,7 @@ namespace ChapeauUI
         {
             
             List<Table> tables = tableService.GetAllTables();
-            Button[] buttons = new Button[] { btnTable1, btnTable2, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
+            Button[] buttons = new Button[] { btnTable1, btnSpecificTableOverview, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
 
             int i = 0;
             foreach (Table table in tables)
@@ -170,11 +170,6 @@ namespace ChapeauUI
                 //orderItemservice. update or sth
                 icon.Hide();
             }
-        }
-
-        private void btnTable7_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

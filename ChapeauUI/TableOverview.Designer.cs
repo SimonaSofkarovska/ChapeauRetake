@@ -31,7 +31,7 @@ namespace ChapeauUI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TableOverview));
             this.btnTable1 = new System.Windows.Forms.Button();
-            this.btnTable2 = new System.Windows.Forms.Button();
+            this.btnSpecificTableOverview = new System.Windows.Forms.Button();
             this.btnTable3 = new System.Windows.Forms.Button();
             this.btnTable4 = new System.Windows.Forms.Button();
             this.btnTable5 = new System.Windows.Forms.Button();
@@ -100,19 +100,19 @@ namespace ChapeauUI
             this.btnTable1.TabIndex = 11;
             this.btnTable1.Text = "1";
             this.btnTable1.UseVisualStyleBackColor = false;
-            this.btnTable1.Click += new System.EventHandler(this.btnTable2_Click);
+            this.btnTable1.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
-            // btnTable2
+            // btnSpecificTableOverview
             // 
-            this.btnTable2.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnTable2.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnTable2.Location = new System.Drawing.Point(25, 309);
-            this.btnTable2.Name = "btnTable2";
-            this.btnTable2.Size = new System.Drawing.Size(120, 70);
-            this.btnTable2.TabIndex = 21;
-            this.btnTable2.Text = "2";
-            this.btnTable2.UseVisualStyleBackColor = false;
-            this.btnTable2.Click += new System.EventHandler(this.btnTable2_Click);
+            this.btnSpecificTableOverview.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnSpecificTableOverview.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnSpecificTableOverview.Location = new System.Drawing.Point(25, 309);
+            this.btnSpecificTableOverview.Name = "btnSpecificTableOverview";
+            this.btnSpecificTableOverview.Size = new System.Drawing.Size(120, 70);
+            this.btnSpecificTableOverview.TabIndex = 21;
+            this.btnSpecificTableOverview.Text = "2";
+            this.btnSpecificTableOverview.UseVisualStyleBackColor = false;
+            this.btnSpecificTableOverview.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable3
             // 
@@ -124,6 +124,7 @@ namespace ChapeauUI
             this.btnTable3.TabIndex = 22;
             this.btnTable3.Text = "3";
             this.btnTable3.UseVisualStyleBackColor = false;
+            this.btnTable3.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable4
             // 
@@ -135,6 +136,7 @@ namespace ChapeauUI
             this.btnTable4.TabIndex = 23;
             this.btnTable4.Text = "4";
             this.btnTable4.UseVisualStyleBackColor = false;
+            this.btnTable4.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable5
             // 
@@ -146,6 +148,7 @@ namespace ChapeauUI
             this.btnTable5.TabIndex = 24;
             this.btnTable5.Text = "5";
             this.btnTable5.UseVisualStyleBackColor = false;
+            this.btnTable5.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable10
             // 
@@ -157,6 +160,7 @@ namespace ChapeauUI
             this.btnTable10.TabIndex = 29;
             this.btnTable10.Text = "10";
             this.btnTable10.UseVisualStyleBackColor = false;
+            this.btnTable10.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable9
             // 
@@ -168,6 +172,7 @@ namespace ChapeauUI
             this.btnTable9.TabIndex = 28;
             this.btnTable9.Text = "9";
             this.btnTable9.UseVisualStyleBackColor = false;
+            this.btnTable9.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable8
             // 
@@ -179,6 +184,7 @@ namespace ChapeauUI
             this.btnTable8.TabIndex = 27;
             this.btnTable8.Text = "8";
             this.btnTable8.UseVisualStyleBackColor = false;
+            this.btnTable8.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable7
             // 
@@ -190,7 +196,7 @@ namespace ChapeauUI
             this.btnTable7.TabIndex = 26;
             this.btnTable7.Text = "7";
             this.btnTable7.UseVisualStyleBackColor = false;
-            this.btnTable7.Click += new System.EventHandler(this.btnTable7_Click);
+            this.btnTable7.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // btnTable6
             // 
@@ -202,6 +208,7 @@ namespace ChapeauUI
             this.btnTable6.TabIndex = 25;
             this.btnTable6.Text = "6";
             this.btnTable6.UseVisualStyleBackColor = false;
+            this.btnTable6.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
             // labelTableOverview
             // 
@@ -523,7 +530,7 @@ namespace ChapeauUI
             this.Controls.Add(this.btnTable5);
             this.Controls.Add(this.btnTable4);
             this.Controls.Add(this.btnTable3);
-            this.Controls.Add(this.btnTable2);
+            this.Controls.Add(this.btnSpecificTableOverview);
             this.Controls.Add(this.btnTable1);
             this.Name = "TableOverview";
             this.Text = "TableOverview";
@@ -556,7 +563,7 @@ namespace ChapeauUI
         #endregion
 
         private System.Windows.Forms.Button btnTable1;
-        private System.Windows.Forms.Button btnTable2;
+        private System.Windows.Forms.Button btnSpecificTableOverview;
         private System.Windows.Forms.Button btnTable3;
         private System.Windows.Forms.Button btnTable4;
         private System.Windows.Forms.Button btnTable5;

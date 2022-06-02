@@ -15,8 +15,7 @@ namespace ChapeauUI
 {
     public partial class Login : Form
     {
-        //private EmployeeService employeeService = new EmployeeService();
-        //private Employee employee;
+        
         public Login()
         {
             InitializeComponent();
@@ -32,9 +31,6 @@ namespace ChapeauUI
             Employee employee = new Employee();
             EmployeeService employeeService = new EmployeeService();
 
-            //read input from the user
-           // username = txtboxUsername.Text;
-           // password = txtboxPassword.Text;
 
             employee = employeeService.GetEmployee(username, password);
 
@@ -68,6 +64,10 @@ namespace ChapeauUI
                         //this.Hide();
 
                         //barKitchenView.Show();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Oops, something went wrong!");
                     }
                 }
             }
