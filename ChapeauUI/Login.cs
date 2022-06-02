@@ -33,8 +33,8 @@ namespace ChapeauUI
             EmployeeService employeeService = new EmployeeService();
 
             //read input from the user
-            username = txtboxUsername.Text;
-            password = txtboxPassword.Text;
+           // username = txtboxUsername.Text;
+           // password = txtboxPassword.Text;
 
             employee = employeeService.GetEmployee(username, password);
 

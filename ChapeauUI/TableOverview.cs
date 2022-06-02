@@ -13,9 +13,13 @@ namespace ChapeauUI
     public partial class TableOverview : Form
     {
         private Employee employee;
+        TableService tableService;
         public TableOverview(Employee employee)
         {
+            tableService = new TableService();
+
             InitializeComponent();
+
             this.employee = employee;
             lblEmployee.Text = $"Signed in: {employee.Name} ({employee.Role})";
 
@@ -41,7 +45,7 @@ namespace ChapeauUI
 
             btnTable2.Text = $"Table {tableNr}";
 
-            TableService tableService = new TableService();
+           // TableService tableService = new TableService();
             // OrderService orderService = new OrderService();
 
             //get state table
@@ -87,11 +91,11 @@ namespace ChapeauUI
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            
+            // ...
         }
         private void RefreshTables()
         {
-            TableService tableService = new TableService();
+            
             List<Table> tables = tableService.GetAllTables();
             Button[] buttons = new Button[] { btnTable1, btnTable2, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
 
@@ -166,6 +170,11 @@ namespace ChapeauUI
                 //orderItemservice. update or sth
                 icon.Hide();
             }
+        }
+
+        private void btnTable7_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

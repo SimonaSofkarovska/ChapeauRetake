@@ -100,6 +100,7 @@ namespace ChapeauUI
             this.btnTable1.TabIndex = 11;
             this.btnTable1.Text = "1";
             this.btnTable1.UseVisualStyleBackColor = false;
+            this.btnTable1.Click += new System.EventHandler(this.btnTable2_Click);
             // 
             // btnTable2
             // 
@@ -189,6 +190,7 @@ namespace ChapeauUI
             this.btnTable7.TabIndex = 26;
             this.btnTable7.Text = "7";
             this.btnTable7.UseVisualStyleBackColor = false;
+            this.btnTable7.Click += new System.EventHandler(this.btnTable7_Click);
             // 
             // btnTable6
             // 
