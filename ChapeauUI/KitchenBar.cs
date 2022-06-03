@@ -18,16 +18,16 @@ namespace ChapeauUI
         private bool drinks = false;
         private bool AllOrders = false;
 
-        public KitchenBar(Employee employee)
+        public KitchenBar(/*Employee employee*/)
         {
             InitializeComponent();
 
-            if (employee.Roles == Role.Barman)
-            {
-                drinks = true;
-            }
+            //if (employee.Roles == Role.Barman)
+            //{
+            //    drinks = true;
+            //}
 
-            lblUser.Text = $"User: {employee.Name}";
+            //lblUser.Text = $"User: {employee.Name}";
 
             btn_mrkready.Enabled = false;
             LoadOrders(AllOrders, drinks);
@@ -84,7 +84,7 @@ namespace ChapeauUI
         {
             try
             {
-                List<OrderItem> orderItems = orderService.GetItems(order, drinks, AllOrders);
+                List<OrderItem> orderItems = orderService.GetOrderDetails(order, drinks, AllOrders);
                 lvOrderDetail.Items.Clear();
 
                 foreach (OrderItem item in orderItems)
@@ -127,7 +127,7 @@ namespace ChapeauUI
 
         private void btn_mrkready_Click(object sender, EventArgs e)
         {
-            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked as READY.\nProceed?", OrderStatus.Done);
+            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked as READY.\nProceed?", OrderStatus.Ready);
         }
 
         private void btn_Refresh_Click(object sender, EventArgs e)

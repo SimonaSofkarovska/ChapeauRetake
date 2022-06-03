@@ -25,6 +25,10 @@ namespace ChapeauUI
         private void btnLogin_Click(object sender, EventArgs e)
         {
             CheckUser(txtboxUsername.Text, txtboxPassword.Text);
+            //KitchenBar kitchenBar = new KitchenBar(employee);
+            //kitchenBar.Show();
+            //this.Hide();
+            //kitchenBar.Closed += (s, args) => this.Close();
         }
 
         private void CheckUser(string username, string password)
@@ -54,7 +58,7 @@ namespace ChapeauUI
             }
             else if (employee.Roles == Role.Waiter || employee.Roles == Role.Manager)
             {
-                 new KitchenBar(employee).Show();
+                 new KitchenBar(/*employee*/).Show();
             }
         }
         //private void btnLogin_Click(object sender, EventArgs e)

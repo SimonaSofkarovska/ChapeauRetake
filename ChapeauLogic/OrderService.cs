@@ -38,15 +38,15 @@ namespace ChapeauLogic
             orderDAO.UpdateOrder(order, orderItem);
         }
 
-        public int GenerateOrderNr()
-        {
-            return orderDAO.GenerateOrderNr();
-        }
+        //public int GenerateOrderNr()
+        //{
+        //    return orderDAO.GenerateOrderNr();
+        //}
 
-        public void CreateOrderItems(Order order)
-        {
-            orderDAO.CreateOrderItems(order);
-        }
+        //public void CreateOrderItems(Order order)
+        //{
+        //    orderDAO.CreateOrderItems(order);
+        //}
 
         public Order GetByTable(Table table)
         {

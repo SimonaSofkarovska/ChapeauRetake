@@ -25,3 +25,27 @@ Login failed for user 'group_retake1'.
 Error occured at: 03/06/2022 09:33:48:
 Incorrect syntax near the keyword 'Order'.
 
+Error occured at: 6/3/2022 3:46:07 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:46:07 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:47:48 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:47:48 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:59:56 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:59:56 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 4:35:21 PM:
+Incorrect syntax near the keyword 'Order'.
+
+Error occured at: 6/3/2022 5:39:51 PM:
+Incorrect syntax near the keyword 'Order'.
+
