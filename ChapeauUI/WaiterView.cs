@@ -45,7 +45,7 @@ namespace ChapeauUI
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
-            currentItems.Add(new OrderItem(2, menuItem.ID, OrderStatus.New, menuItem.Name, menuItem.Type, menuItem.MealType, txtComments.Text, menuItem.Price, int.Parse(cmbAmount.SelectedItem.ToString())));
+            currentItems.Add(new OrderItem(4, menuItem.ID, OrderStatus.New, menuItem.Name, menuItem.Type, menuItem.MealType, txtComments.Text, menuItem.Price, int.Parse(cmbAmount.SelectedItem.ToString())));
 
             ListViewItem listItem = new ListViewItem(menuItem.Name);
             listItem.SubItems.Add(cmbAmount.SelectedItem.ToString());
@@ -68,6 +68,11 @@ namespace ChapeauUI
 
             MessageBox.Show("The order was sent to the kitchen");
 
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            lstCurrentOrder.SelectedItems.Clear();
         }
     }
 }
