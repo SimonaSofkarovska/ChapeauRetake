@@ -28,11 +28,21 @@ namespace ChapeauModel
         public OrderStatus Status { get; set; }
         public Order() {/* :) */}
 
+        public Order() {    /*  :)  */  }
         public Order(int OrderID, DateTime timeTaken, int EmployeeID, int TableNumber, OrderStatus Status)
         {
             orderItems = new List<OrderItem>();
             this.timeTaken = timeTaken;
             this.OrderID = OrderID;
+            this.EmployeeID = EmployeeID;
+            this.TableNumber = TableNumber;
+            this.Status = Status;
+        }
+
+        public Order(DateTime timeTaken, int EmployeeID, int TableNumber, OrderStatus Status)
+        {
+            orderItems = new List<OrderItem>();
+            this.timeTaken = timeTaken;
             this.EmployeeID = EmployeeID;
             this.TableNumber = TableNumber;
             this.Status = Status;
