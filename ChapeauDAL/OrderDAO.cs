@@ -23,7 +23,7 @@ namespace ChapeauDAL
                 query += (history ? "> 0 " : "= 0 ");
                 query += "AND MI.category_id ";
                 query += (drinks ? "> 30 " : "< 30 ");
-                query += "ORDER BY O.[timeStamp]";
+                query += "ORDER BY O.[dateTime]";
                 query += (history ? "DESC; " : "; ");
 
 
@@ -47,7 +47,7 @@ namespace ChapeauDAL
                 {
                     order.OrderID = (int)dr["order_id"];
                     order.Table.TableNumber = (int)dr["table_nr"];
-                    order.TimeStamp = (DateTime)dr["timeStamp"];
+                    order.DT = (DateTime)dr["dateTime"];
                     order.Employee.Name = (string)dr["first_name"];
                 };
                 orders.Add(order);

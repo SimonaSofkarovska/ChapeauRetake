@@ -14,7 +14,7 @@ namespace ChapeauModel
 
         public Employee Employee { get; set; }
 
-        public DateTime TimeStamp { get; set; }
+        public DateTime DT { get; set; }
 
         //public bool Paid { get; set; }
 

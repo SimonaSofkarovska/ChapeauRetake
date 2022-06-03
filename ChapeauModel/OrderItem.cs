@@ -10,7 +10,7 @@ namespace ChapeauModel
 
         public int Amount { get; set; }
 
-        //public OrderItemStatus Status { get; set; }
+        public OrderItemStatus Status { get; set; }
 
         public DateTime TimeStamp { get; set; }
 
