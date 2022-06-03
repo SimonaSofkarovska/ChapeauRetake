@@ -25,7 +25,6 @@ namespace ChapeauModel
         public DateTime timeTaken;
         public int EmployeeID { get; set; }
         public int TableID { get; set; }
-        public int EmployeeID { get; set; }
         public int TableNumber { get; set; }
         public OrderStatus Status { get; set; }
 

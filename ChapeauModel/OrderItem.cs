@@ -15,7 +15,10 @@ namespace ChapeauModel
         public int Quantity { get; set; }
 
         public OrderItem() {    /*  :)  */  }
-        public OrderItem(int OrderID, int ID, OrderStatus Status, string Name, ItemType Type, MealType Mealtype, string Requests, double Price, int Quantity)
+        /*public OrderItem(int OrderID, int ID, OrderStatus Status, string Name, ItemType Type, MealType Mealtype, string Requests, double Price, int Quantity)
+        {
+
+        }*/
         public string Comment { get; set; }
         public DateTime OrderTime { get; set; }
         public  OrderItemStatus OrderItemStatus { get; set; }
