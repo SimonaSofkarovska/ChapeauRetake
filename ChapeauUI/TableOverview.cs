@@ -14,9 +14,13 @@ namespace ChapeauUI
     {
         private Employee employee;
         private TableService tableService;
+        private OrderService orderService;
+        private Order order;
         public TableOverview(Employee employee)
         {
             tableService = new TableService();
+            orderService = new OrderService();
+            order = new Order();
 
             InitializeComponent();
 
@@ -45,8 +49,6 @@ namespace ChapeauUI
 
             btnSpecificTableOverview.Text = $"Table {tableNr}";
 
-           // TableService tableService = new TableService();
-            // OrderService orderService = new OrderService();
 
             //get state table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
@@ -74,7 +76,7 @@ namespace ChapeauUI
 
                 // order = new Order();
 
-                // order = orderService. get an order by specific table
+                 order = orderService.GetOrderByTableNR(tableNr);
 
 
                 //if (order != null)

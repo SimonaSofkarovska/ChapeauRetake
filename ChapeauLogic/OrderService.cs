@@ -19,5 +19,10 @@ namespace ChapeauLogic
         {
             orderDAO.AddOrder(order);
         }
+        public Order GetOrderByTableNR(int tablenr)
+        {
+            Order order = orderDAO.GetOrderByTableNr(tablenr);
+            return order;
+        }
     }
 }

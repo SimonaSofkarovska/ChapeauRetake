@@ -8,9 +8,11 @@ namespace ChapeauModel
     {
         public int OrderID { get; set; }
 
-        public List<OrderItem> orderItems;
+        public List<OrderItem> orderItems { get; set; }
 
         public DateTime timeTaken;
+        public int EmployeeID { get; set; }
+        public int TableID { get; set; }
 
         public Order()
         {
