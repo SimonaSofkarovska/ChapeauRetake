@@ -26,6 +26,7 @@ namespace ChapeauModel
         public int EmployeeID { get; set; }
         public int TableNumber { get; set; }
         public OrderStatus Status { get; set; }
+        public Order() {/* :) */}
 
         public Order(int OrderID, DateTime timeTaken, int EmployeeID, int TableNumber, OrderStatus Status)
         {

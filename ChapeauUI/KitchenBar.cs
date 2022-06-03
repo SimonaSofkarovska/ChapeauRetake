@@ -163,7 +163,7 @@ namespace ChapeauUI
                 for (int i = 0; i < lvOrderDetail.SelectedItems.Count; i++)
                 {
                     OrderItem item = (OrderItem)lvOrderDetail.SelectedItems[i].Tag;
-                    item.Status = orderItemStatus;
+                    item.Status = orderStatus;
                     orderService.UpdateStatus(item, order);
                 }
             }

@@ -58,14 +58,11 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 Order order = new Order();
-                order.TableNumber = new Table();
-                order.EmployeeID = new Employee();
                 {
                     order.OrderID = (int)dr["order_id"];
-                    order.Table.TableNumber = (int)dr["table_nr"];
-                    order.TimeStamp = (DateTime)dr["timeStamp"];
-                    order.Employee.FirstName = (string)dr["first_name"];
-                    order.Employee.LastName = (string)dr["last_name"];
+                    order.TableNumber = (int)dr["table_nr"];
+                    order.timeTaken = (DateTime)dr["timetaken"];
+                    order.EmployeeID = (int)dr["employee_ id"];
                 };
                 orders.Add(order);
             }
@@ -96,14 +93,12 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 OrderItem orderItem = new OrderItem();
-                orderItem.Item = new MenuItem();
                 {
-                    orderItem.Item.Name = (string)dr["name"];
-                    orderItem.Amount = (int)dr["amount"];
-                    orderItem.TimeStamp = (DateTime)dr["timeStamp"];
-                    orderItem.Status = (OrderItemStatus)((int)dr["status"]);
-                    orderItem.Remark = (string)dr["remark"].ToString();
-                    orderItem.Item.ItemID = (int)dr["item_id"];
+                    orderItem.Name = (string)dr["name"];
+                    orderItem.Quantity = (int)dr["amount"];
+                    orderItem.Status = (OrderStatus)((int)dr["status"]);
+                    orderItem.Requests = (string)dr["remark"].ToString();
+                    orderItem.ID = (int)dr["item_id"];
                 };
                 OrderItems.Add(orderItem);
             }
@@ -129,8 +124,7 @@ namespace ChapeauDAL
             {
                 new SqlParameter("Status", (int)(orderItem.Status)),
                 new SqlParameter("OrderID", order.OrderID),
-                new SqlParameter("ItemID", orderItem.Item.ItemID),
-                new SqlParameter("TimeStamp", orderItem.TimeStamp),
+                new SqlParameter("ItemID", orderItem.ID),
             };
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -142,11 +136,11 @@ namespace ChapeauDAL
             SqlParameter[] sqlParameters =
             {
                 new SqlParameter("@OrderID", order.OrderID),
-                new SqlParameter("@ItemID", orderItem.Item.ItemID),
-                new SqlParameter("@Amount", orderItem.Amount),
+                new SqlParameter("@ItemID", orderItem.ID),
+                new SqlParameter("@Amount", orderItem.Quantity),
                 new SqlParameter("@Time", DateTime.Now),
                 new SqlParameter("@Status", orderItem.Status),
-                new SqlParameter("@remark", orderItem.Remark),
+                new SqlParameter("@remark", orderItem.Requests),
             };
             ExecuteEditQuery(query, sqlParameters);
         }
@@ -159,20 +153,20 @@ namespace ChapeauDAL
             return ReadCountData(ExecuteSelectQuery(query, sqlParameters)) + 1;
         }
 
-        public void CreateOrderItems(Order order)
-        {
-            string query = "INSERT INTO [ORDER] (order_id, table_id, employee_id, [timeStamp], paid) " +
-                           "VALUES(@OrderID, @TableID, @EmployeeID, @TimeStamp, 0)";
+        //public void CreateOrderItems(Order order)
+        //{
+        //    string query = "INSERT INTO [ORDER] (order_id, table_id, employee_id, [timeStamp], paid) " +
+        //                   "VALUES(@OrderID, @TableID, @EmployeeID, @TimeStamp, 0)";
 
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("OrderID", order.OrderID),
-                new SqlParameter("TableID", order.Table.TableID),
-                new SqlParameter("EmployeeID", order.Employee.EmployeeID),
-                new SqlParameter("TimeStamp", DateTime.Now),
-            };
-            ExecuteEditQuery(query, sqlParameters);
-        }
+        //    SqlParameter[] sqlParameters =
+        //    {
+        //        new SqlParameter("OrderID", order.OrderID),
+        //        new SqlParameter("TableID", order.Table.TableID),
+        //        new SqlParameter("EmployeeID", order.Employee.EmployeeID),
+        //        new SqlParameter("TimeStamp", DateTime.Now),
+        //    };
+        //    ExecuteEditQuery(query, sqlParameters);
+        //}
 
         public List<OrderItem> GetRunningOrder(Order order)
         {
@@ -195,7 +189,7 @@ namespace ChapeauDAL
                 "WHERE table_id = @TableID;";
             SqlParameter[] sqlParameters =
             {
-                new SqlParameter("TableID", table.TableID),
+                new SqlParameter("TableID", table.TableId),
             };
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
