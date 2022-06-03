@@ -12,7 +12,7 @@ namespace ChapeauLogic
         {
             tableDAO = new TableDAO();
         }
-       
+
 
         public List<Table> GetAllTables()
         {

@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using ChapeauModel;
 using System.Collections.Generic;
+using ChapeauDAL;
 
 namespace ChapeauDAL
 {
@@ -56,6 +57,17 @@ namespace ChapeauDAL
             }
 
             return tables;
+        }
+        //idk
+        public void FoodReady(Table table)
+        {
+            string query = "UPDATE [TABLE] SET [status] = 2 WHERE table_id = @TableID";
+
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("TableID", (table.TableNumber)),
+            };
+            ExecuteEditQuery(query, sqlParameters);
         }
 
     }

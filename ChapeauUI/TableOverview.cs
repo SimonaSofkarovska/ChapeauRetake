@@ -13,7 +13,7 @@ namespace ChapeauUI
     public partial class listViewTableOrderOverview : Form
     {
         private Employee employee;
-        private TableService tableService;
+        private ChapeauLogic.TableService tableService;
         private Table table;
         // private Order order;
         public listViewTableOrderOverview(Employee employee)
@@ -38,7 +38,7 @@ namespace ChapeauUI
 
             btnTable2.Text = $"Table {tableNr}";
 
-            TableService tableService = new TableService();
+            ChapeauLogic.TableService tableService = new ChapeauLogic.TableService();
             // OrderService orderService = new OrderService();
 
             //get state table
@@ -84,7 +84,7 @@ namespace ChapeauUI
         }
         private void RefreshTables()
         {
-            TableService tableService = new TableService();
+            ChapeauLogic.TableService tableService = new ChapeauLogic.TableService();
             List<Table> tables = tableService.GetAllTables();
             Button[] buttons = new Button[] { btnTable1, btnTable2, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
 
