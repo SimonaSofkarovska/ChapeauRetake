@@ -12,15 +12,20 @@ namespace ChapeauUI
         public OrderService orderService;
         public OrderItemService orderItemService;
 
-        private List<MenuItem> currentItems;
+        private Employee employee;
+        private Table table;
+        private List<OrderItem> currentItems;
 
-        public WaiterView()
+        public WaiterView(Employee employee, Table table)
         {
             InitializeComponent();
             menuService = new MenuService();
             orderService = new OrderService();
             orderItemService = new OrderItemService();
-            currentItems = new List<MenuItem>();
+            currentItems = new List<OrderItem>();
+
+            this.employee = employee;
+            this.table = table;
         }
 
         private void WaiterView_Load(object sender, EventArgs e)
@@ -37,7 +42,8 @@ namespace ChapeauUI
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
-            currentItems.Add(menuItem);
+            currentItems.Add(new OrderItem(menuItem.ID, OrderStatus.New, menuItem.Name, menuItem.Type, menuItem.MealType, txtComments.Text, menuItem.Price, (int)cmbAmount.SelectedItem));
+
             ListViewItem listItem = new ListViewItem(menuItem.Name);
             listItem.SubItems.Add(cmbAmount.SelectedItem.ToString());
             listItem.SubItems.Add(txtComments.Text);
@@ -47,13 +53,15 @@ namespace ChapeauUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            foreach(MenuItem menuItem in currentItems)
+            Order order = new Order(2, DateTime.Now, employee.Id, table.TableNumber, OrderStatus.New);
+
+            foreach(OrderItem orderItem in currentItems)
             {
-                OrderItem orderItem = new OrderItem(menuItem.ID, menuItem.Name, menuItem.Type, menuItem.MealType, menuItem.Price);
+                order.orderItems.Add(orderItem);
                 orderItemService.AddOrderItem(orderItem);
             }
 
-            orderService.AddOrder()
+            orderService.AddOrder(order);
         }
     }
 }
