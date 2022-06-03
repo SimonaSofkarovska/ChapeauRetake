@@ -10,7 +10,7 @@ namespace ChapeauDAL
     {
         public void AddOrder(Order order)
         {
-            string query = "INSERT INTO Order(OrderID, Timetaken, EmployeeID, Totalprice, Status, Tablenumber) VALUES(@OrderID, @Timetaken, @EmployeeID, @Totalprice, @Status, @Tablenumber)";
+            string query = "INSERT INTO [Order](OrderID, Timetaken, EmployeeID, Totalprice, Status, Tablenumber) VALUES(@OrderID, @Timetaken, @EmployeeID, @Totalprice, @Status, @Tablenumber)";
 
             SqlParameter[] parameters = new SqlParameter[6];
             parameters[0] = new SqlParameter("OrderID", order.OrderID);

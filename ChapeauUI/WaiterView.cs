@@ -12,11 +12,13 @@ namespace ChapeauUI
         public OrderService orderService;
         public OrderItemService orderItemService;
 
-        private Employee employee;
-        private Table table;
+        //private Employee employee;
+        //private Table table;
+        int employeeID = 1;
+        int tablenumber = 2;
         private List<OrderItem> currentItems;
 
-        public WaiterView(Employee employee, Table table)
+        public WaiterView(/*Employee employee, Table table*/)
         {
             InitializeComponent();
             menuService = new MenuService();
@@ -24,8 +26,9 @@ namespace ChapeauUI
             orderItemService = new OrderItemService();
             currentItems = new List<OrderItem>();
 
-            this.employee = employee;
-            this.table = table;
+            /*this.employee = employee;
+            this.table = table;*/
+
         }
 
         private void WaiterView_Load(object sender, EventArgs e)
@@ -42,7 +45,7 @@ namespace ChapeauUI
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
-            currentItems.Add(new OrderItem(menuItem.ID, OrderStatus.New, menuItem.Name, menuItem.Type, menuItem.MealType, txtComments.Text, menuItem.Price, (int)cmbAmount.SelectedItem));
+            currentItems.Add(new OrderItem(2, menuItem.ID, OrderStatus.New, menuItem.Name, menuItem.Type, menuItem.MealType, txtComments.Text, menuItem.Price, int.Parse(cmbAmount.SelectedItem.ToString())));
 
             ListViewItem listItem = new ListViewItem(menuItem.Name);
             listItem.SubItems.Add(cmbAmount.SelectedItem.ToString());
@@ -53,7 +56,7 @@ namespace ChapeauUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            Order order = new Order(2, DateTime.Now, employee.Id, table.TableNumber, OrderStatus.New);
+            Order order = new Order(2, DateTime.Now, employeeID, tablenumber/*employee.Id, table.TableNumber*/, OrderStatus.New);
 
             foreach(OrderItem orderItem in currentItems)
             {
@@ -62,6 +65,9 @@ namespace ChapeauUI
             }
 
             orderService.AddOrder(order);
+
+            MessageBox.Show("The order was succesfully submitted to the kitchen");
+
         }
     }
 }

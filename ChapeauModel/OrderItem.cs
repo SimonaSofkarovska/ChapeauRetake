@@ -13,9 +13,10 @@ namespace ChapeauModel
         public string Requests { get; set; }
 
         public int Quantity { get; set; }
-        public OrderItem(int ID, OrderStatus Status, string Name, ItemType Type, MealType Mealtype, string Requests, double Price, int Quantity)
+        public OrderItem(int OrderID, int ID, OrderStatus Status, string Name, ItemType Type, MealType Mealtype, string Requests, double Price, int Quantity)
             :base(ID, Name, Type, Mealtype, Price)
         {
+            this.OrderID = OrderID;
             this.Status = Status;
             this.Requests = Requests;
             this.Quantity = Quantity;

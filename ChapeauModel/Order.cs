@@ -9,17 +9,16 @@ namespace ChapeauModel
         public int OrderID { get; set; }
 
         public List<OrderItem> orderItems;
-        private double totalPrice;
+
         public double TotalPrice
         {
-            get { return totalPrice; }
-            set
+            get
             {
                 double totalPrice = 0;
                 foreach (OrderItem item in orderItems)
                     totalPrice += item.Price;
 
-                this.totalPrice = totalPrice;
+                return totalPrice;
             }
         }
 
@@ -37,7 +36,5 @@ namespace ChapeauModel
             this.TableNumber = TableNumber;
             this.Status = Status;
         }
-
-
     }
 }
