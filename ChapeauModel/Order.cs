@@ -10,14 +10,43 @@ namespace ChapeauModel
 
         public List<OrderItem> orderItems { get; set; }
 
+        public double TotalPrice
+        {
+            get
+            {
+                double totalPrice = 0;
+                foreach (OrderItem item in orderItems)
+                    totalPrice += item.Price;
+
+                return totalPrice;
+            }
+        }
+
         public DateTime timeTaken;
         public int EmployeeID { get; set; }
         public int TableID { get; set; }
+        public int EmployeeID { get; set; }
+        public int TableNumber { get; set; }
+        public OrderStatus Status { get; set; }
 
-        public Order()
+        public Order() {    /*  :)  */  }
+        public Order(int OrderID, DateTime timeTaken, int EmployeeID, int TableNumber, OrderStatus Status)
         {
             orderItems = new List<OrderItem>();
-            timeTaken = new DateTime();
+            this.timeTaken = timeTaken;
+            this.OrderID = OrderID;
+            this.EmployeeID = EmployeeID;
+            this.TableNumber = TableNumber;
+            this.Status = Status;
+        }
+
+        public Order(DateTime timeTaken, int EmployeeID, int TableNumber, OrderStatus Status)
+        {
+            orderItems = new List<OrderItem>();
+            this.timeTaken = timeTaken;
+            this.EmployeeID = EmployeeID;
+            this.TableNumber = TableNumber;
+            this.Status = Status;
         }
     }
 }

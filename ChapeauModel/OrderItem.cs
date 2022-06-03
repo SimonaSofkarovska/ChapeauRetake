@@ -10,6 +10,12 @@ namespace ChapeauModel
 
         public OrderStatus Status { get; set; }
 
+        public string Requests { get; set; }
+
+        public int Quantity { get; set; }
+
+        public OrderItem() {    /*  :)  */  }
+        public OrderItem(int OrderID, int ID, OrderStatus Status, string Name, ItemType Type, MealType Mealtype, string Requests, double Price, int Quantity)
         public string Comment { get; set; }
         public DateTime OrderTime { get; set; }
         public  OrderItemStatus OrderItemStatus { get; set; }
@@ -17,11 +23,11 @@ namespace ChapeauModel
 
         public OrderItem(int ID, string Name, ItemType Type, MealType Mealtype, double Price)
             :base(ID, Name, Type, Mealtype, Price)
-        {   // Required to make an order item with the data from the selected menu item when 
-        }   // submitting an order
-        public OrderItem()
         {
-
-        }
+            this.OrderID = OrderID;
+            this.Status = Status;
+            this.Requests = Requests;
+            this.Quantity = Quantity;
+        }   
     }
 }

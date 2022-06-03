@@ -47,7 +47,7 @@ namespace ChapeauUI
             // cmbMenu
             // 
             this.cmbMenu.FormattingEnabled = true;
-            this.cmbMenu.Location = new System.Drawing.Point(148, 48);
+            this.cmbMenu.Location = new System.Drawing.Point(148, 82);
             this.cmbMenu.Name = "cmbMenu";
             this.cmbMenu.Size = new System.Drawing.Size(347, 28);
             this.cmbMenu.TabIndex = 1;
@@ -62,7 +62,7 @@ namespace ChapeauUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 51);
+            this.label1.Location = new System.Drawing.Point(15, 85);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(127, 20);
             this.label1.TabIndex = 3;
@@ -71,7 +71,7 @@ namespace ChapeauUI
             // cmbAmount
             // 
             this.cmbAmount.FormattingEnabled = true;
-            this.cmbAmount.Location = new System.Drawing.Point(629, 48);
+            this.cmbAmount.Location = new System.Drawing.Point(629, 82);
             this.cmbAmount.Name = "cmbAmount";
             this.cmbAmount.Size = new System.Drawing.Size(56, 28);
             this.cmbAmount.TabIndex = 5;
@@ -79,7 +79,7 @@ namespace ChapeauUI
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(554, 51);
+            this.label2.Location = new System.Drawing.Point(554, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 7;
@@ -141,6 +141,7 @@ namespace ChapeauUI
             this.btnRemove.TabIndex = 10;
             this.btnRemove.Text = "Remove item";
             this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
             // btnSubmit
             // 
