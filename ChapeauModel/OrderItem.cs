@@ -4,16 +4,22 @@ using System.Text;
 
 namespace ChapeauModel
 {
-    public class OrderItem
+    public class OrderItem : MenuItem
     {
-        public MenuItem Item { get; set; }
+        public int OrderID { get; set; }
 
-        public int Amount { get; set; }
+        public OrderStatus Status { get; set; }
 
-        public OrderItemStatus Status { get; set; }
+        public string Requests { get; set; }
 
-        public DateTime TimeStamp { get; set; }
-
-        public string Remark { get; set; }
+        public int Quantity { get; set; }
+        public OrderItem(int OrderID, int ID, OrderStatus Status, string Name, ItemType Type, MealType Mealtype, string Requests, double Price, int Quantity)
+            :base(ID, Name, Type, Mealtype, Price)
+        {
+            this.OrderID = OrderID;
+            this.Status = Status;
+            this.Requests = Requests;
+            this.Quantity = Quantity;
+        }   
     }
 }

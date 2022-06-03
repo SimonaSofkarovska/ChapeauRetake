@@ -1,24 +1,27 @@
-Error occured at: 5/27/2022 4:59:34 PM:
+Error occured at: 27/05/2022 17:17:28:
 Login failed for user 'group_retake1'.
 
-Error occured at: 5/27/2022 4:59:34 PM:
+Error occured at: 27/05/2022 17:17:28:
 Login failed for user 'group_retake1'.
 
-Error occured at: 5/27/2022 5:00:27 PM:
+Error occured at: 27/05/2022 17:18:44:
 Login failed for user 'group_retake1'.
 
-Error occured at: 5/27/2022 5:00:27 PM:
+Error occured at: 27/05/2022 17:18:44:
 Login failed for user 'group_retake1'.
 
-Error occured at: 5/27/2022 5:03:19 PM:
+Error occured at: 27/05/2022 17:19:56:
 Login failed for user 'group_retake1'.
 
-Error occured at: 5/27/2022 5:03:19 PM:
+Error occured at: 27/05/2022 17:19:56:
 Login failed for user 'group_retake1'.
 
-Error occured at: 5/27/2022 5:07:07 PM:
+Error occured at: 31/05/2022 15:18:12:
 Login failed for user 'group_retake1'.
 
-Error occured at: 5/27/2022 5:07:07 PM:
+Error occured at: 31/05/2022 15:18:12:
 Login failed for user 'group_retake1'.
+
+Error occured at: 03/06/2022 09:33:48:
+Incorrect syntax near the keyword 'Order'.
 

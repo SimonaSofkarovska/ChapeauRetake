@@ -1,59 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using ChapeauModel;
 
 namespace ChapeauDAL
 {
-    public class OrderDAO : BaseDAO
+    public class OrderDAO:BaseDAO
     {
-        public List<Order> GetOrders(bool drinks, bool history)
+        public void AddOrder(Order order)
         {
-            try
-            {
-                string query = "SELECT DISTINCT(O.order_id), T.table_nr, O.[timeStamp], category_id, first_name, last_name " +
-                               "FROM [ORDER] AS O " +
-                               "JOIN [TABLE] AS T ON O.table_id = T.table_id " +
-                               "JOIN EMPLOYEE AS E ON O.employee_id = E.employee_id " +
-                               "JOIN ORDERITEM AS OI ON O.order_id = OI.order_id " +
-                               "JOIN MENUITEM AS MI ON OI.item_id = MI.item_id " +
-                               "WHERE OI.[status] ";
-                query += (history ? "> 0 " : "= 0 ");
-                query += "AND MI.category_id ";
-                query += (drinks ? "> 30 " : "< 30 ");
-                query += "ORDER BY O.[dateTime]";
-                query += (history ? "DESC; " : "; ");
+            string query = "INSERT INTO [Order](OrderID, Timetaken, EmployeeID, Totalprice, Status, Tablenumber) VALUES(@OrderID, @Timetaken, @EmployeeID, @Totalprice, @Status, @Tablenumber)";
 
+            SqlParameter[] parameters = new SqlParameter[6];
+            parameters[0] = new SqlParameter("OrderID", order.OrderID);
+            parameters[1] = new SqlParameter("Timetaken", order.timeTaken);   //OrderItem inherits from menuitem, ID is the ID of the menu item
+            parameters[2] = new SqlParameter("EmployeeID", order.EmployeeID);
+            parameters[3] = new SqlParameter("Totalprice", order.TotalPrice);
+            parameters[4] = new SqlParameter("Status", order.Status);
+            parameters[5] = new SqlParameter("Tablenumber", order.TableNumber);
 
-                SqlParameter[] sqlParameters = new SqlParameter[0];
-                return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
-            }
-            catch (Exception ex)
-            {
-                //WriteToErrorLog(ex.ToString());
-                return null;
-            }
+            ExecuteEditQuery(query, parameters);
         }
-        private List<Order> ReadOrders(DataTable dataTable)
-        {
-            List<Order> orders = new List<Order>();
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                Order order = new Order();
-                order.Table = new Table();
-                order.Employee = new Employee();
-                {
-                    order.OrderID = (int)dr["order_id"];
-                    order.Table.TableNumber = (int)dr["table_nr"];
-                    order.DT = (DateTime)dr["dateTime"];
-                    order.Employee.Name = (string)dr["first_name"];
-                };
-                orders.Add(order);
-            }
-            return orders;
-        }
-
     }
 }

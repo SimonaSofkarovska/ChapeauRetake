@@ -12,7 +12,7 @@ namespace ChapeauModel
     }
     public enum OrderStatus
     {
-        Waiting, Ready, Serverd
+        New = 1, Preparing, Done, Served, Paid
     }
     public enum Payment
     {
@@ -21,5 +21,13 @@ namespace ChapeauModel
     public enum TableStatus
     {
         Free, Reserved, Occupied, Ongoing, FoodReady, FoodServed, Paying
+    }
+    public enum ItemType
+    {
+        Starters = 1, Main, Entremet, Desert, Softdrink, Beer, wine, Spiritdrink, CoffeeTea
+    }
+    public enum MealType
+    {
+        Lunch = 1, Dinner, Other
     }
 }
