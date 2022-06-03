@@ -56,7 +56,7 @@ namespace ChapeauUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            Order order = new Order(2, DateTime.Now, employeeID, tablenumber/*employee.Id, table.TableNumber*/, OrderStatus.New);
+            Order order = new Order(DateTime.Now, employeeID, tablenumber/*employee.Id, table.TableNumber*/, OrderStatus.New);
 
             foreach(OrderItem orderItem in currentItems)
             {
@@ -66,7 +66,7 @@ namespace ChapeauUI
 
             orderService.AddOrder(order);
 
-            MessageBox.Show("The order was succesfully submitted to the kitchen");
+            MessageBox.Show("The order was sent to the kitchen");
 
         }
     }
