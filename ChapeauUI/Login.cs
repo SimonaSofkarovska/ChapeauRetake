@@ -88,7 +88,7 @@ namespace ChapeauUI
             catch
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                MessageBox.Show($"Incorrect username or password", "Please, sign in again");
+                MessageBox.Show($"Incorrect username or password", "Please, sign in again"); //think of error handling, username might not exist, database might not be connected
                 Console.ResetColor();
                 return;
             }
