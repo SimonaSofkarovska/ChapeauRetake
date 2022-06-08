@@ -19,14 +19,14 @@ namespace ChapeauLogic
         {
             orderDAO.AddOrder(order);
         }
-        public List<Order> GetOrders(bool drinks, bool allOrders)
+        public List<Order> GetOrders()
         {
-            return orderDAO.GetOrders(drinks, allOrders);
+            return orderDAO.GetOrders();
         }
 
-        public List<OrderItem> GetOrderDetails(Order order, bool drinks, bool allOrders)
+        public List<OrderItem> GetOrderDetails(Order order)
         {
-            return orderDAO.GetOrderDetails(order, drinks, allOrders);
+            return orderDAO.GetOrderDetails(order);
         }
         public void UpdateStatus(OrderItem orderItem, Order order)
         {

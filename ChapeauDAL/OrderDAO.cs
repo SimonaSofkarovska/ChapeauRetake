@@ -23,31 +23,19 @@ namespace ChapeauDAL
             ExecuteEditQuery(query, parameters);
         }
 
-        /*SELECT Orderitem.OrderID, [Menu].name, [Status].Status, Orderitem.Quantity, [Order].Tablenumber, [Order].Timetaken, [Order].Tablenumber, [Order].EmployeeID FROM [Order]
-            JOIN Orderitem ON Orderitem.OrderID=[Order].OrderID
-            JOIN Menu ON OrderItem.MenuID=Menu.ID
-            JOIN [Status] ON Orderitem.Status=Status.ID
+        /*SELECT Orderitem.OrderID, [Menu].name, [Status].Status, Orderitem.Quantity, Orders.Tablenumber, Orders.Timetaken, Orders.Tablenumber, Orders.EmployeeID FROM Orders
+JOIN Orderitem ON Orderitem.OrderID=Orders.OrderID
+JOIN Menu ON OrderItem.MenuID=Menu.ID
+JOIN [Status] ON Orderitem.Status=Status.ID
         */
 
-        public List<Order> GetOrders(bool drinks, bool allOrders)
+        public List<Order> GetOrders() // ordernr table, employee time
         {
             try
             {
-                string query = "SELECT Orders.OrderID, [Orders].Timetaken, [Orders].EmployeeID,[Status].Status, [Orders].Tablenumber,  FROM [Orders] " +
-                               "FROM [ORDER] AS O " +
-                               "JOIN [TABLE] AS T ON O.table_id = T.table_id " +
-                               "JOIN EMPLOYEE AS E ON O.employee_id = E.employee_id " +
-                               "JOIN ORDERITEM AS OI ON O.order_id = OI.order_id " +
-                               "JOIN MENUITEM AS MI ON OI.item_id = MI.item_id " +
-                               "WHERE OI.[status] ";
-                query += (allOrders ? "> 0 " : "= 0 ");
-                query += "AND MI.category_id ";
-                query += (drinks ? "> 30 " : "< 30 ");
-                query += (allOrders ? "DESC; " : "; ");
+                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders";
 
-
-                SqlParameter[] sqlParameters = new SqlParameter[0];
-                return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
+                return ReadOrders(ExecuteSelectQuery(query));
             }
             catch (Exception ex)
             {
@@ -64,31 +52,31 @@ namespace ChapeauDAL
             {
                 Order order = new Order();
                 {
-                    order.OrderID = (int)dr["order_id"];
-                    order.TableNumber = (int)dr["table_nr"];
-                    order.timeTaken = (DateTime)dr["timetaken"];
-                    order.EmployeeID = (int)dr["employee_ id"];
+                    order.OrderID = (int)dr["OrderID"];
+                    order.TableNumber = (int)dr["Tablenumber"];
+                    order.timeTaken = (DateTime)dr["Timetaken"];
+                    order.EmployeeID = (int)dr["EmployeeID"];
                 };
                 orders.Add(order);
             }
             return orders;
         }
 
-        public List<OrderItem> GetOrderDetails(Order order, bool drinks, bool allOrders)
+        public List<OrderItem> GetOrderDetails(Order order)
         {
-            string query = "SELECT [name], quantity, [timetaken], [status], requests, MI.item_id " +
-                "FROM ORDERITEM AS OI " +
-                "JOIN MENUITEM AS MI ON OI.item_id = MI.item_id " +
-                "WHERE order_id = @ID AND MI.category_id ";
-            query += (drinks ? "> 30 " : "< 30 ");
-            query += "AND [status] ";
-            query += (allOrders ? "> 0 " : "= 0 ");
-            query += "ORDER BY [status], OI.[timetaken]; ";
+            string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
+                "FROM OrderItem " +
+                "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                "WHERE OrderItem.OrderID = @ID ";
 
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("ID", order.OrderID),
-            };
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+
+            sqlParameters[0] = new SqlParameter("@ID", order.OrderID);
+            //SqlParameter[] sqlParameters =
+            //{
+            //    new SqlParameter("@ID", order.OrderID),
+            //};
             return ReadOrderItem(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -100,10 +88,10 @@ namespace ChapeauDAL
                 OrderItem orderItem = new OrderItem();
                 {
                     orderItem.Name = (string)dr["name"];
-                    orderItem.Quantity = (int)dr["amount"];
-                    orderItem.Status = (OrderStatus)((int)dr["status"]);
-                    orderItem.Requests = (string)dr["remark"].ToString();
-                    orderItem.ID = (int)dr["item_id"];
+                    orderItem.Quantity = (int)dr["Quantity"];
+                    orderItem.Status = (OrderStatus)((int)dr["Status"]);
+                    orderItem.Requests = (string)dr["Requests"].ToString();
+                    orderItem.ID = (int)dr["MenuID"];
                 };
                 OrderItems.Add(orderItem);
             }
@@ -115,7 +103,7 @@ namespace ChapeauDAL
             foreach (DataRow dr in dataTable.Rows)
             {
                 {
-                    order.OrderID = (int)dr["order_id"];
+                    order.OrderID = (int)dr["OrderID"];
                 };
             }
             return order;
@@ -143,16 +131,16 @@ namespace ChapeauDAL
                 new SqlParameter("@OrderID", order.OrderID),
                 new SqlParameter("@ItemID", orderItem.ID),
                 new SqlParameter("@Quantity", orderItem.Quantity),
-                new SqlParameter("@Time", DateTime.Now),
+                new SqlParameter("@Timetaken", DateTime.Now),
                 new SqlParameter("@Status", orderItem.Status),
-                new SqlParameter("@requests", orderItem.Requests),
+                new SqlParameter("@Requests", orderItem.Requests),
             };
             ExecuteEditQuery(query, sqlParameters);
         }
 
         //public int GenerateOrderNr()
         //{
-        //    string query = "SELECT MAX(order_id) AS result FROM[ORDER];";
+        //    string query = "SELECT MAX(OrderID) AS result FROM Orders;";
         //    SqlParameter[] sqlParameters = new SqlParameter[0];
 
         //    return ReadCountData(ExecuteSelectQuery(query, sqlParameters)) + 1;
@@ -175,10 +163,10 @@ namespace ChapeauDAL
 
         public List<OrderItem> GetRunningOrder(Order order)
         {
-            string query = "SELECT [name], quantity, [timetaken], [status], requests, MI.item_id " +
-                "FROM ORDERITEM AS OI " +
-                "JOIN MENUITEM AS MI ON OI.item_id = MI.item_id " +
-                "WHERE order_id = @OrderID";
+            string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, OrderItem.Type, OrderItem.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
+                "FROM OrderItem" +
+                "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                "WHERE OrderItem.OrderID = @ID";
 
             SqlParameter[] sqlParameters =
             {
@@ -190,7 +178,7 @@ namespace ChapeauDAL
         public Order GetByTable(Table table)
         {
             string query = "SELECT OrderID " +
-                "FROM [Order] " +
+                "FROM Orders " +
                 "WHERE Tablenumber = @TableID;";
             SqlParameter[] sqlParameters =
             {

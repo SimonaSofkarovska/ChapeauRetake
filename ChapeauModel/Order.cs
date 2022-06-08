@@ -28,7 +28,6 @@ namespace ChapeauModel
         public OrderStatus Status { get; set; }
         public Order() {/* :) */}
 
-        public Order() {    /*  :)  */  }
         public Order(int OrderID, DateTime timeTaken, int EmployeeID, int TableNumber, OrderStatus Status)
         {
             orderItems = new List<OrderItem>();

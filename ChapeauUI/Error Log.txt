@@ -49,3 +49,70 @@ Incorrect syntax near the keyword 'Order'.
 Error occured at: 6/3/2022 5:39:51 PM:
 Incorrect syntax near the keyword 'Order'.
 
+Error occured at: 6/6/2022 7:45:12 PM:
+Incorrect syntax near the keyword 'on'.
+
+Error occured at: 6/6/2022 7:57:56 PM:
+Incorrect syntax near the keyword 'on'.
+
+Error occured at: 6/6/2022 8:08:19 PM:
+System.ArgumentException: Column 'order_id' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at ChapeauDAL.OrderDAO.ReadOrders(DataTable dataTable) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 57
+   at ChapeauDAL.OrderDAO.GetOrders(Boolean drinks, Boolean allOrders) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 40
+
+Error occured at: 6/6/2022 8:14:21 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 8:19:22 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 8:22:19 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 8:42:32 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 9:08:32 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:07:51 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:10:08 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:13:20 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:16:15 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:30:21 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:32:06 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:33:32 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:38:55 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:47:56 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:51:37 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:52:42 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/7/2022 8:09:42 PM:
+Must declare the scalar variable "@TimeStamp".
+
+Error occured at: 6/8/2022 6:32:02 PM:
+Must declare the scalar variable "@TimeStamp".
+
