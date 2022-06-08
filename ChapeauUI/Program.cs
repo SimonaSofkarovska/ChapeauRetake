@@ -18,7 +18,8 @@ namespace ChapeauUI
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new WaiterView());
-            Application.Run(new KitchenBar());
+            //Application.Run(new KitchenBar());
+            Application.Run(new Login());
         }
     }
 }

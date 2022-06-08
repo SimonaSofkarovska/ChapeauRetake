@@ -18,16 +18,16 @@ namespace ChapeauUI
         private bool drinks = false;
         private bool AllOrders = false;
 
-        public KitchenBar(/*Employee employee*/)
+        public KitchenBar(Employee employee)
         {
             InitializeComponent();
 
-            //if (employee.Roles == Role.Barman)
-            //{
-            //    drinks = true;
-            //}
+            if (employee.Role == Role.Barman)
+            {
+                drinks = true;
+            }
 
-            //lblUser.Text = $"User: {employee.Name}";
+            lblUser.Text = $"User: {employee.Name}";
 
             btn_mrkready.Enabled = false;
             LoadOrders();
