@@ -116,3 +116,9 @@ Must declare the scalar variable "@TimeStamp".
 Error occured at: 6/8/2022 6:32:02 PM:
 Must declare the scalar variable "@TimeStamp".
 
+Error occured at: 6/8/2022 6:43:18 PM:
+Must declare the scalar variable "@Timetaken".
+
+Error occured at: 6/8/2022 6:48:49 PM:
+Must declare the scalar variable "@Timetaken".
+

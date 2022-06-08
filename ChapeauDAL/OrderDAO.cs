@@ -111,7 +111,7 @@ JOIN [Status] ON Orderitem.Status=Status.ID
 
         public void UpdateStatus(OrderItem orderItem, Order order)
         {
-            string query = "UPDATE Orderitem SET [status] = @Status WHERE order_id = @OrderID AND item_id = @ItemID AND [timeStamp] = @TimeStamp;";
+            string query = "UPDATE OrderItem SET [Status] = @Status WHERE OrderID = @OrderID AND OrderItem.MenuID = @ItemID "; // AND Timetaken = @Timetaken;
 
             SqlParameter[] sqlParameters =
             {
@@ -124,27 +124,19 @@ JOIN [Status] ON Orderitem.Status=Status.ID
 
         public void UpdateOrder(Order order, OrderItem orderItem)
         {
-            string query = "INSERT INTO Orderitem (order_id, item_id, quantity, timetaken, status, requests) " +
+            string query = "INSERT INTO OrderItem (OrderID, OrderItem.MenuID, Quantity, Status, requests) " + //Timetaken, 
                                           "VALUES( @OrderID, @ItemID, @Quantity, @Time, @Status, @Requests)";
             SqlParameter[] sqlParameters =
             {
                 new SqlParameter("@OrderID", order.OrderID),
                 new SqlParameter("@ItemID", orderItem.ID),
                 new SqlParameter("@Quantity", orderItem.Quantity),
-                new SqlParameter("@Timetaken", DateTime.Now),
+                //new SqlParameter("@Timetaken", DateTime.Now),
                 new SqlParameter("@Status", orderItem.Status),
                 new SqlParameter("@Requests", orderItem.Requests),
             };
             ExecuteEditQuery(query, sqlParameters);
         }
-
-        //public int GenerateOrderNr()
-        //{
-        //    string query = "SELECT MAX(OrderID) AS result FROM Orders;";
-        //    SqlParameter[] sqlParameters = new SqlParameter[0];
-
-        //    return ReadCountData(ExecuteSelectQuery(query, sqlParameters)) + 1;
-        //}
 
         //public void CreateOrderItems(Order order)
         //{
@@ -164,7 +156,7 @@ JOIN [Status] ON Orderitem.Status=Status.ID
         public List<OrderItem> GetRunningOrder(Order order)
         {
             string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, OrderItem.Type, OrderItem.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
-                "FROM OrderItem" +
+                "FROM OrderItem " +
                 "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
                 "WHERE OrderItem.OrderID = @ID";
 
