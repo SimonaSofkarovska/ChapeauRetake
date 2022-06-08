@@ -30,8 +30,8 @@ namespace ChapeauModel
     {
         Lunch = 1, Dinner, Other
     }
-    public enum OrderItemStatus
+    /*public enum OrderItemStatus
     {
         NotStarted = 1, Preparing, Done, Served
-    }
+    }*/
 }

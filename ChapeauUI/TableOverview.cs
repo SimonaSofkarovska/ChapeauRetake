@@ -143,17 +143,13 @@ namespace ChapeauUI
 
                 foreach (OrderItem item in o.orderItems)
                 {
-                    if (item.OrderItemStatus == OrderItemStatus.Preparing)
-                    {
-                        preparingIcons[o.TableID - 1].Show();
-                    }
+                    if (item.Status == OrderStatus.Preparing)
+                        preparingIcons[o.TableNumber - 1].Show();
+                    
 
-                    if (item.OrderItemStatus == OrderItemStatus.Done)
-                    {
-                        readyIcons[o.TableID - 1].Show();
-                    }
+                    if (item.Status == OrderStatus.Done)
+                        readyIcons[o.TableNumber - 1].Show();
                 }
-
                 i++;
             }
         }

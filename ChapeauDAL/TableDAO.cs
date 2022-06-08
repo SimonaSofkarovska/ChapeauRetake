@@ -30,7 +30,7 @@ namespace ChapeauDAL
 
         public Table GetTableByTableNr(int tableNR)
         {
-            string query = "SELECT tableId, capacity, tableNR, status FROM [Table] WHERE tableNR=@tableNR;";
+            string query = "SELECT tableId, capacity, tableNR, [status] FROM [Table] WHERE tableNR=@tableNR;";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("tableNR", tableNR);
 

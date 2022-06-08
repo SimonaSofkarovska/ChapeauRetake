@@ -11,18 +11,31 @@ namespace ChapeauDAL
     public class OrderDAO:BaseDAO
     {
        
-        public void AddOrder(Order order)
+        public void AddOrder(int employeeid, int tablenumber)
         {
-            string query = "INSERT INTO Orders(Timetaken, EmployeeID, Totalprice, Status, Tablenumber) VALUES(@Timetaken, @EmployeeID, @Totalprice, @Status, @Tablenumber)";
+            Int32 orderID = 0;
+            string sql =
+                "INSERT INTO Orders(Timetaken, EmployeeID, Totalprice, Status, Tablenumber) " +
+                "VALUES(@Timetaken, @EmployeeID, @Totalprice, @Status, @Tablenumber)" +
+                "SELECT CAST(scope_identity() AS int) ";
 
-            SqlParameter[] parameters = new SqlParameter[5];
-            parameters[0] = new SqlParameter("Timetaken", order.timeTaken);   
-            parameters[1] = new SqlParameter("EmployeeID", order.EmployeeID);
-            parameters[2] = new SqlParameter("Totalprice", order.TotalPrice);
-            parameters[3] = new SqlParameter("Status", order.Status);
-            parameters[4] = new SqlParameter("Tablenumber", order.TableNumber);
+            using (SqlConnection conn = new SqlConnection("Data Source=2122chapeau.database.windows.net; Initial Catalog = db_retake1; User = group_retake1; Password = vQj?(jK8uN19"))
+            {
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.Add("@Timetaken", SqlDbType.DateTime);
+                cmd.Parameters["@Timetaken"].Value = DateTime.Now;
+                cmd.Parameters.Add("@EmployeeID", SqlDbType.Int);
+                cmd.Parameters["@EmployeeID"].Value = employeeid;
+                cmd.Parameters.Add("@Totalprice", SqlDbType.Float);
+                cmd.Parameters["@Totalprice"].Value = 0;
+                cmd.Parameters.Add("@Status", SqlDbType.Int);
+                cmd.Parameters["@Status"].Value = 1;
+                cmd.Parameters.Add("@Tablenumber", SqlDbType.Int);
+                cmd.Parameters["@Tablenumber"].Value = tablenumber;
 
-            ExecuteEditQuery(query, parameters);
+                conn.Open();
+                orderID = (Int32)cmd.ExecuteScalar();
+            }
         }
         // written by Simona
         public Order GetOrderByTableNr(int tableNr)
@@ -42,6 +55,21 @@ namespace ChapeauDAL
                 return orders[0];
             }
         }
+
+        public Order GetTablesCurrentOrder(int tableNumber)
+        {
+            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
+
+            SqlParameter[] parameters = new SqlParameter[0];
+
+            List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
+
+            /*if (orders[0] != null)
+                return orders[0];*/
+
+            return orders[0];
+        }
+
         // written by Simona
         private List<Order> ReadTables(DataTable dataTable)
         {
@@ -50,16 +78,15 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-
-                OrderItem orderItem = new OrderItem();
                 MenuItem menuItem = new MenuItem();
 
                 menuItem.ID = (int)(dr["MenuID"]);
                 menuItem.Name = (string)(dr["name"]);
                 menuItem.Price = (double)(dr["price"]);
                 menuItem.MealType = (MealType)(dr["MealType"]);
-                menuItem.Type = (ItemType)(dr["itemType"]);
+                menuItem.Type = (ItemType)(dr["type"]);
 
+                OrderItem orderItem = new OrderItem(menuItem);
 
                 orderItem.OrderID = (int)(dr["orderID"]);
  
@@ -74,17 +101,32 @@ namespace ChapeauDAL
                 }
 
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
-                orderItem.OrderItemStatus = (OrderItemStatus)(dr["Status"]);
-                orderItem.Item = menuItem;
-
+                orderItem.Status = (OrderStatus)(dr["Status"]);
 
                 order.OrderID = (int)(dr["OrderID"]);
                 order.EmployeeID = (int)(dr["EmployeeID"]);
-                order.TableID = (int)(dr["Tablenumber"]);
-
-                
+                order.TableNumber = (int)(dr["Tablenumber"]);
 
                 order.orderItems.Add(orderItem);
+
+                orders.Add(order);
+            }
+
+            return orders;
+        }
+
+        public List<Order> ReadTables2(DataTable dataTable)
+        {
+            List<Order> orders = new List<Order>();
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                Order order = new Order();
+                order.OrderID = (int)dr["OrderID"];
+                order.timeTaken = (DateTime)dr["Timetaken"];
+                order.EmployeeID = (int)dr["EmployeeID"];
+                order.TableNumber = (int)dr["Tablenumber"];
+                order.Status = (OrderStatus)(int)dr["Status"];
 
                 orders.Add(order);
             }
@@ -94,7 +136,10 @@ namespace ChapeauDAL
         // written by Simona
         public List<Order> GetAllRunningOrders()
         {
-            string query = "select OrderItem.orderID, employeeID, tableID, startTime, endTime, isPaid, Items.itemID, [count], [state], orderTime, comment, itemName, stock, price, itemType, itemSubType FROM[Order] JOIN OrderItem ON[Order].orderID = OrderItem.orderID JOIN Items ON[Items].itemID = OrderItem.itemID WHERE isPaid = 0 ORDER BY orderTime ";
+            string query = "select Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
+                "JOIN OrderItem ON Orders.orderID = OrderItem.OrderID " +
+                "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                "WHERE Orders.Status < 5";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             List<Order> orders = ReadTablesRunningOrder(ExecuteSelectQuery(query, sqlParameters));
@@ -104,8 +149,7 @@ namespace ChapeauDAL
         // written by Simona
         private List<Order> ReadTablesRunningOrder(DataTable dataTable)
         {
-            List<Order> orders = new List<Order>();
-            return orders;
+            return new List<Order>();
         }
     }
 }

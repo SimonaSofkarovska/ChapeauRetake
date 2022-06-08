@@ -3,6 +3,8 @@ using System;
 using System.Windows.Forms;
 using ChapeauModel;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace ChapeauUI
 {
@@ -12,13 +14,15 @@ namespace ChapeauUI
         public OrderService orderService;
         public OrderItemService orderItemService;
 
-        //private Employee employee;
-        //private Table table;
-        int employeeID = 1;
-        int tablenumber = 2;
+        /*private Employee employee;
+        private Table table;*/
         private List<OrderItem> currentItems;
+        private Order currentOrder;
 
-        public WaiterView(Employee employee /*, Table table*/)
+        private int employeeid = 4;
+        private int tablenumber = 2;
+
+        public WaiterView(/*Employee employee, Table table*/)
         {
             InitializeComponent();
             menuService = new MenuService();
@@ -26,9 +30,14 @@ namespace ChapeauUI
             orderItemService = new OrderItemService();
             currentItems = new List<OrderItem>();
 
+            CreateOrder();
+            currentOrder = orderService.GetTablesCurrentOrder(tablenumber);
+
+           /* if (currentOrder == null)
+                CreateOrder();*/
+
             /*this.employee = employee;
             this.table = table;*/
-
         }
 
         private void WaiterView_Load(object sender, EventArgs e)
@@ -40,12 +49,13 @@ namespace ChapeauUI
             for (int i = 1; i <= 10; i++)
                 cmbAmount.Items.Add($"{i}");
 
+            cmbAmount.SelectedIndex = 0;
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
-            currentItems.Add(new OrderItem(4,/* menuItem.ID, OrderStatus.New,*/ menuItem.Name, menuItem.Type, menuItem.MealType, /*txtComments.Text, */ menuItem.Price /*,int.Parse(cmbAmount.SelectedItem.ToString()) */));
+            currentItems.Add(new OrderItem(currentOrder.OrderID, OrderStatus.New, txtComments.Text, int.Parse(cmbAmount.SelectedItem.ToString()), menuItem.ID, menuItem.Name, menuItem.Type, menuItem.MealType, menuItem.Price, DateTime.Now));
 
             ListViewItem listItem = new ListViewItem(menuItem.Name);
             listItem.SubItems.Add(cmbAmount.SelectedItem.ToString());
@@ -56,15 +66,15 @@ namespace ChapeauUI
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            Order order = new Order(DateTime.Now, employeeID, tablenumber/*employee.Id, table.TableNumber*/, OrderStatus.New);
+            Order currentOrder = new Order(DateTime.Now, employeeid, tablenumber/*employee.Id, table.TableNumber*/, OrderStatus.New);
 
             foreach(OrderItem orderItem in currentItems)
-            {
-                order.orderItems.Add(orderItem);
                 orderItemService.AddOrderItem(orderItem);
-            }
+            
 
-            orderService.AddOrder(order);
+            
+
+            //orderService.AddOrder(currentOrder);
 
             MessageBox.Show("The order was sent to the kitchen");
 
@@ -72,7 +82,22 @@ namespace ChapeauUI
 
         private void btnRemove_Click(object sender, EventArgs e)
         {
-            lstCurrentOrder.SelectedItems.Clear();
+            if(lstCurrentOrder.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No items selected", "Select an item to remove from the order");
+                return;
+            }
+
+            for (int i = 0; i <= lstCurrentOrder.SelectedIndices.Count; i++)
+                currentItems.Remove(currentItems[lstCurrentOrder.SelectedIndices[i]]);
+
+            foreach (ListViewItem li in lstCurrentOrder.SelectedItems)
+                lstCurrentOrder.Items.Remove(li);
+        }
+
+        private void CreateOrder()
+        {
+            
         }
     }
 }

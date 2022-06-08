@@ -59,7 +59,7 @@ namespace ChapeauUI
 
             if (employee != null)
             {
-                if (employee.Role == Role.Manager)
+                if (employee.Role == Role.Manager || employee.Role == Role.Waiter)
                 {
                     Form tableOverview = new TableOverview(employee);
                     this.Hide();
@@ -70,12 +70,6 @@ namespace ChapeauUI
                     KitchenBar kitchenBarView = new KitchenBar(employee);
                     this.Hide();
                     kitchenBarView.Show();
-                }
-                else if (employee.Role == Role.Waiter)
-                {
-                    WaiterView waiterView = new WaiterView(employee);
-                    this.Hide();
-                    waiterView.Show();
                 }
                 else
                 {
