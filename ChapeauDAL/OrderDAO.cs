@@ -4,8 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using ChapeauModel;
-using System.Data.SqlClient;
-using System.Data;
 
 namespace ChapeauDAL
 {
