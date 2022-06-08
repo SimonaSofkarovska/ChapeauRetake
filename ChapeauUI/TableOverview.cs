@@ -16,11 +16,13 @@ namespace ChapeauUI
         private TableService tableService;
         private OrderService orderService;
         private Order order;
+        private OrderItemService orderItemService;
         public TableOverview(Employee employee)
         {
             tableService = new TableService();
             orderService = new OrderService();
             order = new Order();
+            orderItemService = new OrderItemService();
 
             InitializeComponent();
 
@@ -53,7 +55,7 @@ namespace ChapeauUI
             //get state table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
-            if (!selectedTable.Status)
+            if (selectedTable.Status != TableStatus.Occupied)
             {
                 DialogResult dialogResult = MessageBox.Show($"Do you want to seat guests at table {tableNr}", "Seat guests", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -105,7 +107,7 @@ namespace ChapeauUI
             int i = 0;
             foreach (Table table in tables)
             {
-                if (table.Status)
+                if (table.Status==TableStatus.Occupied)
                 {
                     buttons[i].BackColor = Color.Red;
                 }
@@ -130,47 +132,47 @@ namespace ChapeauUI
             }
 
 
-           // OrderService orderService = new OrderService();
-           // List<Order> runningOrders = orderService.GetAllRunningOrders();
+            OrderService orderService = new OrderService();
+            List<Order> runningOrders = orderService.GetAllRunningOrders();
 
-            //Order currentOrder = runningOrders[0];
+            Order currentOrder = runningOrders[0];
 
-            //int i = 0;
-            //foreach (Order o in runningOrders)
-            //{
+            int i = 0;
+            foreach (Order o in runningOrders)
+            {
 
-            //    foreach (OrderItem item in o.orderedItems)
-            //    {
-            //        if (item.State == State.Preparing)
-            //        {
-            //            preparingIcons[o.TableID - 1].Show();
-            //        }
+                foreach (OrderItem item in o.orderItems)
+                {
+                    if (item.OrderItemStatus == OrderItemStatus.Preparing)
+                    {
+                        preparingIcons[o.TableID - 1].Show();
+                    }
 
-            //        if (item.State == State.Done)
-            //        {
-            //            readyIcons[o.TableID - 1].Show();
-            //        }
-            //    }
+                    if (item.OrderItemStatus == OrderItemStatus.Done)
+                    {
+                        readyIcons[o.TableID - 1].Show();
+                    }
+                }
 
-            //    i++;
-            //}
+                i++;
+            }
         }
 
-        private void readyTable2_Click(object sender, EventArgs e)
+        private void readyButton_Click(object sender, EventArgs e)
         {
             //when the readyicon is clicked => update state orderitems to served
 
             PictureBox icon = (PictureBox)sender;
             int tableNR = Convert.ToInt32(icon.Tag);
 
-            //OrderItemService orderItemservice = new OrderItemService();
-           // OrderService orderservice = new OrderService();
+             orderItemService = new OrderItemService();
+             orderService = new OrderService();
 
             DialogResult dialogResult = MessageBox.Show($"Do you want to update the food status from preparing to served for table {tableNR}?", "Serve food", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
-               // Order order = orderservice.GetOrderByTableNR(tableNr);
-                //orderItemservice. update or sth
+                order = orderService.GetOrderByTableNR(tableNR);
+                //orderItemservice.UpdateOrderState(4, order.OrderID);
                 icon.Hide();
             }
         }

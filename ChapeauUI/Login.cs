@@ -25,75 +25,63 @@ namespace ChapeauUI
         {
             CheckUser(txtboxUsername.Text, txtboxPassword.Text);
         }
-
+        //verify user
         private void CheckUser(string username, string password)
         {
-            Employee employee = new Employee();
+            Employee employee;
             EmployeeService employeeService = new EmployeeService();
-
-
-            employee = employeeService.GetEmployee(username, password);
 
             try
             {
-                if (employee != null)
-                {
-                    //open the right forms according to the employee role
-                    if (employee.Role == Role.Manager)
-                    {
-                        Form tableOverview = new TableOverview(employee);
-                        this.Hide();
-
-                        //open new form same location and size as the login form 
-                        tableOverview.StartPosition = FormStartPosition.Manual;
-                        tableOverview.Location = this.Location;
-                        tableOverview.Size = this.Size;
-
-                        tableOverview.ShowDialog();
-                    }
-
-                    else if (employee.Role == Role.Barman || employee.Role == Role.Chef)
-                    {
-                         KitchenBar kitchenBarView = new KitchenBar(employee);
-
-                        //open new form same location and size as login form
-                        kitchenBarView.StartPosition = FormStartPosition.Manual;
-                        kitchenBarView.Location = this.Location;
-                        kitchenBarView.Size = this.Size;
-
-                        this.Hide();
-
-                        kitchenBarView.Show(); 
-                    }
-                    else if (employee.Role == Role.Waiter)
-                    {
-                        WaiterView waiterView = new WaiterView(employee);
-
-                        //open new form same location and size as login form
-                        waiterView.StartPosition = FormStartPosition.Manual;
-                        waiterView.Location = this.Location;
-                        waiterView.Size = this.Size;
-
-                        this.Hide();
-
-                        waiterView.Show();
-                    }
-
-                    else
-                    {
-                        Console.WriteLine("Oops, something went wrong!");
-                    }
-                }
+                employee = employeeService.GetEmployee(username, password);
             }
-            catch
+            catch (Exception e)
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                MessageBox.Show($"Incorrect username or password", "Please, sign in again"); //think of error handling, username might not exist, database might not be connected
+                MessageBox.Show($"Oops, something went wrong!", e.Message); //think of error handling, username might not exist, database might not be connected
                 Console.ResetColor();
+                ActiveControl = txtboxPassword;
+                txtboxUsername.Text = string.Empty;
+                txtboxPassword.Text = string.Empty;
                 return;
             }
-         
+            
+
+            CheckRole(txtboxUsername.Text, txtboxPassword.Text);
         }
-       
+
+        //open the right forms according to the employee role
+        private void CheckRole(string username, string password)
+        {
+            Employee employee ;
+            EmployeeService employeeService = new EmployeeService();
+            employee = employeeService.GetEmployee(username, password);
+
+            if (employee != null)
+            {
+                if (employee.Role == Role.Manager)
+                {
+                    Form tableOverview = new TableOverview(employee);
+                    this.Hide();
+                    tableOverview.ShowDialog();
+                }
+                else if (employee.Role == Role.Barman || employee.Role == Role.Chef)
+                {
+                    KitchenBar kitchenBarView = new KitchenBar(employee);
+                    this.Hide();
+                    kitchenBarView.Show();
+                }
+                else if (employee.Role == Role.Waiter)
+                {
+                    WaiterView waiterView = new WaiterView(employee);
+                    this.Hide();
+                    waiterView.Show();
+                }
+                else
+                {
+                    throw new Exception("Incorrect username or password, please,try again");
+                }
+            }        
+        }
     }
 }

@@ -235,7 +235,7 @@ namespace ChapeauUI
             // lblEmployee
             // 
             this.lblEmployee.AutoSize = true;
-            this.lblEmployee.Location = new System.Drawing.Point(568, 116);
+            this.lblEmployee.Location = new System.Drawing.Point(527, 117);
             this.lblEmployee.Name = "lblEmployee";
             this.lblEmployee.Size = new System.Drawing.Size(37, 15);
             this.lblEmployee.TabIndex = 32;
@@ -291,6 +291,7 @@ namespace ChapeauUI
             this.readyTable1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable1.TabIndex = 34;
             this.readyTable1.TabStop = false;
+            this.readyTable1.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable1
             // 
@@ -322,7 +323,7 @@ namespace ChapeauUI
             this.readyTable2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable2.TabIndex = 36;
             this.readyTable2.TabStop = false;
-            this.readyTable2.Click += new System.EventHandler(this.readyTable2_Click);
+            this.readyTable2.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable3
             // 
@@ -344,6 +345,7 @@ namespace ChapeauUI
             this.readyTable3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable3.TabIndex = 38;
             this.readyTable3.TabStop = false;
+            this.readyTable3.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable4
             // 
@@ -365,6 +367,7 @@ namespace ChapeauUI
             this.readyTable4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable4.TabIndex = 40;
             this.readyTable4.TabStop = false;
+            this.readyTable4.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable5
             // 
@@ -386,6 +389,7 @@ namespace ChapeauUI
             this.readyTable5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable5.TabIndex = 42;
             this.readyTable5.TabStop = false;
+            this.readyTable5.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable6
             // 
@@ -407,6 +411,7 @@ namespace ChapeauUI
             this.readyTable6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable6.TabIndex = 44;
             this.readyTable6.TabStop = false;
+            this.readyTable6.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable10
             // 
@@ -428,6 +433,7 @@ namespace ChapeauUI
             this.readyTable10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable10.TabIndex = 52;
             this.readyTable10.TabStop = false;
+            this.readyTable10.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable9
             // 
@@ -449,6 +455,7 @@ namespace ChapeauUI
             this.readyTable9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable9.TabIndex = 50;
             this.readyTable9.TabStop = false;
+            this.readyTable9.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable8
             // 
@@ -470,6 +477,7 @@ namespace ChapeauUI
             this.readyTable8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable8.TabIndex = 48;
             this.readyTable8.TabStop = false;
+            this.readyTable8.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // preparingTable7
             // 
@@ -491,6 +499,7 @@ namespace ChapeauUI
             this.readyTable7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.readyTable7.TabIndex = 46;
             this.readyTable7.TabStop = false;
+            this.readyTable7.Click += new System.EventHandler(this.readyButton_Click);
             // 
             // TableOverview
             // 

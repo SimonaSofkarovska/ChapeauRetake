@@ -91,5 +91,21 @@ namespace ChapeauDAL
 
             return orders;
         }
+        // written by Simona
+        public List<Order> GetAllRunningOrders()
+        {
+            string query = "select OrderItem.orderID, employeeID, tableID, startTime, endTime, isPaid, Items.itemID, [count], [state], orderTime, comment, itemName, stock, price, itemType, itemSubType FROM[Order] JOIN OrderItem ON[Order].orderID = OrderItem.orderID JOIN Items ON[Items].itemID = OrderItem.itemID WHERE isPaid = 0 ORDER BY orderTime ";
+
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            List<Order> orders = ReadTablesRunningOrder(ExecuteSelectQuery(query, sqlParameters));
+
+            return orders;
+        }
+        // written by Simona
+        private List<Order> ReadTablesRunningOrder(DataTable dataTable)
+        {
+            List<Order> orders = new List<Order>();
+            return orders;
+        }
     }
 }
