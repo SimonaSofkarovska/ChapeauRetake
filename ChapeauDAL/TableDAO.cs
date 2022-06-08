@@ -61,7 +61,7 @@ namespace ChapeauDAL
         //idk
         public void FoodReady(Table table)
         {
-            string query = "UPDATE [TABLE] SET [status] = 2 WHERE table_id = @TableID";
+            string query = "UPDATE [TABLE] SET [status] = 2 WHERE TableID = @TableID";
 
             SqlParameter[] sqlParameters =
             {
