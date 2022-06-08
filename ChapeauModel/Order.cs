@@ -8,7 +8,7 @@ namespace ChapeauModel
     {
         public int OrderID { get; set; }
 
-        public List<OrderItem> orderItems;
+        public List<OrderItem> orderItems { get; set; }
 
         public double TotalPrice
         {
@@ -26,8 +26,11 @@ namespace ChapeauModel
         public int EmployeeID { get; set; }
         public int TableNumber { get; set; }
         public OrderStatus Status { get; set; }
-        public Order() {/* :) */}
 
+        public Order() 
+        {
+            orderItems = new List<OrderItem>();
+        }
         public Order(int OrderID, DateTime timeTaken, int EmployeeID, int TableNumber, OrderStatus Status)
         {
             orderItems = new List<OrderItem>();

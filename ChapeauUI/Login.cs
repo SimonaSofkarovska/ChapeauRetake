@@ -15,8 +15,7 @@ namespace ChapeauUI
 {
     public partial class Login : Form
     {
-        private EmployeeService employeeService = new EmployeeService();
-        private Employee employee;
+        
         public Login()
         {
             InitializeComponent();
@@ -25,48 +24,58 @@ namespace ChapeauUI
         private void btnLogin_Click(object sender, EventArgs e)
         {
             CheckUser(txtboxUsername.Text, txtboxPassword.Text);
-            //KitchenBar kitchenBar = new KitchenBar(employee);
-            //kitchenBar.Show();
-            //this.Hide();
-            //kitchenBar.Closed += (s, args) => this.Close();
         }
-
+        //verify user
         private void CheckUser(string username, string password)
         {
+            Employee employee;
+            EmployeeService employeeService = new EmployeeService();
+
             try
             {
-                Employee employee = employeeService.GetEmployee(username, password);
+                employee = employeeService.GetEmployee(username, password);
             }
-            catch
+            catch (Exception e)
             {
                 Console.BackgroundColor = ConsoleColor.Red;
-                MessageBox.Show($"Incorrect username or password", "Please, sign in again");
+                MessageBox.Show($"Oops, something went wrong!", e.Message); //think of error handling, username might not exist, database might not be connected
                 Console.ResetColor();
+                ActiveControl = txtboxPassword;
+                txtboxUsername.Text = string.Empty;
+                txtboxPassword.Text = string.Empty;
                 return;
             }
-            // txtboxUsername.Text = string.Empty;
-            // txtboxPassword.Text = string.Empty;
+            
 
-            DisplayScreen(employee);
+            CheckRole(txtboxUsername.Text, txtboxPassword.Text);
         }
 
-        private void DisplayScreen(Employee employee)
+        //open the right forms according to the employee role
+        private void CheckRole(string username, string password)
         {
-            if (employee.Roles == Role.Chef || employee.Roles == Role.Barman)
+            Employee employee ;
+            EmployeeService employeeService = new EmployeeService();
+            employee = employeeService.GetEmployee(username, password);
+
+            if (employee != null)
             {
-                new listViewTableOrderOverview(employee).Show();
-            }
-            else if (employee.Roles == Role.Waiter || employee.Roles == Role.Manager)
-            {
-                 new KitchenBar(/*employee*/).Show();
-            }
+                if (employee.Role == Role.Manager || employee.Role == Role.Waiter)
+                {
+                    Form tableOverview = new TableOverview(employee);
+                    this.Hide();
+                    tableOverview.ShowDialog();
+                }
+                else if (employee.Role == Role.Barman || employee.Role == Role.Chef)
+                {
+                    KitchenBar kitchenBarView = new KitchenBar(employee);
+                    this.Hide();
+                    kitchenBarView.Show();
+                }
+                else
+                {
+                    throw new Exception("Incorrect username or password, please,try again");
+                }
+            }        
         }
-        //private void btnLogin_Click(object sender, EventArgs e)
-        //{
-        //    KitchenBar kitchenBar = new KitchenBar(employee);
-        //    kitchenBar.Show();
-        //    this.Hide();
-        //    kitchenBar.Closed += (s, args) => this.Close();
-        //}
     }
 }

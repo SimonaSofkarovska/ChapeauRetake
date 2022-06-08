@@ -19,33 +19,19 @@ namespace ChapeauLogic
         {
             orderDAO.AddOrder(order);
         }
-        public List<Order> GetOrders()
+        public Order GetOrderByTableNR(int tablenr)
         {
-            return orderDAO.GetOrders();
+            Order order = orderDAO.GetOrderByTableNr(tablenr);
+            return order;
         }
-
-        public List<OrderItem> GetOrderDetails(Order order)
+        public List<Order> GetAllRunningOrders()
         {
-            return orderDAO.GetOrderDetails(order);
+            List<Order> runningOrders = orderDAO.GetAllRunningOrders();
+            return runningOrders;
         }
-        public void UpdateStatus(OrderItem orderItem, Order order)
+        public Order GetTablesCurrentOrder(int tableNumber)
         {
-            orderDAO.UpdateStatus(orderItem, order);
-        }
-
-        public void UpdateOrder(Order order, OrderItem orderItem)
-        {
-            orderDAO.UpdateOrder(order, orderItem);
-        }
-
-        public Order GetByTable(Table table)
-        {
-            return orderDAO.GetByTable(table);
-        }
-
-        public List<OrderItem> GetRunningOrder(Order order)
-        {
-            return orderDAO.GetRunningOrder(order);
+            return orderDAO.GetTablesCurrentOrder(tableNumber);
         }
     }
 }

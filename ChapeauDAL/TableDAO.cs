@@ -12,7 +12,7 @@ namespace ChapeauDAL
     {
         public List<Table> GetAllTables()
         {
-            string query = $"SELECT tableID, capacity, tableNumber, isOccupied FROM [Table]";
+            string query = $"SELECT tableId, capacity, tableNR, status FROM [Table]";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
             List<Table> tables = ReadTables(ExecuteSelectQuery(query, sqlParameters));
@@ -22,7 +22,7 @@ namespace ChapeauDAL
 
         public void UpdateStateTableToTrue(int tableNR)
         {
-            string query = $"UPDATE [Table] SET isOccupied=1 WHERE tableID=@tableNR";
+            string query = $"UPDATE [Table] SET status=2 WHERE tableId=@tableNR";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("tableNR", tableNR);
 
@@ -31,7 +31,7 @@ namespace ChapeauDAL
 
         public Table GetTableByTableNr(int tableNR)
         {
-            string query = "SELECT tableID, capacity, tableNumber, isOccupied FROM [Table] WHERE tableNumber=@tableNR;";
+            string query = "SELECT tableId, capacity, tableNR, [status] FROM [Table] WHERE tableNR=@tableNR;";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("tableNR", tableNR);
 
@@ -48,10 +48,10 @@ namespace ChapeauDAL
             {
                 Table table = new Table();
 
-                table.TableId = (int)(dr["tableID"]);
+                table.TableId = (int)(dr["tableId"]);
                 table.Capacity = (int)(dr["capacity"]);
-                table.TableNumber = (int)(dr["tableNumber"]);
-                table.Status = (TableStatus)(int)(dr["status"]);
+                table.TableNumber = (int)(dr["tableNR"]);
+                table.Status = (TableStatus)(dr["status"]);
 
                 tables.Add(table);
             }
