@@ -40,9 +40,9 @@ namespace ChapeauDAL
         // written by Simona
         public Order GetOrderByTableNr(int tableNr)
         {
-            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, Status, Requests FROM [Order] JOIN Orderitem ON[Order].orderID = Orderitem.orderID JOIN Orderitems ON [Orderitems].itemID = OrderItem.itemID WHERE Tablenumber=@Tablenumber AND Status = 1";
+            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Tablenumber=@Tablenumber AND Orders.Status = 1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("tableID", tableNr);
+            sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
 
             List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
@@ -169,7 +169,7 @@ namespace ChapeauDAL
                 {
                     orderItem.Comment = (string)(dr["Requests"]);
                 }
-                orderItem.OrderTime = (DateTime)(dr["orderTime"]);
+                orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
                 orderItem.Status = (OrderStatus)(dr["Status"]);
 
                 item.ID = (int)(dr["ID"]);

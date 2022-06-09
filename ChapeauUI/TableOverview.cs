@@ -47,10 +47,14 @@ namespace ChapeauUI
             Button button = (Button)sender;
 
             int tableNr = Convert.ToInt32(button.Tag);
+            if (tableNr < 1)
+            {
+                tableNr = 1;
+            }
+
             btnAddItem.Tag = tableNr;
 
             btnSpecificTableOverview.Text = $"Table {tableNr}";
-
 
             //get state table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
@@ -89,12 +93,26 @@ namespace ChapeauUI
                         listViewTableOrder.Items.Add(li);
 
                     }
+                    //get the order items from the database
+                    //order.orderItems = OrderItemService.GetOrderItems(order);
+
+                    // listViewTableOrder.Items.Clear();
+                    // foreach (MenuItem item in order.menuItems)
+                    // {
+                    //     ListViewItem listViewItem = new ListViewItem(item.Name.ToString());
+                    //     listViewItem.SubItems.Add(item.ID.ToString());
+                    //     listViewItem.SubItems.Add(item.Type.ToString());
+                    //     listViewItem.SubItems.Add(item.Name.ToString());
+                    //     listViewItem.SubItems.Add(item.Price.ToString());
+                    //     listViewTableOrder.Items.Add(listViewItem);
+                    // }
+                    // listViewTableOrder.Show();
                 }
             }
         }
         void timer_Tick(object sender, EventArgs e)
         {
-           // RefreshIcons();
+            RefreshIcons();
             RefreshTables();
         }
         private void RefreshTables()

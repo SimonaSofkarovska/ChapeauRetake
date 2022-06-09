@@ -9,7 +9,7 @@ namespace ChapeauModel
         public int OrderID { get; set; }
 
         public List<OrderItem> orderItems { get; set; }
-
+        public List<MenuItem> menuItems { get; set; }
         public double TotalPrice
         {
             get

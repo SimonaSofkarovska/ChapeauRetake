@@ -26,11 +26,8 @@ namespace ChapeauDAL
                     connection.Open();
                 }
             }
-            catch (Exception e)
+            catch 
             {
-                //Print.ErrorLog(e);
-                WriteToErrorLog(e.Message);
-
                 throw;
             }
             return connection;
@@ -41,82 +38,7 @@ namespace ChapeauDAL
             connection.Close();
         }
 
-        //// executes a select queries
-        //protected DataTable ExecuteSelectQuery2(string query, params SqlParameter[] sqlParameters)
-        //{
-        //    SqlCommand command = new SqlCommand();
-        //    DataTable dataTable;
-        //    DataSet dataSet = new DataSet();
 
-        //    try
-        //    {
-        //        command.Connection = OpenConnection();
-        //        command.CommandText = query;
-        //        command.Parameters.AddRange(sqlParameters);
-        //        command.ExecuteNonQuery();
-        //        adapter.SelectCommand = command;
-        //        adapter.Fill(dataSet);
-        //        dataTable = dataSet.Tables[0];
-        //    }
-        //    catch (SqlException exception)
-        //    {
-        //        // Print.ErrorLog(e);
-        //        return null;
-        //        throw exception;
-        //    }
-        //    finally
-        //    {
-        //        CloseConnection();
-        //    }
-        //    return dataTable;
-        //}
-
-        ///* For Insert/Update/Delete Queries with transaction */
-        //protected void ExecuteEditTranQuery2(string query, SqlParameter[] sqlParameters, SqlTransaction sqlTransaction)
-        //{
-        //    SqlCommand command = new SqlCommand(query, connection, sqlTransaction);
-        //    try
-        //    {
-        //        command.Parameters.AddRange(sqlParameters);
-        //        adapter.InsertCommand = command;
-        //        command.ExecuteNonQuery();
-        //    }
-        //    catch (Exception exception)
-        //    {
-        //        //Print.ErrorLog(e);
-        //        throw exception;
-        //    }
-        //}
-
-        ///* For Insert/Update/Delete Queries */
-        //protected void ExecuteEditQuery2(string query, SqlParameter[] sqlParameters)
-        //{
-        //    SqlCommand command = new SqlCommand();
-
-        //    try
-        //    {
-        //        command.Connection = OpenConnection();
-        //        command.CommandText = query;
-        //        command.Parameters.AddRange(sqlParameters);
-        //        adapter.InsertCommand = command;
-        //        command.ExecuteNonQuery();
-        //    }
-        //    catch (SqlException exception)
-        //    {
-        //        // Print.ErrorLog(e);
-        //        throw exception;
-        //    }
-        //    finally
-        //    {
-        //        CloseConnection();
-        //    }
-        //}
-        //protected bool CheckColumnExist(DataRow dt, string columnName)
-        //{
-        //    return dt.Table.Columns.Contains(columnName);
-        //}
-
-    
 
         /* For Insert/Update/Delete Queries */
         protected void ExecuteEditQuery(string query, SqlParameter[] sqlParameters)
@@ -133,7 +55,6 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
                 throw;
             }
             finally
@@ -161,8 +82,6 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
-                //Print.ErrorLog(e);
-                //return null;
                 throw;
             }
             finally
@@ -183,13 +102,6 @@ namespace ChapeauDAL
             return number;
         }
 
-        protected void WriteToErrorLog(string messege)
-        {
-            StreamWriter sw = File.AppendText("..\\..\\..\\Error Log.txt");
-            sw.WriteLine($"Error occured at: {DateTime.Now}:");
-            sw.WriteLine($"{messege}\n");
-            sw.Close();
-        }
     }
 }
 
