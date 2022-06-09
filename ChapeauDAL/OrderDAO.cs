@@ -40,7 +40,7 @@ namespace ChapeauDAL
         // written by Simona
         public Order GetOrderByTableNr(int tableNr)
         {
-            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, Status, Requests FROM[Order] JOIN Orderitem ON[Order].orderID = Orderitem.orderID JOIN Orderitems ON[Orderitems].itemID = OrderItem.itemID WHERE Tablenumber=@Tablenumber AND Status = 0";
+            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, Status, Requests FROM [Order] JOIN Orderitem ON[Order].orderID = Orderitem.orderID JOIN Orderitems ON [Orderitems].itemID = OrderItem.itemID WHERE Tablenumber=@Tablenumber AND Status = 0";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("tableID", tableNr);
 
@@ -89,7 +89,7 @@ namespace ChapeauDAL
                 OrderItem orderItem = new OrderItem(menuItem);
 
                 orderItem.OrderID = (int)(dr["orderID"]);
- 
+
 
                 if (dr["Requests"] == DBNull.Value)
                 {

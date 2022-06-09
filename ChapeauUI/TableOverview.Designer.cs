@@ -46,7 +46,7 @@ namespace ChapeauUI
             this.pnlOrder = new System.Windows.Forms.Panel();
             this.btnPayForOrder = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listViewTableOrder = new System.Windows.Forms.ListView();
             this.readyTable1 = new System.Windows.Forms.PictureBox();
             this.preparingTable1 = new System.Windows.Forms.PictureBox();
             this.preparingTable2 = new System.Windows.Forms.PictureBox();
@@ -246,7 +246,7 @@ namespace ChapeauUI
             this.pnlOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.pnlOrder.Controls.Add(this.btnPayForOrder);
             this.pnlOrder.Controls.Add(this.btnAddItem);
-            this.pnlOrder.Controls.Add(this.listView1);
+            this.pnlOrder.Controls.Add(this.listViewTableOrder);
             this.pnlOrder.Location = new System.Drawing.Point(452, 212);
             this.pnlOrder.Name = "pnlOrder";
             this.pnlOrder.Size = new System.Drawing.Size(231, 457);
@@ -272,14 +272,14 @@ namespace ChapeauUI
             this.btnAddItem.Text = "Add Item";
             this.btnAddItem.UseVisualStyleBackColor = false;
             // 
-            // listView1
+            // listViewTableOrder
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(24, 57);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(185, 329);
-            this.listView1.TabIndex = 0;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listViewTableOrder.HideSelection = false;
+            this.listViewTableOrder.Location = new System.Drawing.Point(24, 57);
+            this.listViewTableOrder.Name = "listViewTableOrder";
+            this.listViewTableOrder.Size = new System.Drawing.Size(185, 329);
+            this.listViewTableOrder.TabIndex = 0;
+            this.listViewTableOrder.UseCompatibleStateImageBehavior = false;
             // 
             // readyTable1
             // 
@@ -585,7 +585,7 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnLogout;
         private System.Windows.Forms.Label lblEmployee;
         private System.Windows.Forms.Panel pnlOrder;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListView listViewTableOrder;
         private System.Windows.Forms.Button btnPayForOrder;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.PictureBox readyTable1;

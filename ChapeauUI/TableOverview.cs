@@ -31,7 +31,7 @@ namespace ChapeauUI
 
             //create timer 
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Interval = 10000;
+            timer.Interval = 5000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
         }
@@ -74,28 +74,27 @@ namespace ChapeauUI
                 btnAddItem.Show();
                 btnPayForOrder.Show();
 
-                //listViewTableOrderOverview.Items.Clear();
+                listViewTableOrder.Items.Clear();
 
-                // order = new Order();
 
                  order = orderService.GetOrderByTableNR(tableNr);
 
 
-                //if (order != null)
+                if (order != null)
                 {
-                    //foreach (OrderItem orderItem in order.orderedItems)
-                    //{
-                    //    ListViewItem li = new ListViewItem(orderItem.Item.ItemName);
-                    //    li.SubItems.Add(orderItem.Quantity.ToString());
-                    //    listViewTableOrderOverview.Items.Add(li);
+                    foreach (OrderItem orderItem in order.orderItems)
+                    {
+                        ListViewItem li = new ListViewItem(orderItem.Item.Name);
+                        li.SubItems.Add(orderItem.Quantity.ToString());
+                        listViewTableOrder.Items.Add(li);
 
-                    //}
+                    }
                 }
             }
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            // ...
+            // RefreshIcons();
             RefreshTables();
         }
         private void RefreshTables()
@@ -130,7 +129,7 @@ namespace ChapeauUI
                 readyIcons[j].Hide();
                 preparingIcons[j].Hide();
             }
-
+            
 
             OrderService orderService = new OrderService();
             List<Order> runningOrders = orderService.GetAllRunningOrders();
