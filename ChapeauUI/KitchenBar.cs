@@ -16,7 +16,7 @@ namespace ChapeauUI
     {
         OrderService orderService = new OrderService();
         private bool drinks = false;
-        private bool AllOrders = false;
+        //private bool AllOrders = false;
 
         public KitchenBar(Employee employee)
         {
@@ -30,9 +30,9 @@ namespace ChapeauUI
             lblUser.Text = $"User: {employee.Name}";
 
             btn_mrkready.Enabled = false;
-            LoadOrders();
+            LoadOrders(drinks);
         }
-        private void LoadOrders()
+        private void LoadOrders(bool drinks)
         {
             try
             {
@@ -40,7 +40,7 @@ namespace ChapeauUI
                 btn_mrkready.Show();
                 lvOrderDetail.Items.Clear();
 
-                List<Order> ordersList = orderService.GetOrders();
+                List<Order> ordersList = orderService.GetOrders(drinks);
                 ShowOrders(ordersList);
             }
             catch (Exception exeption)
@@ -55,12 +55,12 @@ namespace ChapeauUI
                 lvOrders.Items.Clear();
                 foreach (Order order in orders)
                 {
-                    ListViewItem li = new ListViewItem(order.OrderID.ToString());
-                    li.SubItems.Add(order.TableNumber.ToString());
-                    li.SubItems.Add(order.timeTaken.ToString("HH:mm"));
-                    li.SubItems.Add(order.EmployeeID.ToString());
-                    li.Tag = order;
-                    lvOrders.Items.Add(li);
+                    ListViewItem lv = new ListViewItem(order.OrderID.ToString());
+                    lv.SubItems.Add(order.TableNumber.ToString());
+                    lv.SubItems.Add(order.timeTaken.ToString("HH:mm"));//maybe add the diff between time.now and timetaken
+                    lv.SubItems.Add(order.EmployeeID.ToString());
+                    lv.Tag = order;
+                    lvOrders.Items.Add(lv);
                 }
             }
             catch (Exception exeption)
@@ -77,25 +77,25 @@ namespace ChapeauUI
             if (lvOrders.SelectedItems.Count > 0)
             {
                 Order order = (Order)lvOrders.SelectedItems[0].Tag;
-                ShowItems(order);
+                ShowItems(order, drinks);
             }
         }
-        private void ShowItems(Order order)
+        private void ShowItems(Order order, bool drinks)
         {
             try
             {
-                List<OrderItem> orderItems = orderService.GetOrderDetails(order);
+                List<OrderItem> orderItems = orderService.GetOrderDetails(order, drinks);
                 lvOrderDetail.Items.Clear();
 
                 foreach (OrderItem item in orderItems)
                 {
-                    ListViewItem li = new ListViewItem(item.Name.ToString());
-                    li.SubItems.Add(item.Quantity.ToString());
-                    li.SubItems.Add(item.Status.ToString());
-                    //li.SubItems.Add(item.Timetaken.ToString("HH:mm:ss"));
-                    li.SubItems.Add(item.Requests.ToString());
-                    li.Tag = item;
-                    lvOrderDetail.Items.Add(li);
+                    ListViewItem lv = new ListViewItem(item.Name.ToString());
+                    lv.SubItems.Add(item.Quantity.ToString());
+                    lv.SubItems.Add(item.Status.ToString());
+                    lv.SubItems.Add(order.timeTaken.ToString("HH:mm:ss"));
+                    lv.SubItems.Add(item.Requests.ToString());
+                    lv.Tag = item;
+                    lvOrderDetail.Items.Add(lv);
                 }
             }
             catch (Exception exeption)
@@ -118,11 +118,11 @@ namespace ChapeauUI
                 this.Text = "Kitchen";
                 lblwhat.Text = "Kitchen";
             }
-            if (AllOrders)
-            {
-                this.Text += " All Orders";
-                lblwhat.Text += " All Orders";
-            }
+            //if (AllOrders)
+            //{
+            //    this.Text += " All Orders";
+            //    lblwhat.Text += " All Orders";
+            //}
         }
 
         private void btn_mrkready_Click(object sender, EventArgs e)
@@ -130,13 +130,26 @@ namespace ChapeauUI
             ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked as READY.\nProceed?", OrderStatus.Ready);
         }
 
+
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
-            AllOrders = false;
-            LoadOrders();
+            LoadOrders(drinks);
         }
-
-
+        private void btn_Undo_Click(object sender, EventArgs e)
+        {
+            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as WAITING.\nProceed?", OrderStatus.New);
+        }
+        private void btn_Logout_Click(object sender, EventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
+            this.Hide();
+            login.Closed += (s, args) => this.Close();
+        }
+        private void btn_Preparing_Click(object sender, EventArgs e)
+        {
+            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as WAITING.\nProceed?", OrderStatus.Preparing);
+        }
         private void ChangeItemStatus(string headline, string message, OrderStatus orderStatus)
         {
             Order order = (Order)lvOrders.SelectedItems[0].Tag;
@@ -146,7 +159,7 @@ namespace ChapeauUI
                 DialogResult dialogResult = MessageBox.Show(message, headline, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    List<OrderItem> orderItems = orderService.GetOrderDetails(order);
+                    List<OrderItem> orderItems = orderService.GetOrderDetails(order, drinks);
                     foreach (OrderItem item in orderItems)
                     {
                         item.Status = orderStatus;
@@ -165,10 +178,13 @@ namespace ChapeauUI
                     OrderItem item = (OrderItem)lvOrderDetail.SelectedItems[i].Tag;
                     item.Status = orderStatus;
                     orderService.UpdateStatus(item, order);
+                    
                 }
             }
-            LoadOrders();
+            LoadOrders(drinks);
         }
+
+
 
         private void ErrorProcess(Exception exception, string messege)
         {
@@ -191,5 +207,7 @@ namespace ChapeauUI
         {
 
         }
+
+
     }
 }

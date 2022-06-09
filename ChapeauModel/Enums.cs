@@ -16,7 +16,7 @@ namespace ChapeauModel
     }
     public enum Payment
     {
-
+        Cash, Card
     }
     public enum TableStatus
     {

@@ -122,3 +122,19 @@ Must declare the scalar variable "@Timetaken".
 Error occured at: 6/8/2022 6:48:49 PM:
 Must declare the scalar variable "@Timetaken".
 
+Error occured at: 6/9/2022 10:22:38 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '<'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 157
+   at ChapeauDAL.OrderDAO.GetOrders() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 167
+ClientConnectionId:5baf36b4-3aad-4a4b-b5b9-c3eeab22172e
+Error Number:102,State:1,Class:15
+ClientConnectionId before routing:a00fea94-6553-41bb-bdc4-e0b4a9af9052
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+

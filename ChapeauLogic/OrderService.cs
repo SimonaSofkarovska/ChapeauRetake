@@ -29,24 +29,20 @@ namespace ChapeauLogic
         {
             return orderDAO.GetTablesCurrentOrder(tableNumber);
         }
-        public List<Order> GetOrders()
+        public List<Order> GetOrders(bool drinks)
         {
-            return orderDAO.GetOrders();
+            return orderDAO.GetOrders(drinks);
         }
 
-        public List<OrderItem> GetOrderDetails(Order order)
+        public List<OrderItem> GetOrderDetails(Order order, bool drinks)
         {
-            return orderDAO.GetOrderDetails(order);
+            return orderDAO.GetOrderDetails(order, drinks);
         }
         public void UpdateStatus(OrderItem orderItem, Order order)
         {
             orderDAO.UpdateStatus(orderItem, order);
         }
 
-        public void UpdateOrder(Order order, OrderItem orderItem)
-        {
-            orderDAO.UpdateOrder(order, orderItem);
-        }
 
         public Order GetByTable(Table table)
         {

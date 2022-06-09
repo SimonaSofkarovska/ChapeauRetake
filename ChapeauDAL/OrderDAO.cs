@@ -157,11 +157,12 @@ JOIN Menu ON OrderItem.MenuID=Menu.ID
 JOIN [Status] ON Orderitem.Status=Status.ID
         */
 
-        public List<Order> GetOrders() // ordernr table, employee time
+        public List<Order> GetOrders(bool drinks) // ordernr table, employee time
         {
             try
             {
-                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders";
+                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
+                    "WHERE Status < 3 ";
 
                 return ReadOrders(ExecuteSelectQuery(query));
             }
@@ -171,6 +172,42 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                 return null;
             }
 
+        }
+        public bool CheckOrderItemStatusOfOrder(int id)
+        {
+            string query = $"SELECT * FROM OrderItem WHERE OrderID = @OrderID AND Status < 3";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", id);
+            DataTable result = ExecuteSelectQuery(query, sqlParameters);
+
+            if (result == null || result.Rows.Count < 1) // need to check for empty query
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        // this methode will help to update the status of an order  ruben needs to use this one
+        public void UpdateOrderStatus(Order order)
+        {
+            try
+            {
+                if (CheckOrderItemStatusOfOrder(order.OrderID))
+                {
+                    order.Status = OrderStatus.Ready;
+                    string query = $"UPDATE Orders set  Status = @Status  WHERE OrderID=@OrderID";
+                    SqlParameter[] sqlParameters = new SqlParameter[2];
+                    sqlParameters[0] = new SqlParameter("@OrderID", order.OrderID);
+                    sqlParameters[1] = new SqlParameter("@Status", order.Status);
+
+                    ExecuteEditQuery(query, sqlParameters);
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Updating of status failed!");
+            }
         }
 
         private List<Order> ReadOrders(DataTable dataTable)
@@ -190,21 +227,17 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             return orders;
         }
 
-        public List<OrderItem> GetOrderDetails(Order order)
+        public List<OrderItem> GetOrderDetails(Order order, bool drinks)
         {
             string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
                 "FROM OrderItem " +
                 "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                "WHERE OrderItem.OrderID = @ID ";
+                "WHERE OrderItem.OrderID = @ID AND OrderItem.Status != 3 ";
 
 
             SqlParameter[] sqlParameters = new SqlParameter[1];
 
             sqlParameters[0] = new SqlParameter("@ID", order.OrderID);
-            //SqlParameter[] sqlParameters =
-            //{
-            //    new SqlParameter("@ID", order.OrderID),
-            //};
             return ReadOrderItem(ExecuteSelectQuery(query, sqlParameters));
         }
 
@@ -239,7 +272,7 @@ JOIN [Status] ON Orderitem.Status=Status.ID
 
         public void UpdateStatus(OrderItem orderItem, Order order)
         {
-            string query = "UPDATE OrderItem SET [Status] = @Status WHERE OrderID = @OrderID AND OrderItem.MenuID = @ItemID "; // AND Timetaken = @Timetaken;
+            string query = "UPDATE OrderItem SET [Status] = @Status WHERE OrderID = @OrderID AND  OrderItem.MenuID = @ItemID ";
 
             SqlParameter[] sqlParameters =
             {
@@ -248,18 +281,19 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                 new SqlParameter("ItemID", orderItem.ID),
             };
             ExecuteEditQuery(query, sqlParameters);
+            UpdateOrderStatus(order);
         }
 
         public void UpdateOrder(Order order, OrderItem orderItem)
         {
-            string query = "INSERT INTO OrderItem (OrderID, OrderItem.MenuID, Quantity, Status, requests) " + //Timetaken, 
+            string query = "INSERT INTO OrderItem (OrderID, OrderItem.MenuID, Quantity, Status, requests, Timetaken) " + 
                                           "VALUES( @OrderID, @ItemID, @Quantity, @Time, @Status, @Requests)";
             SqlParameter[] sqlParameters =
             {
                 new SqlParameter("@OrderID", order.OrderID),
                 new SqlParameter("@ItemID", orderItem.ID),
                 new SqlParameter("@Quantity", orderItem.Quantity),
-                //new SqlParameter("@Timetaken", DateTime.Now),
+                new SqlParameter("@Timetaken", DateTime.Now),
                 new SqlParameter("@Status", orderItem.Status),
                 new SqlParameter("@Requests", orderItem.Requests),
             };
