@@ -40,7 +40,7 @@ namespace ChapeauDAL
         // written by Simona
         public Order GetOrderByTableNr(int tableNr)
         {
-            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, Status, Requests FROM [Order] JOIN Orderitem ON[Order].orderID = Orderitem.orderID JOIN Orderitems ON [Orderitems].itemID = OrderItem.itemID WHERE Tablenumber=@Tablenumber AND Status = 0";
+            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, Status, Requests FROM [Order] JOIN Orderitem ON[Order].orderID = Orderitem.orderID JOIN Orderitems ON [Orderitems].itemID = OrderItem.itemID WHERE Tablenumber=@Tablenumber AND Status = 1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("tableID", tableNr);
 
@@ -137,7 +137,7 @@ namespace ChapeauDAL
         public List<Order> GetAllRunningOrders()
         {
             string query = "select Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
-                "JOIN OrderItem ON Orders.orderID = OrderItem.OrderID " +
+                "JOIN OrderItem ON Orders.Orderid = OrderItem.OrderID " +
                 "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
                 "WHERE Orders.Status < 5";
 
@@ -149,7 +149,67 @@ namespace ChapeauDAL
         // written by Simona
         private List<Order> ReadTablesRunningOrder(DataTable dataTable)
         {
-            return new List<Order>();
+            List<Order> orders = new List<Order>();
+
+            Order previousOrder = new Order();
+            int currentOrdernr = 0;
+
+            foreach (DataRow dr in dataTable.Rows)
+            {
+                OrderItem orderItem = new OrderItem();
+                MenuItem item = new MenuItem();
+
+                orderItem.OrderID = (int)(dr["OrderID"]);
+                orderItem.Quantity = (int)(dr["Quantity"]);
+                if (dr["Requests"] == DBNull.Value)
+                {
+                    orderItem.Comment = "";
+                }
+                else
+                {
+                    orderItem.Comment = (string)(dr["Requests"]);
+                }
+                orderItem.OrderTime = (DateTime)(dr["orderTime"]);
+                orderItem.Status = (OrderStatus)(dr["Status"]);
+
+                item.ID = (int)(dr["ID"]);
+                item.Name = (string)(dr["name"]);
+                item.Price = (double)(dr["price"]);
+                item.Type = (ItemType)(dr["Mealtype"]);
+                orderItem.Item = item;
+
+                if (currentOrdernr != (int)(dr["orderID"]))
+                {
+                    Order order = new Order();
+
+                    order.OrderID = (int)(dr["Orderid"]);
+                    order.EmployeeID = (int)(dr["employeeID"]);
+                    order.TableNumber = (int)(dr["Tablenumber"]);
+
+                    if (dr["startTime"] != DBNull.Value)
+                    {
+                        order.timeTaken = (DateTime)(dr["Timetaken"]);
+                    }
+                    else
+                    {
+                        //order.timeTaken = null;
+                    }
+
+
+                    order.orderItems.Add(orderItem);
+                    currentOrdernr = order.OrderID;
+                    previousOrder = order;
+
+                    orders.Add(previousOrder);
+                }
+
+                else
+                {
+                    previousOrder.orderItems.Add(orderItem);
+                }
+            }
+
+            return orders;
         }
     }
 }

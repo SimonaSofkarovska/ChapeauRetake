@@ -19,5 +19,9 @@ namespace ChapeauLogic
         {
             orderItemDAO.AddOrderItem(orderItem);
         }
+        public void UpdateOrderState(int orderState, int orderID)
+        {
+            orderItemDAO.UpdateOrderState(orderState, orderID);
+        }
     }
 }

@@ -84,7 +84,7 @@ namespace ChapeauUI
                 {
                     foreach (OrderItem orderItem in order.orderItems)
                     {
-                        ListViewItem li = new ListViewItem(orderItem.Item.Name);
+                        ListViewItem li = new ListViewItem(orderItem.Name);
                         li.SubItems.Add(orderItem.Quantity.ToString());
                         listViewTableOrder.Items.Add(li);
 
@@ -94,7 +94,7 @@ namespace ChapeauUI
         }
         void timer_Tick(object sender, EventArgs e)
         {
-            // RefreshIcons();
+           // RefreshIcons();
             RefreshTables();
         }
         private void RefreshTables()
@@ -134,7 +134,7 @@ namespace ChapeauUI
             OrderService orderService = new OrderService();
             List<Order> runningOrders = orderService.GetAllRunningOrders();
 
-            Order currentOrder = runningOrders[0];
+            order = runningOrders[0];
 
             int i = 0;
             foreach (Order o in runningOrders)
@@ -167,7 +167,7 @@ namespace ChapeauUI
             if (dialogResult == DialogResult.Yes)
             {
                 order = orderService.GetOrderByTableNR(tableNR);
-                //orderItemservice.UpdateOrderState(4, order.OrderID);
+                orderItemService.UpdateOrderState(4, order.OrderID);
                 icon.Hide();
             }
         }

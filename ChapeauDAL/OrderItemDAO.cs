@@ -21,5 +21,14 @@ namespace ChapeauDAL
 
             ExecuteEditQuery(query, parameters);
         }
+        public void UpdateOrderState(int orderStatus, int orderID)
+        {
+            string query = $"UPDATE OrderItem SET status = @status WHERE orderID = @orderID";
+            SqlParameter[] sqlParameters = new SqlParameter[2];
+            sqlParameters[0] = new SqlParameter("state", orderStatus);
+            sqlParameters[1] = new SqlParameter("orderID", orderID);
+
+            ExecuteEditQuery(query, sqlParameters);
+        }
     }
 }

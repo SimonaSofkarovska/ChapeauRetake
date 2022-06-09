@@ -21,7 +21,7 @@ namespace ChapeauDAL
 
         public void UpdateStateTableToTrue(int tableNR)
         {
-            string query = $"UPDATE [Table] SET status=2 WHERE tableId=@tableNR";
+            string query = $"UPDATE [Table] SET status=3 WHERE tableId=@tableNR";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("tableNR", tableNR);
 
@@ -32,7 +32,7 @@ namespace ChapeauDAL
         {
             string query = "SELECT tableId, capacity, [status], tableNR FROM [Table] WHERE tableNR=@tableNR;";
             SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("tableNR", tableNR);
+            sqlParameters[0] = new SqlParameter("@tableNR", tableNR);
 
             List<Table> tables = ReadTables(ExecuteSelectQuery(query, sqlParameters));
             return tables[0];
