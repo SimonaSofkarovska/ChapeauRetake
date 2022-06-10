@@ -389,5 +389,14 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             };
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
         }
+        public void UpdateOrderPrice(Order order)
+        {
+            string query = "UPDATE Orders SET Totalprice = @Totalprice WHERE OrderID = @OrderID";
+            SqlParameter[] parameters = new SqlParameter[2];
+            parameters[0] = new SqlParameter("Totalprice", order.TotalPrice);
+            parameters[1] = new SqlParameter("OrderID", order.OrderID);
+
+            ExecuteEditQuery(query, parameters);
+        }
     }
 }
