@@ -74,16 +74,7 @@ namespace ChapeauDAL
                 OrderItem orderItem = new OrderItem(menuItem);
 
                 orderItem.OrderID = (int)(dr["orderID"]);
-
-
-                if (dr["Requests"] == DBNull.Value)
-                {
-                    orderItem.Comment = "";
-                }
-                else
-                {
-                    orderItem.Comment = (string)(dr["Requests"]);
-                }
+                orderItem.Requests = (string)dr["Requests"];
 
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
                 orderItem.Status = (OrderStatus)(dr["Status"]);

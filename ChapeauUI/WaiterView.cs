@@ -47,7 +47,7 @@ namespace ChapeauUI
 
             btnLunchMenu.Checked = true;
 
-            LoadMenu(1, btnLunchMenu.Checked);
+            LoadMenu(1);
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -148,12 +148,12 @@ namespace ChapeauUI
             lstCurrentOrder.Items.Add(listItem);
         }
 
-        private void LoadMenu(int menuItemType, bool lunchMenu)
+        private void LoadMenu(int menuItemType)
         {
             List<MenuItem> menu = menuService.GetMenu();
             List<MenuItem> filteredMenu = new List<MenuItem>();
             int mealType = 0;
-            if (lunchMenu)
+            if (btnLunchMenu.Checked)
                 mealType = 2;
             else
                 mealType = 1;
@@ -201,7 +201,7 @@ namespace ChapeauUI
                     break;
             }
 
-            LoadMenu(itemType, btnLunchMenu.Checked);
+            LoadMenu(itemType);
         }
 
         private void CloseWindow()
@@ -216,7 +216,7 @@ namespace ChapeauUI
             if(btnLunchMenu.Checked == true)
                 btnDinnerMenu.Checked = false;
 
-            LoadMenu(1, btnLunchMenu.Checked);
+            LoadMenu(1);
         }
 
         private void btnDinnerMenu_CheckedChanged(object sender, EventArgs e)
@@ -224,7 +224,7 @@ namespace ChapeauUI
             if (btnDinnerMenu.Checked == true)
                 btnLunchMenu.Checked = false;
 
-            LoadMenu(1, btnLunchMenu.Checked);
+            LoadMenu(1);
         }
     }
 }
