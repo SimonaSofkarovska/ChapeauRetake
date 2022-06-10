@@ -50,10 +50,8 @@ namespace ChapeauDAL
             {
                 return null;
             }
-            else
-            {
-                return orders[0];
-            }
+            
+            return orders[0];
         }
 
         public Order GetTablesCurrentOrder(int tableNumber)
@@ -64,10 +62,10 @@ namespace ChapeauDAL
 
             List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
 
-            /*if (orders[0] != null)
-                return orders[0];*/
+            if (orders[0] != null)
+                return orders[0];
 
-            return orders[0];
+            return null;
         }
 
         // written by Simona
