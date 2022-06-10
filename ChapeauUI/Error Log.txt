@@ -138,3 +138,35 @@ Error Number:102,State:1,Class:15
 ClientConnectionId before routing:a00fea94-6553-41bb-bdc4-e0b4a9af9052
 Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
 
+Error occured at: 6/10/2022 7:30:52 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '<'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 80
+   at ChapeauDAL.OrderDAO.GetOrders(Boolean drinks) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 169
+ClientConnectionId:05c92109-ac10-4855-af7e-a71aab114708
+Error Number:102,State:1,Class:15
+ClientConnectionId before routing:35133a30-1528-403b-b0bb-a40cf92e622a
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/10/2022 7:32:30 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '<'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 80
+   at ChapeauDAL.OrderDAO.GetOrders(Boolean drinks) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 169
+ClientConnectionId:e1506361-7d15-4822-8d6b-7117e9cee9d6
+Error Number:102,State:1,Class:15
+ClientConnectionId before routing:90e8a99d-5e8b-4307-b32e-3eb274ce913a
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+

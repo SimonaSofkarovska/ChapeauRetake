@@ -42,16 +42,5 @@ namespace ChapeauLogic
         {
             orderDAO.UpdateStatus(orderItem, order);
         }
-
-
-        //public Order GetByTable(Table table)
-        //{
-        //    return orderDAO.GetByTable(table);
-        //}
-
-        //public List<OrderItem> GetRunningOrder(Order order)
-        //{
-        //    return orderDAO.GetRunningOrder(order);
-        //}
     }
 }

@@ -162,7 +162,9 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             try
             {
                 string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
-                    "WHERE Status < 3 ";
+                               "WHERE Status < 3 ";
+                //query += (drinks ? "> 21 " : "< 21 ");//changed this
+
 
                 return ReadOrders(ExecuteSelectQuery(query));
             }
@@ -230,9 +232,10 @@ JOIN [Status] ON Orderitem.Status=Status.ID
         public List<OrderItem> GetOrderDetails(Order order, bool drinks)
         {
             string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
-                "FROM OrderItem " +
-                "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                "WHERE OrderItem.OrderID = @ID AND OrderItem.Status != 3 ";
+                            "FROM OrderItem " +
+                            "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status != 3 ";
+                //query += (drinks ? "> 21 " : "< 21 ");//change this (to put it here)
 
 
             SqlParameter[] sqlParameters = new SqlParameter[1];

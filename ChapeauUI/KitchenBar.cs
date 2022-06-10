@@ -16,7 +16,6 @@ namespace ChapeauUI
     {
         OrderService orderService = new OrderService();
         private bool drinks = false;
-        //private bool AllOrders = false;
 
         public KitchenBar(Employee employee)
         {
@@ -77,10 +76,10 @@ namespace ChapeauUI
             if (lvOrders.SelectedItems.Count > 0)
             {
                 Order order = (Order)lvOrders.SelectedItems[0].Tag;
-                ShowItems(order, drinks);
+                ShowOrderDetailes(order, drinks);
             }
         }
-        private void ShowItems(Order order, bool drinks)
+        private void ShowOrderDetailes(Order order, bool drinks)
         {
             try
             {
