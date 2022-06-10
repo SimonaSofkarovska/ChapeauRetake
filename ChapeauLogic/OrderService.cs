@@ -29,14 +29,14 @@ namespace ChapeauLogic
         {
             return orderDAO.GetTablesCurrentOrder(tableNumber);
         }
-        public List<Order> GetOrders(bool drinks)
+        public List<Order> GetOrders()
         {
-            return orderDAO.GetOrders(drinks);
+            return orderDAO.GetOrders();
         }
 
-        public List<OrderItem> GetOrderDetails(Order order, bool drinks)
+        public List<OrderItem> GetOrderDetails(Order order)
         {
-            return orderDAO.GetOrderDetails(order, drinks);
+            return orderDAO.GetOrderDetails(order);
         }
         public void UpdateStatus(OrderItem orderItem, Order order)
         {

@@ -217,12 +217,12 @@ JOIN Menu ON OrderItem.MenuID=Menu.ID
 JOIN [Status] ON Orderitem.Status=Status.ID
         */
 
-        public List<Order> GetOrders(bool drinks) // ordernr table, employee time
+        public List<Order> GetOrders() // ordernr table, employee time
         {
             try
             {
-                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
-                               "WHERE Status < 3 ";
+                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders ";
+                               //"WHERE Status < 3 ";
                 //query += (drinks ? "> 21 " : "< 21 ");//changed this
 
 
@@ -235,28 +235,28 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             }
 
         }
-        public bool CheckOrderItemStatusOfOrder(int id)
-        {
-            string query = $"SELECT * FROM OrderItem WHERE OrderID = @OrderID AND Status < 3";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@OrderID", id);
-            DataTable result = ExecuteSelectQuery(query, sqlParameters);
+        //public bool CheckOrderItemStatusOfOrder(int id)
+        //{
+        //    string query = $"SELECT * FROM OrderItem WHERE OrderID = @OrderID AND Status < 3";
+        //    SqlParameter[] sqlParameters = new SqlParameter[1];
+        //    sqlParameters[0] = new SqlParameter("@OrderID", id);
+        //    DataTable result = ExecuteSelectQuery(query, sqlParameters);
 
-            if (result == null || result.Rows.Count < 1) // need to check for empty query
-            {
-                return true;
-            }
+        //    if (result == null || result.Rows.Count < 1) // need to check for empty query
+        //    {
+        //        return true;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
         // this methode will help to update the status of an order  ruben needs to use this one
         public void UpdateOrderStatus(Order order)
         {
             try
             {
-                if (CheckOrderItemStatusOfOrder(order.OrderID))
-                {
+                //if (CheckOrderItemStatusOfOrder(order.OrderID))
+
                     order.Status = OrderStatus.Ready;
                     string query = $"UPDATE Orders set  Status = @Status  WHERE OrderID=@OrderID";
                     SqlParameter[] sqlParameters = new SqlParameter[2];
@@ -264,7 +264,6 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                     sqlParameters[1] = new SqlParameter("@Status", order.Status);
 
                     ExecuteEditQuery(query, sqlParameters);
-                }
             }
             catch (Exception)
             {
@@ -289,12 +288,12 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             return orders;
         }
 
-        public List<OrderItem> GetOrderDetails(Order order, bool drinks)
+        public List<OrderItem> GetOrderDetails(Order order)
         {
             string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
                             "FROM OrderItem " +
                             "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status != 3 ";
+                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 ";
                 //query += (drinks ? "> 21 " : "< 21 ");//change this (to put it here)
 
 
@@ -316,6 +315,7 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                     orderItem.Status = (OrderStatus)((int)dr["Status"]);
                     orderItem.Requests = (string)dr["Requests"].ToString();
                     orderItem.ID = (int)dr["MenuID"];
+                    orderItem.MealType = (MealType)((int)dr["Mealtype"]);
                 };
                 OrderItems.Add(orderItem);
             }
