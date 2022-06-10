@@ -216,7 +216,7 @@ JOIN Menu ON OrderItem.MenuID=Menu.ID
 JOIN [Status] ON Orderitem.Status=Status.ID
         */
 
-        public List<Order> GetOrders(bool drinks) // ordernr table, employee time
+        public List<Order> GetOrders() // ordernr table, employee time
         {
             try
             {
@@ -287,7 +287,7 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             return orders;
         }
 
-        public List<OrderItem> GetOrderDetails(Order order, bool drinks)
+        public List<OrderItem> GetOrderDetails(Order order)
         {
             string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
                             "FROM OrderItem " +
