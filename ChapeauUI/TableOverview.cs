@@ -56,7 +56,7 @@ namespace ChapeauUI
 
             btnSpecificTableOverview.Text = $"Table {tableNr}";
 
-            //get state table
+            //get table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
             if (selectedTable.Status != TableStatus.Occupied)
@@ -65,24 +65,22 @@ namespace ChapeauUI
                 if (dialogResult == DialogResult.Yes)
                 {
                     tableService.UpdateStateTableToTrue(tableNr);
-                    button.BackColor = Color.PaleTurquoise;
+                    button.BackColor = Color.Red;
                     RefreshTables();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    button.BackColor = Color.Gainsboro;
+                    button.BackColor = Color.Green;
                 }
             }
-            else
+            else if(selectedTable.Status == TableStatus.Occupied)
             {
                 btnAddItem.Show();
                 btnPayForOrder.Show();
 
                 listViewTableOrder.Items.Clear();
 
-
                  order = orderService.GetTablesCurrentOrder(tableNr);
-
 
                 if (order != null)
                 {
@@ -97,7 +95,7 @@ namespace ChapeauUI
                     //order.orderItems = OrderItemService.GetOrderItems(order);
 
                     // listViewTableOrder.Items.Clear();
-                    // foreach (MenuItem item in order.menuItems)
+                    // foreach (orderItem item in order.orderItems)
                     // {
                     //     ListViewItem listViewItem = new ListViewItem(item.Name.ToString());
                     //     listViewItem.SubItems.Add(item.ID.ToString());

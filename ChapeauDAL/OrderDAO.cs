@@ -50,10 +50,8 @@ namespace ChapeauDAL
             {
                 return null;
             }
-            else
-            {
-                return orders[0];
-            }
+            
+            return orders[0];
         }
 
         public Order GetTablesCurrentOrder(int tableNumber)
@@ -64,10 +62,10 @@ namespace ChapeauDAL
 
             List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
 
-            /*if (orders[0] != null)
-                return orders[0];*/
+            if (orders[0] != null)
+                return orders[0];
 
-            return orders[0];
+            return null;
         }
 
         // written by Simona
@@ -156,8 +154,14 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                OrderItem orderItem = new OrderItem();
                 MenuItem item = new MenuItem();
+
+                item.ID = (int)(dr["MenuID"]);
+                item.Name = (string)(dr["name"]);
+                item.Price = (double)(dr["price"]);
+                item.Type = (ItemType)(dr["Mealtype"]);
+
+                OrderItem orderItem = new OrderItem(item);
 
                 orderItem.OrderID = (int)(dr["OrderID"]);
                 orderItem.Quantity = (int)(dr["Quantity"]);
@@ -172,12 +176,15 @@ namespace ChapeauDAL
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
                 orderItem.Status = (OrderStatus)(dr["Status"]);
 
+<<<<<<< HEAD
                 item.ID = (int)(dr["ID"]);
                 item.Name = (string)(dr["name"]);
                 item.Price = (double)(dr["price"]);
                 item.Type = (ItemType)(dr["Mealtype"]);
                // orderItem.Item = item;
 
+=======
+>>>>>>> d44931dd66dcd84914a3658fbd5784ae9534852c
                 if (currentOrdernr != (int)(dr["orderID"]))
                 {
                     Order order = new Order();
