@@ -45,18 +45,14 @@ namespace ChapeauUI
         private void btnSpecificTableOverview_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-
             int tableNr = Convert.ToInt32(button.Tag);
             if (tableNr < 1)
             {
                 tableNr = 1;
             }
-
             btnAddItem.Tag = tableNr;
-
             btnSpecificTableOverview.Text = $"Table {tableNr}";
 
-            //get state table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
             if (selectedTable.Status != TableStatus.Occupied)
@@ -65,10 +61,10 @@ namespace ChapeauUI
                 if (dialogResult == DialogResult.Yes)
                 {
                     tableService.UpdateStateTableToTrue(tableNr);
-                    button.BackColor = Color.Red;
-                    RefreshTables();
+                    button.BackColor = Color.Red;                    
                     WaiterView waiterView = new WaiterView(/*employee,tableNr*/);
                     waiterView.Show();
+                    RefreshTables();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
@@ -80,11 +76,16 @@ namespace ChapeauUI
                 btnAddItem.Show();
                 btnPayForOrder.Show();
 
-                listViewTableOrder.Items.Clear();
+                //if the table has an order, create and start the timer
+                if (selectedTable.Status == TableStatus.Ongoing)
+                {
+                    Timer timerWaitTime = new Timer();
+                    timerWaitTime.Tick += timer_Tick;
+                    timerWaitTime.Interval = 1000;
+                    timerWaitTime.Start();
+                }
 
-
-                 order = orderService.GetOrderByTableNR(tableNr);
-
+                List<Order> orders = orderService.GetAllRunningOrders();
 
                 if (order != null)
                 {
@@ -92,31 +93,21 @@ namespace ChapeauUI
                     {
                         ListViewItem li = new ListViewItem(orderItem.Name);
                         li.SubItems.Add(orderItem.Quantity.ToString());
+                        li.SubItems.Add(orderItem.OrderTime.ToString("HH:mm:ss"));
                         listViewTableOrder.Items.Add(li);
-
-                    }
-                    //get the order items from the database
-                    //order.orderItems = OrderItemService.GetOrderItems(order);
-
-                    // listViewTableOrder.Items.Clear();
-                    // foreach (orderItem item in order.orderItems)
-                    // {
-                    //     ListViewItem listViewItem = new ListViewItem(item.Name.ToString());
-                    //     listViewItem.SubItems.Add(item.ID.ToString());
-                    //     listViewItem.SubItems.Add(item.Type.ToString());
-                    //     listViewItem.SubItems.Add(item.Name.ToString());
-                    //     listViewItem.SubItems.Add(item.Price.ToString());
-                    //     listViewTableOrder.Items.Add(listViewItem);
-                    // }
-                    // listViewTableOrder.Show();
+                        listViewTableOrder.Show();
+                        Console.WriteLine();
+                    }                   
                 }
             }
         }
+       
         void timer_Tick(object sender, EventArgs e)
         {
             RefreshIcons();
             RefreshTables();
         }
+        //refresh the tables
         private void RefreshTables()
         {
             
@@ -130,64 +121,70 @@ namespace ChapeauUI
                 {
                     buttons[i].BackColor = Color.Red;
                 }
-                else
+                else if (table.Status == TableStatus.Reserved)
+                {
+                    buttons[i].BackColor = Color.Orange;
+                }
+                else 
                 {
                     buttons[i].BackColor = Color.Green;
                 }
 
                 i++;
             }
-
         }
+        //refresh the icons
         private void RefreshIcons()
         {
             PictureBox[] readyIcons = new PictureBox[] { readyTable1, readyTable2, readyTable3, readyTable4, readyTable5, readyTable6, readyTable7, readyTable8, readyTable9, readyTable10 };
             PictureBox[] preparingIcons = new PictureBox[] { preparingTable1, preparingTable2, preparingTable3, preparingTable4, preparingTable5, preparingTable6, preparingTable7, preparingTable8, preparingTable9, preparingTable10 };
 
-            for (int j = 0; j < 10; j++)
-            {
-                readyIcons[j].Hide();
-                preparingIcons[j].Hide();
-            }
-            
-
             OrderService orderService = new OrderService();
             List<Order> runningOrders = orderService.GetAllRunningOrders();
 
-            order = runningOrders[0];
-
-            int i = 0;
-            foreach (Order o in runningOrders)
+            try
             {
-
-                foreach (OrderItem item in o.orderItems)
+                order = runningOrders[0];
+                int i = 0;
+                foreach (Order o in runningOrders)
                 {
-                    if (item.Status == OrderStatus.Preparing)
-                        preparingIcons[o.TableNumber - 1].Show();
-                    
 
-                    if (item.Status == OrderStatus.Ready)
-                        readyIcons[o.TableNumber - 1].Show();
+                    foreach (OrderItem item in o.orderItems)
+                    {
+                        if (item.Status == OrderStatus.Preparing)
+                            preparingIcons[o.TableNumber - 1].Show();
+
+
+                        if (item.Status == OrderStatus.Ready)
+                            readyIcons[o.TableNumber - 1].Show();
+                    }
+                    i++;
                 }
-                i++;
             }
+            catch
+            {
+                Console.WriteLine("Could not refresh!");
+            }            
         }
 
         private void readyButton_Click(object sender, EventArgs e)
         {
-            //when the readyicon is clicked => update state orderitems to served
+            //when the readyicon is clicked menas that the orderItem is ready to be served
 
             PictureBox icon = (PictureBox)sender;
             int tableNR = Convert.ToInt32(icon.Tag);
 
              orderItemService = new OrderItemService();
              orderService = new OrderService();
-
+            if (tableNR < 1)
+            {
+                tableNR = 1;
+            }
             DialogResult dialogResult = MessageBox.Show($"Do you want to update the food status from preparing to served for table {tableNR}?", "Serve food", MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.Yes)
             {
                 order = orderService.GetOrderByTableNR(tableNR);
-                orderItemService.UpdateOrderState(4, order.OrderID);
+                orderItemService.UpdateOrderState(tableNR, order.OrderID);
                 icon.Hide();
             }
         }

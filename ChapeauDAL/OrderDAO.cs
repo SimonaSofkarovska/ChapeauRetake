@@ -36,7 +36,7 @@ namespace ChapeauDAL
                 orderID = (Int32)cmd.ExecuteScalar();
             }
         }
-        // written by Simona
+        // written by Simona, getting the table by a number
         public Order GetOrderByTableNr(int tableNr)
         {
             string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Tablenumber=@Tablenumber AND Orders.Status = 1";
@@ -53,19 +53,7 @@ namespace ChapeauDAL
             return orders[0];
         }
 
-        public Order GetTablesCurrentOrder(int tableNumber)
-        {
-            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
-
-            SqlParameter[] parameters = new SqlParameter[0];
-
-            List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
-
-            if (orders[0] != null)
-                return orders[0];
-
-            return null;
-        }
+       
 
         // written by Simona
         private List<Order> ReadTables(DataTable dataTable)
@@ -111,6 +99,20 @@ namespace ChapeauDAL
 
             return orders;
         }
+        public Order GetTablesCurrentOrder(int tableNumber)
+        {
+            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
+
+            SqlParameter[] parameters = new SqlParameter[0];
+
+
+            List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
+
+            if (orders[0] != null)
+                return orders[0];
+
+            return null;
+        }
 
         public List<Order> ReadTables2(DataTable dataTable)
         {
@@ -144,71 +146,71 @@ namespace ChapeauDAL
             return orders;
         }
         // written by Simona
-        private List<Order> ReadTablesRunningOrder(DataTable dataTable)
-        {
-            List<Order> orders = new List<Order>();
+        //private List<Order> ReadTablesRunningOrder(DataTable dataTable)
+        //{
+        //    List<Order> orders = new List<Order>();
 
-            Order previousOrder = new Order();
-            int currentOrdernr = 0;
+        //    Order previousOrder = new Order();
+        //    int currentOrdernr = 0;
 
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                MenuItem item = new MenuItem();
+        //    foreach (DataRow dr in dataTable.Rows)
+        //    {
+        //        MenuItem item = new MenuItem();
 
-                item.ID = (int)(dr["MenuID"]);
-                item.Name = (string)(dr["name"]);
-                item.Price = (double)(dr["price"]);
-                item.Type = (ItemType)(dr["Mealtype"]);
+        //        item.ID = (int)(dr["MenuID"]);
+        //        item.Name = (string)(dr["name"]);
+        //        item.Price = (double)(dr["price"]);
+        //        item.Type = (ItemType)(dr["Mealtype"]);
 
-                OrderItem orderItem = new OrderItem(item);
+        //        OrderItem orderItem = new OrderItem(item);
 
-                orderItem.OrderID = (int)(dr["OrderID"]);
-                orderItem.Quantity = (int)(dr["Quantity"]);
-                if (dr["Requests"] == DBNull.Value)
-                {
-                    orderItem.Comment = "";
-                }
-                else
-                {
-                    orderItem.Comment = (string)(dr["Requests"]);
-                }
-                orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
-                orderItem.Status = (OrderStatus)(dr["Status"]);
+        //        orderItem.OrderID = (int)(dr["OrderID"]);
+        //        orderItem.Quantity = (int)(dr["Quantity"]);
+        //        if (dr["Requests"] == DBNull.Value)
+        //        {
+        //            orderItem.Comment = "";
+        //        }
+        //        else
+        //        {
+        //            orderItem.Comment = (string)(dr["Requests"]);
+        //        }
+        //        orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
+        //        orderItem.Status = (OrderStatus)(dr["Status"]);
 
-                item.ID = (int)(dr["ID"]);
-                item.Name = (string)(dr["name"]);
-                item.Price = (double)(dr["price"]);
-                item.Type = (ItemType)(dr["Mealtype"]);
-               // orderItem.Item = item;
+        //        item.ID = (int)(dr["ID"]);
+        //        item.Name = (string)(dr["name"]);
+        //        item.Price = (double)(dr["price"]);
+        //        item.Type = (ItemType)(dr["Mealtype"]);
+        //       // orderItem.Item = item;
 
-                if (currentOrdernr != (int)(dr["orderID"]))
-                {
-                    Order order = new Order();
+        //        if (currentOrdernr != (int)(dr["orderID"]))
+        //        {
+        //            Order order = new Order();
 
-                    order.OrderID = (int)(dr["Orderid"]);
-                    order.EmployeeID = (int)(dr["employeeID"]);
-                    order.TableNumber = (int)(dr["Tablenumber"]);
+        //            order.OrderID = (int)(dr["Orderid"]);
+        //            order.EmployeeID = (int)(dr["employeeID"]);
+        //            order.TableNumber = (int)(dr["Tablenumber"]);
 
-                    if (dr["Timetaken"] != DBNull.Value)
-                    {
-                        order.timeTaken = (DateTime)(dr["Timetaken"]);
-                    }
+        //            if (dr["Timetaken"] != DBNull.Value)
+        //            {
+        //                order.timeTaken = (DateTime)(dr["Timetaken"]);
+        //            }
 
-                    order.orderItems.Add(orderItem);
-                    currentOrdernr = order.OrderID;
-                    previousOrder = order;
+        //            order.orderItems.Add(orderItem);
+        //            currentOrdernr = order.OrderID;
+        //            previousOrder = order;
 
-                    orders.Add(previousOrder);
-                }
+        //            orders.Add(previousOrder);
+        //        }
 
-                else
-                {
-                    previousOrder.orderItems.Add(orderItem);
-                }
-            }
+        //        else
+        //        {
+        //            previousOrder.orderItems.Add(orderItem);
+        //        }
+        //    }
 
-            return orders;
-        }
+        //    return orders;
+        //}
 
         /*SELECT Orderitem.OrderID, [Menu].name, [Status].Status, Orderitem.Quantity, Orders.Tablenumber, Orders.Timetaken, Orders.Tablenumber, Orders.EmployeeID FROM Orders
 JOIN Orderitem ON Orderitem.OrderID=Orders.OrderID

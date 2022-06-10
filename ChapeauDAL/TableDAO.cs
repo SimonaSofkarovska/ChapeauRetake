@@ -22,7 +22,7 @@ namespace ChapeauDAL
 
         public void UpdateStateTableToTrue(int tableNR)
         {
-            string query = $"UPDATE [Table] SET status=3 WHERE tableId=@tableNR";
+            string query = $"UPDATE [Table] SET status=2 WHERE tableId=@tableNR";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@tableNR", tableNR);
 
@@ -31,7 +31,6 @@ namespace ChapeauDAL
 
         public Table GetTableByTableNr(int tableNR)
         {
-            // Could you add a breakpoiint on line 42 and 40
             string query = "SELECT tableId, capacity, [status], tableNR FROM [Table] WHERE tableId=@tableNR";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@tableNR", tableNR);
@@ -47,9 +46,6 @@ namespace ChapeauDAL
             }
         }
 
-        // Do you also need to code the order part or is that somebody's else part? Since tableDAO works fine now
-        // Yes but the query is now breaking somewhere in the order part
-        //order part is someone elses, but i do need to show when there is a running order at the table
         private List<Table> ReadTables(DataTable dataTable)
         {
             List<Table> tables = new List<Table>();
