@@ -32,6 +32,6 @@ namespace ChapeauLogic
         public Order GetTablesCurrentOrder(int tableNumber)
         {
             return orderDAO.GetTablesCurrentOrder(tableNumber);
-        }
+        }       
     }
 }

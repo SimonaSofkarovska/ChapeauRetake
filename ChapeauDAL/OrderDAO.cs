@@ -136,7 +136,7 @@ namespace ChapeauDAL
         // written by Simona
         public List<Order> GetAllRunningOrders()
         {
-            string query = "select Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
+            string query = "SELECT Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
                 "JOIN OrderItem ON Orders.Orderid = OrderItem.OrderID " +
                 "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
                 "WHERE Orders.Status < 5";
