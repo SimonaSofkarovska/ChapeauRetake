@@ -26,11 +26,8 @@ namespace ChapeauDAL
                     connection.Open();
                 }
             }
-            catch (Exception e)
+            catch 
             {
-                //Print.ErrorLog(e);
-                WriteToErrorLog(e.Message);
-
                 throw;
             }
             return connection;
@@ -56,7 +53,6 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
-                // Print.ErrorLog(e);
                 throw;
             }
             finally
@@ -84,8 +80,6 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
-                //Print.ErrorLog(e);
-                //return null;
                 throw;
             }
             finally

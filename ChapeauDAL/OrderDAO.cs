@@ -36,7 +36,7 @@ namespace ChapeauDAL
                 orderID = (Int32)cmd.ExecuteScalar();
             }
         }
-        // written by Simona
+        // written by Simona, getting the table by a number
         public Order GetOrderByTableNr(int tableNr)
         {
             string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Tablenumber=@Tablenumber AND Orders.Status = 1";
@@ -53,20 +53,7 @@ namespace ChapeauDAL
             return orders[0];
         }
 
-        public Order GetTablesCurrentOrder(int tableNumber)
-        {
-            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5 AND Tablenumber = @Tablenumber";
-
-            SqlParameter[] parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("Tablenumber", tableNumber);
-
-            List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
-
-            if (orders.Count > 0)
-                return orders[0];
-
-            return null;
-        }
+       
 
         // written by Simona
         private List<Order> ReadTables(DataTable dataTable)
@@ -91,11 +78,11 @@ namespace ChapeauDAL
 
                 if (dr["Requests"] == DBNull.Value)
                 {
-                    orderItem.Requests = "";
+                    orderItem.Comment = "";
                 }
                 else
                 {
-                    orderItem.Requests = (string)(dr["Requests"]);
+                    orderItem.Comment = (string)(dr["Requests"]);
                 }
 
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
@@ -111,6 +98,20 @@ namespace ChapeauDAL
             }
 
             return orders;
+        }
+        public Order GetTablesCurrentOrder(int tableNumber)
+        {
+            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
+
+            SqlParameter[] parameters = new SqlParameter[0];
+
+
+            List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
+
+            if (orders[0] != null)
+                return orders[0];
+
+            return null;
         }
 
         public List<Order> ReadTables2(DataTable dataTable)
@@ -145,71 +146,71 @@ namespace ChapeauDAL
             return orders;
         }
         // written by Simona
-        private List<Order> ReadTablesRunningOrder(DataTable dataTable)
-        {
-            List<Order> orders = new List<Order>();
+        //private List<Order> ReadTablesRunningOrder(DataTable dataTable)
+        //{
+        //    List<Order> orders = new List<Order>();
 
-            Order previousOrder = new Order();
-            int currentOrdernr = 0;
+        //    Order previousOrder = new Order();
+        //    int currentOrdernr = 0;
 
-            foreach (DataRow dr in dataTable.Rows)
-            {
-                MenuItem item = new MenuItem();
+        //    foreach (DataRow dr in dataTable.Rows)
+        //    {
+        //        MenuItem item = new MenuItem();
 
-                item.ID = (int)(dr["MenuID"]);
-                item.Name = (string)(dr["name"]);
-                item.Price = (double)(dr["price"]);
-                item.Type = (ItemType)(dr["Mealtype"]);
+        //        item.ID = (int)(dr["MenuID"]);
+        //        item.Name = (string)(dr["name"]);
+        //        item.Price = (double)(dr["price"]);
+        //        item.Type = (ItemType)(dr["Mealtype"]);
 
-                OrderItem orderItem = new OrderItem(item);
+        //        OrderItem orderItem = new OrderItem(item);
 
-                orderItem.OrderID = (int)(dr["OrderID"]);
-                orderItem.Quantity = (int)(dr["Quantity"]);
-                if (dr["Requests"] == DBNull.Value)
-                {
-                    orderItem.Requests = "";
-                }
-                else
-                {
-                    orderItem.Requests = (string)(dr["Requests"]);
-                }
-                orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
-                orderItem.Status = (OrderStatus)(dr["Status"]);
+        //        orderItem.OrderID = (int)(dr["OrderID"]);
+        //        orderItem.Quantity = (int)(dr["Quantity"]);
+        //        if (dr["Requests"] == DBNull.Value)
+        //        {
+        //            orderItem.Comment = "";
+        //        }
+        //        else
+        //        {
+        //            orderItem.Comment = (string)(dr["Requests"]);
+        //        }
+        //        orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
+        //        orderItem.Status = (OrderStatus)(dr["Status"]);
 
-                item.ID = (int)(dr["ID"]);
-                item.Name = (string)(dr["name"]);
-                item.Price = (double)(dr["price"]);
-                item.Type = (ItemType)(dr["Mealtype"]);
-               // orderItem.Item = item;
+        //        item.ID = (int)(dr["ID"]);
+        //        item.Name = (string)(dr["name"]);
+        //        item.Price = (double)(dr["price"]);
+        //        item.Type = (ItemType)(dr["Mealtype"]);
+        //       // orderItem.Item = item;
 
-                if (currentOrdernr != (int)(dr["orderID"]))
-                {
-                    Order order = new Order();
+        //        if (currentOrdernr != (int)(dr["orderID"]))
+        //        {
+        //            Order order = new Order();
 
-                    order.OrderID = (int)(dr["Orderid"]);
-                    order.EmployeeID = (int)(dr["employeeID"]);
-                    order.TableNumber = (int)(dr["Tablenumber"]);
+        //            order.OrderID = (int)(dr["Orderid"]);
+        //            order.EmployeeID = (int)(dr["employeeID"]);
+        //            order.TableNumber = (int)(dr["Tablenumber"]);
 
-                    if (dr["Timetaken"] != DBNull.Value)
-                    {
-                        order.timeTaken = (DateTime)(dr["Timetaken"]);
-                    }
+        //            if (dr["Timetaken"] != DBNull.Value)
+        //            {
+        //                order.timeTaken = (DateTime)(dr["Timetaken"]);
+        //            }
 
-                    order.orderItems.Add(orderItem);
-                    currentOrdernr = order.OrderID;
-                    previousOrder = order;
+        //            order.orderItems.Add(orderItem);
+        //            currentOrdernr = order.OrderID;
+        //            previousOrder = order;
 
-                    orders.Add(previousOrder);
-                }
+        //            orders.Add(previousOrder);
+        //        }
 
-                else
-                {
-                    previousOrder.orderItems.Add(orderItem);
-                }
-            }
+        //        else
+        //        {
+        //            previousOrder.orderItems.Add(orderItem);
+        //        }
+        //    }
 
-            return orders;
-        }
+        //    return orders;
+        //}
 
         /*SELECT Orderitem.OrderID, [Menu].name, [Status].Status, Orderitem.Quantity, Orders.Tablenumber, Orders.Timetaken, Orders.Tablenumber, Orders.EmployeeID FROM Orders
 JOIN Orderitem ON Orderitem.OrderID=Orders.OrderID
@@ -217,12 +218,12 @@ JOIN Menu ON OrderItem.MenuID=Menu.ID
 JOIN [Status] ON Orderitem.Status=Status.ID
         */
 
-        public List<Order> GetOrders() // ordernr table, employee time
+        public List<Order> GetOrders(bool drinks) // ordernr table, employee time
         {
             try
             {
-                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders ";
-                               //"WHERE Status < 3 ";
+                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
+                               "WHERE Status < 3 ";
                 //query += (drinks ? "> 21 " : "< 21 ");//changed this
 
 
@@ -235,28 +236,28 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             }
 
         }
-        //public bool CheckOrderItemStatusOfOrder(int id)
-        //{
-        //    string query = $"SELECT * FROM OrderItem WHERE OrderID = @OrderID AND Status < 3";
-        //    SqlParameter[] sqlParameters = new SqlParameter[1];
-        //    sqlParameters[0] = new SqlParameter("@OrderID", id);
-        //    DataTable result = ExecuteSelectQuery(query, sqlParameters);
+        public bool CheckOrderItemStatusOfOrder(int id)
+        {
+            string query = $"SELECT * FROM OrderItem WHERE OrderID = @OrderID AND Status < 3";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", id);
+            DataTable result = ExecuteSelectQuery(query, sqlParameters);
 
-        //    if (result == null || result.Rows.Count < 1) // need to check for empty query
-        //    {
-        //        return true;
-        //    }
+            if (result == null || result.Rows.Count < 1) // need to check for empty query
+            {
+                return true;
+            }
 
-        //    return false;
-        //}
+            return false;
+        }
 
         // this methode will help to update the status of an order  ruben needs to use this one
         public void UpdateOrderStatus(Order order)
         {
             try
             {
-                //if (CheckOrderItemStatusOfOrder(order.OrderID))
-
+                if (CheckOrderItemStatusOfOrder(order.OrderID))
+                {
                     order.Status = OrderStatus.Ready;
                     string query = $"UPDATE Orders set  Status = @Status  WHERE OrderID=@OrderID";
                     SqlParameter[] sqlParameters = new SqlParameter[2];
@@ -264,6 +265,7 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                     sqlParameters[1] = new SqlParameter("@Status", order.Status);
 
                     ExecuteEditQuery(query, sqlParameters);
+                }
             }
             catch (Exception)
             {
@@ -288,12 +290,12 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             return orders;
         }
 
-        public List<OrderItem> GetOrderDetails(Order order)
+        public List<OrderItem> GetOrderDetails(Order order, bool drinks)
         {
             string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
                             "FROM OrderItem " +
                             "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 ";
+                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status != 3 ";
                 //query += (drinks ? "> 21 " : "< 21 ");//change this (to put it here)
 
 
@@ -315,7 +317,6 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                     orderItem.Status = (OrderStatus)((int)dr["Status"]);
                     orderItem.Requests = (string)dr["Requests"].ToString();
                     orderItem.ID = (int)dr["MenuID"];
-                    orderItem.MealType = (MealType)((int)dr["Mealtype"]);
                 };
                 OrderItems.Add(orderItem);
             }
@@ -387,16 +388,6 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                 new SqlParameter("TableID", table.TableId),
             };
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
-        }
-
-        public void UpdateOrderPrice(Order order)
-        {
-            string query = "UPDATE Orders SET Totalprice = @Totalprice WHERE OrderID = @OrderID";
-            SqlParameter[] parameters= new SqlParameter[2];
-            parameters[0] = new SqlParameter("Totalprice", order.TotalPrice);
-            parameters[1] = new SqlParameter("OrderID", order.OrderID);
-
-            ExecuteEditQuery(query, parameters);
         }
     }
 }
