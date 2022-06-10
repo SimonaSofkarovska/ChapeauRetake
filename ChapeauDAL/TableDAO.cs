@@ -58,17 +58,5 @@ namespace ChapeauDAL
 
             return tables;
         }
-        //idk
-        public void FoodReady(Table table)
-        {
-            string query = "UPDATE [TABLE] SET [status] = 2 WHERE TableID = @TableID";
-
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("TableID", (table.TableNumber)),
-            };
-            ExecuteEditQuery(query, sqlParameters);
-        }
-
     }
 }

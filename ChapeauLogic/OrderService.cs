@@ -44,14 +44,14 @@ namespace ChapeauLogic
         }
 
 
-        public Order GetByTable(Table table)
-        {
-            return orderDAO.GetByTable(table);
-        }
+        //public Order GetByTable(Table table)
+        //{
+        //    return orderDAO.GetByTable(table);
+        //}
 
-        public List<OrderItem> GetRunningOrder(Order order)
-        {
-            return orderDAO.GetRunningOrder(order);
-        }
+        //public List<OrderItem> GetRunningOrder(Order order)
+        //{
+        //    return orderDAO.GetRunningOrder(order);
+        //}
     }
 }

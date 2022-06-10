@@ -284,33 +284,18 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             UpdateOrderStatus(order);
         }
 
-        public void UpdateOrder(Order order, OrderItem orderItem)
-        {
-            string query = "INSERT INTO OrderItem (OrderID, OrderItem.MenuID, Quantity, Status, requests, Timetaken) " + 
-                                          "VALUES( @OrderID, @ItemID, @Quantity, @Time, @Status, @Requests)";
-            SqlParameter[] sqlParameters =
-            {
-                new SqlParameter("@OrderID", order.OrderID),
-                new SqlParameter("@ItemID", orderItem.ID),
-                new SqlParameter("@Quantity", orderItem.Quantity),
-                new SqlParameter("@Timetaken", DateTime.Now),
-                new SqlParameter("@Status", orderItem.Status),
-                new SqlParameter("@Requests", orderItem.Requests),
-            };
-            ExecuteEditQuery(query, sqlParameters);
-        }
-
-        //public void CreateOrderItems(Order order)
+        //public void UpdateOrder(Order order, OrderItem orderItem)
         //{
-        //    string query = "INSERT INTO [ORDER] (order_id, table_id, employee_id, [timeStamp], paid) " +
-        //                   "VALUES(@OrderID, @TableID, @EmployeeID, @TimeStamp, 0)";
-
+        //    string query = "INSERT INTO OrderItem (OrderID, OrderItem.MenuID, Quantity, Status, requests, Timetaken) " + 
+        //                                  "VALUES( @OrderID, @ItemID, @Quantity, @Time, @Status, @Requests)";
         //    SqlParameter[] sqlParameters =
         //    {
-        //        new SqlParameter("OrderID", order.OrderID),
-        //        new SqlParameter("TableID", order.Table.TableID),
-        //        new SqlParameter("EmployeeID", order.Employee.EmployeeID),
-        //        new SqlParameter("TimeStamp", DateTime.Now),
+        //        new SqlParameter("@OrderID", order.OrderID),
+        //        new SqlParameter("@ItemID", orderItem.ID),
+        //        new SqlParameter("@Quantity", orderItem.Quantity),
+        //        new SqlParameter("@Timetaken", DateTime.Now),
+        //        new SqlParameter("@Status", orderItem.Status),
+        //        new SqlParameter("@Requests", orderItem.Requests),
         //    };
         //    ExecuteEditQuery(query, sqlParameters);
         //}
