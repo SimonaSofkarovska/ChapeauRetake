@@ -283,7 +283,7 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             ExecuteEditQuery(query, sqlParameters);
             UpdateOrderStatus(order);
         }
-
+        //hah
         //public void UpdateOrder(Order order, OrderItem orderItem)
         //{
         //    string query = "INSERT INTO OrderItem (OrderID, OrderItem.MenuID, Quantity, Status, requests, Timetaken) " + 
