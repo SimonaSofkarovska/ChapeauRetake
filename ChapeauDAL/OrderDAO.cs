@@ -140,7 +140,7 @@ namespace ChapeauDAL
                 "WHERE Orders.Status < 5";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            List<Order> orders = ReadTablesRunningOrder(ExecuteSelectQuery(query, sqlParameters));
+            List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
             return orders;
         }

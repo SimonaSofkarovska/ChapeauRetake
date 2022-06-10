@@ -56,7 +56,7 @@ namespace ChapeauUI
 
             btnSpecificTableOverview.Text = $"Table {tableNr}";
 
-            //get table
+            //get state table
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
             if (selectedTable.Status != TableStatus.Occupied)
@@ -67,20 +67,24 @@ namespace ChapeauUI
                     tableService.UpdateStateTableToTrue(tableNr);
                     button.BackColor = Color.Red;
                     RefreshTables();
+                    WaiterView waiterView = new WaiterView(/*employee,tableNr*/);
+                    waiterView.Show();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
                     button.BackColor = Color.Green;
                 }
             }
-            else if(selectedTable.Status == TableStatus.Occupied)
+            else if (selectedTable.Status == TableStatus.Occupied)
             {
                 btnAddItem.Show();
                 btnPayForOrder.Show();
 
                 listViewTableOrder.Items.Clear();
 
-                 order = orderService.GetTablesCurrentOrder(tableNr);
+
+                 order = orderService.GetOrderByTableNR(tableNr);
+
 
                 if (order != null)
                 {
