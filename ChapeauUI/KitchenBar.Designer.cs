@@ -47,7 +47,6 @@ namespace ChapeauUI
             this.lblUser = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.lblDateTime = new System.Windows.Forms.Label();
-            this.btn_AllOrders = new System.Windows.Forms.Button();
             this.btn_Refresh = new System.Windows.Forms.Button();
             this.btn_Undo = new System.Windows.Forms.Button();
             this.btn_Logout = new System.Windows.Forms.Button();
@@ -178,59 +177,56 @@ namespace ChapeauUI
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Location = new System.Drawing.Point(596, 85);
+            this.lblUser.Location = new System.Drawing.Point(557, 103);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(38, 15);
+            this.lblUser.Size = new System.Drawing.Size(29, 15);
             this.lblUser.TabIndex = 25;
-            this.lblUser.Text = "label2";
+            this.lblUser.Text = "user";
+            this.lblUser.Click += new System.EventHandler(this.lblUser_Click);
             // 
             // lblDateTime
             // 
             this.lblDateTime.AutoSize = true;
-            this.lblDateTime.Location = new System.Drawing.Point(61, 85);
+            this.lblDateTime.Location = new System.Drawing.Point(61, 103);
             this.lblDateTime.Name = "lblDateTime";
-            this.lblDateTime.Size = new System.Drawing.Size(38, 15);
+            this.lblDateTime.Size = new System.Drawing.Size(54, 15);
             this.lblDateTime.TabIndex = 26;
-            this.lblDateTime.Text = "label2";
-            // 
-            // btn_AllOrders
-            // 
-            this.btn_AllOrders.Location = new System.Drawing.Point(471, 203);
-            this.btn_AllOrders.Name = "btn_AllOrders";
-            this.btn_AllOrders.Size = new System.Drawing.Size(147, 49);
-            this.btn_AllOrders.TabIndex = 27;
-            this.btn_AllOrders.Text = "AllOrders";
-            this.btn_AllOrders.UseVisualStyleBackColor = true;
-            this.btn_AllOrders.Click += new System.EventHandler(this.btn_AllOrders_Click);
+            this.lblDateTime.Text = "datetime";
             // 
             // btn_Refresh
             // 
-            this.btn_Refresh.Location = new System.Drawing.Point(471, 289);
+            this.btn_Refresh.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn_Refresh.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Refresh.Location = new System.Drawing.Point(446, 243);
             this.btn_Refresh.Name = "btn_Refresh";
-            this.btn_Refresh.Size = new System.Drawing.Size(147, 49);
+            this.btn_Refresh.Size = new System.Drawing.Size(188, 63);
             this.btn_Refresh.TabIndex = 28;
             this.btn_Refresh.Text = "Refresh";
-            this.btn_Refresh.UseVisualStyleBackColor = true;
+            this.btn_Refresh.UseVisualStyleBackColor = false;
             this.btn_Refresh.Click += new System.EventHandler(this.btn_Refresh_Click);
             // 
             // btn_Undo
             // 
-            this.btn_Undo.Location = new System.Drawing.Point(471, 369);
+            this.btn_Undo.BackColor = System.Drawing.Color.RosyBrown;
+            this.btn_Undo.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_Undo.Location = new System.Drawing.Point(446, 354);
             this.btn_Undo.Name = "btn_Undo";
-            this.btn_Undo.Size = new System.Drawing.Size(147, 49);
+            this.btn_Undo.Size = new System.Drawing.Size(188, 54);
             this.btn_Undo.TabIndex = 30;
             this.btn_Undo.Text = "Undo";
-            this.btn_Undo.UseVisualStyleBackColor = true;
+            this.btn_Undo.UseVisualStyleBackColor = false;
             this.btn_Undo.Click += new System.EventHandler(this.btn_Undo_Click);
             // 
             // btn_Logout
             // 
+            this.btn_Logout.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.btn_Logout.ForeColor = System.Drawing.SystemColors.InactiveBorder;
             this.btn_Logout.Location = new System.Drawing.Point(12, 12);
             this.btn_Logout.Name = "btn_Logout";
             this.btn_Logout.Size = new System.Drawing.Size(117, 45);
             this.btn_Logout.TabIndex = 31;
             this.btn_Logout.Text = "Logout";
-            this.btn_Logout.UseVisualStyleBackColor = true;
+            this.btn_Logout.UseVisualStyleBackColor = false;
             this.btn_Logout.Click += new System.EventHandler(this.btn_Logout_Click);
             // 
             // btn_Preparing
@@ -239,7 +235,7 @@ namespace ChapeauUI
             this.btn_Preparing.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btn_Preparing.Location = new System.Drawing.Point(61, 735);
             this.btn_Preparing.Name = "btn_Preparing";
-            this.btn_Preparing.Size = new System.Drawing.Size(261, 49);
+            this.btn_Preparing.Size = new System.Drawing.Size(274, 49);
             this.btn_Preparing.TabIndex = 32;
             this.btn_Preparing.Text = "Preparing";
             this.btn_Preparing.UseVisualStyleBackColor = false;
@@ -254,7 +250,6 @@ namespace ChapeauUI
             this.Controls.Add(this.btn_Logout);
             this.Controls.Add(this.btn_Undo);
             this.Controls.Add(this.btn_Refresh);
-            this.Controls.Add(this.btn_AllOrders);
             this.Controls.Add(this.lblDateTime);
             this.Controls.Add(this.lblUser);
             this.Controls.Add(this.btn_mrkready);
@@ -289,7 +284,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Label lblUser;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Label lblDateTime;
-        private System.Windows.Forms.Button btn_AllOrders;
         private System.Windows.Forms.Button btn_Refresh;
         private System.Windows.Forms.Button btn_Undo;
         private System.Windows.Forms.Button btn_Logout;

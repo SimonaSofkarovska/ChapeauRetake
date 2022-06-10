@@ -15,31 +15,36 @@ namespace ChapeauUI
     public partial class KitchenBar : Form
     {
         OrderService orderService = new OrderService();
-        private bool drinks = false;
+        //private bool drinks = false;
+        private Employee employee;
 
         public KitchenBar(Employee employee)
         {
             InitializeComponent();
+            this.employee = employee;
 
-            if (employee.Role == Role.Barman)
-            {
-                drinks = true;
-            }
+            //if (employee.Role == Role.Barman)
+            //{
+            //    drinks = true;
+            //}
 
             lblUser.Text = $"User: {employee.Name}";
 
             btn_mrkready.Enabled = false;
-            LoadOrders(drinks);
+            btn_Preparing.Enabled = false;
+            btn_Undo.Enabled = false;
+            LoadOrders();
         }
-        private void LoadOrders(bool drinks)
+        private void LoadOrders()
         {
             try
             {
                 ShowHeadline();
                 btn_mrkready.Show();
+                btn_Preparing.Show();
                 lvOrderDetail.Items.Clear();
 
-                List<Order> ordersList = orderService.GetOrders(drinks);
+                List<Order> ordersList = orderService.GetOrders();
                 ShowOrders(ordersList);
             }
             catch (Exception exeption)
@@ -51,6 +56,7 @@ namespace ChapeauUI
         {
             try
             {
+                btn_Undo.Show();
                 lvOrders.Items.Clear();
                 foreach (Order order in orders)
                 {
@@ -76,14 +82,14 @@ namespace ChapeauUI
             if (lvOrders.SelectedItems.Count > 0)
             {
                 Order order = (Order)lvOrders.SelectedItems[0].Tag;
-                ShowOrderDetailes(order, drinks);
+                ShowOrderDetailes(order);
             }
         }
-        private void ShowOrderDetailes(Order order, bool drinks)
+        private void ShowOrderDetailes(Order order)
         {
             try
             {
-                List<OrderItem> orderItems = orderService.GetOrderDetails(order, drinks);
+                List<OrderItem> orderItems = Filter(order);
                 lvOrderDetail.Items.Clear();
 
                 foreach (OrderItem item in orderItems)
@@ -102,12 +108,40 @@ namespace ChapeauUI
                 ErrorProcess(exeption, "Something went wrong while loading the orders");
             }
         }
+        public List<OrderItem> Filter(Order order)
+        {
+            List<OrderItem> filterOI = new List<OrderItem>();
+            List<OrderItem> orderItems = orderService.GetOrderDetails(order);
+            if (employee.Role==Role.Barman)
+            {
+                foreach (OrderItem item in orderItems)
+                {
+                    if (item.MealType == MealType.Other)
+                    {
+                        filterOI.Add(item);
+                    }
+                }
+
+            }
+            else
+            {
+                foreach(OrderItem item in orderItems)
+                {
+                    if (item.MealType != MealType.Other)
+                    {
+                        filterOI.Add(item);
+                    }
+                }
+            }
+            return filterOI;
+
+        }
 
         private void ShowHeadline()
         {
             lblDateTime.Text = DateTime.Now.ToString("HH:mm\ndd/MM/yyyy");
 
-            if (drinks)
+            if (employee.Role==Role.Barman)
             {
                 this.Text = "Bar";
                 lblwhat.Text = "Bar";
@@ -117,11 +151,6 @@ namespace ChapeauUI
                 this.Text = "Kitchen";
                 lblwhat.Text = "Kitchen";
             }
-            //if (AllOrders)
-            //{
-            //    this.Text += " All Orders";
-            //    lblwhat.Text += " All Orders";
-            //}
         }
 
         private void btn_mrkready_Click(object sender, EventArgs e)
@@ -132,7 +161,7 @@ namespace ChapeauUI
 
         private void btn_Refresh_Click(object sender, EventArgs e)
         {
-            LoadOrders(drinks);
+            LoadOrders();
         }
         private void btn_Undo_Click(object sender, EventArgs e)
         {
@@ -158,7 +187,7 @@ namespace ChapeauUI
                 DialogResult dialogResult = MessageBox.Show(message, headline, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    List<OrderItem> orderItems = orderService.GetOrderDetails(order, drinks);
+                    List<OrderItem> orderItems = orderService.GetOrderDetails(order);
                     foreach (OrderItem item in orderItems)
                     {
                         item.Status = orderStatus;
@@ -180,7 +209,7 @@ namespace ChapeauUI
                     
                 }
             }
-            LoadOrders(drinks);
+            LoadOrders();
         }
 
 
@@ -202,11 +231,9 @@ namespace ChapeauUI
 
         }
 
-        private void btn_AllOrders_Click(object sender, EventArgs e)
+        private void lblUser_Click(object sender, EventArgs e)
         {
 
         }
-
-
     }
 }

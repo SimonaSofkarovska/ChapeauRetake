@@ -14,68 +14,74 @@ namespace ChapeauUI
         public OrderService orderService;
         public OrderItemService orderItemService;
 
-        /*private Employee employee;
-        private Table table;*/
+        private Employee employee;
+        private Table table;
         private List<OrderItem> currentItems;
         private Order currentOrder;
 
-        private int employeeid = 4;
-        private int tablenumber = 2;
-
-        public WaiterView(/*Employee employee, Table table*/)
+        public WaiterView(Employee employee, Table table)
         {
             InitializeComponent();
             menuService = new MenuService();
             orderService = new OrderService();
             orderItemService = new OrderItemService();
             currentItems = new List<OrderItem>();
-            currentOrder = orderService.GetTablesCurrentOrder(tablenumber);
 
-            if (currentOrder == null)
-                orderService.AddOrder(/*employee.Id, table.TableNumber*/employeeid, tablenumber);
+            if (orderService.GetTablesCurrentOrder(table.TableNumber) == null)
+                orderService.AddOrder(employee.Id, table.TableNumber);
 
-            /*this.employee = employee;
-            this.table = table;*/
+            currentOrder = orderService.GetTablesCurrentOrder(table.TableNumber);
+
+            this.employee = employee;
+            this.table = table;
         }
 
         private void WaiterView_Load(object sender, EventArgs e)
         {
-            cmbMenu.DisplayMember = "Name";
-            cmbMenu.ValueMember = "ID";
-            cmbMenu.DataSource = menuService.GetMenu();
+            cmbMenu.DisplayMember = "Name";            
 
             for (int i = 1; i <= 10; i++)
-                cmbAmount.Items.Add($"{i}");
+                cmbQuantity.Items.Add($"{i}");
 
-            cmbAmount.SelectedIndex = 0;
+            cmbQuantity.SelectedIndex = 0;
+
+            btnLunchMenu.Checked = true;
+
+            LoadMenu(1, btnLunchMenu.Checked);
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
             try
             {
-                MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
-                currentItems.Add(new OrderItem(currentOrder.OrderID, OrderStatus.New, txtComments.Text, int.Parse(cmbAmount.SelectedItem.ToString()), menuItem.ID, menuItem.Name, menuItem.Type, menuItem.MealType, menuItem.Price, DateTime.Now));
+                AddItem();
 
-                ListViewItem listItem = new ListViewItem(menuItem.Name);
-                listItem.SubItems.Add(cmbAmount.SelectedItem.ToString());
-                listItem.SubItems.Add(txtComments.Text);
-
-                lstCurrentOrder.Items.Add(listItem);
-            }catch(Exception ex)
+                cmbQuantity.SelectedIndex = 0;
+                txtComments.Text = "";
+            }
+            catch(Exception ex)
             {
-                MessageBox.Show("Error: ", ex.Message);
+                MessageBox.Show(ex.Message, "An error has occured");
             }
             
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            foreach(OrderItem orderItem in currentItems)
+            if(currentItems.Count == 0)
+            {
+                MessageBox.Show("Can not submit an empty order");
+                return;
+            }
+            foreach (OrderItem orderItem in currentItems)
+            {
                 orderItemService.AddOrderItem(orderItem);
+                currentOrder.orderItems.Add(orderItem);
+            }
 
-            MessageBox.Show("The order was sent to the kitchen");
 
+
+            CloseWindow();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
@@ -86,11 +92,135 @@ namespace ChapeauUI
                 return;
             }
 
-            for (int i = 0; i <= lstCurrentOrder.SelectedIndices.Count; i++)
-                currentItems.Remove(currentItems[lstCurrentOrder.SelectedIndices[i]]);
+            currentItems.Remove(currentItems[lstCurrentOrder.SelectedIndices[0]]);  //Removes the selected item from currentitems. 
 
             foreach (ListViewItem li in lstCurrentOrder.SelectedItems)
                 lstCurrentOrder.Items.Remove(li);
+        }
+
+        private void btnCloseWindow_Click(object sender, EventArgs e)
+        {
+            CloseWindow();
+        }
+
+        private void btnEditItem_Click(object sender, EventArgs e)
+        {
+            if (lstCurrentOrder.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("No items selected", "Select an item to change the details");
+                return;
+            }
+
+            ListViewItem newOrderItem = lstCurrentOrder.SelectedItems[0];           //Sets the values of the selected item to the current values of cmbQuantity and txtComments
+            newOrderItem.SubItems[1].Text = cmbQuantity.SelectedItem.ToString();
+            newOrderItem.SubItems[2].Text = txtComments.Text;
+
+            currentItems[lstCurrentOrder.SelectedIndices[0]].Requests = newOrderItem.SubItems[2].Text;
+            currentItems[lstCurrentOrder.SelectedIndices[0]].Quantity = int.Parse(newOrderItem.SubItems[1].Text);
+
+            cmbQuantity.SelectedIndex = 0;
+            txtComments.Text = "";
+        }
+
+        private void AddItem()      
+        {
+            if (!int.TryParse(cmbQuantity.SelectedItem.ToString(), out int amount))  //Check if the entered value for the amount of items is a number
+                throw new Exception("Please select a valid amount");
+
+            for (int i = 0; i < lstCurrentOrder.Items.Count; i++)
+            {
+                if (lstCurrentOrder.Items[i].Text == cmbMenu.Text)
+                {
+                    ListViewItem newListItem = lstCurrentOrder.Items[i];
+                    lstCurrentOrder.Items[i].SubItems[1].Text = (int.Parse(lstCurrentOrder.Items[i].SubItems[1].Text) + amount).ToString();
+
+                    return;
+                }
+            }
+
+            MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
+            currentItems.Add(new OrderItem(currentOrder.OrderID, OrderStatus.New, txtComments.Text, amount, menuItem.ID, menuItem.Name, menuItem.Type, menuItem.MealType, menuItem.Price, DateTime.Now));
+
+            ListViewItem listItem = new ListViewItem(menuItem.Name);
+            listItem.SubItems.Add(cmbQuantity.SelectedItem.ToString());
+            listItem.SubItems.Add(txtComments.Text);
+
+            lstCurrentOrder.Items.Add(listItem);
+        }
+
+        private void LoadMenu(int menuItemType, bool lunchMenu)
+        {
+            List<MenuItem> menu = menuService.GetMenu();
+            List<MenuItem> filteredMenu = new List<MenuItem>();
+            int mealType = 0;
+            if (lunchMenu)
+                mealType = 2;
+            else
+                mealType = 1;
+
+            for (int i = 0; i < menu.Count; i++)
+            {
+                if (menu[i].Type == (ItemType)menuItemType && menu[i].MealType != (MealType)mealType)   //Mealtype has three values, 1 lunch, 2 dinner and 3 others (drinks). if lunch menu is checked, items with mealtype 2 (dinner items) are not added
+                    filteredMenu.Add(menu[i]);
+            }
+
+            cmbMenu.DataSource = filteredMenu;
+        }
+
+        private void menuFilter_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            int itemType = 0;
+            switch (e.ClickedItem.Text)
+            {
+                case "Starters":
+                    itemType = 1;
+                    break;
+                case "Entrements":
+                    itemType = 2;
+                    break;
+                case "Mains":
+                    itemType = 3;
+                    break;
+                case "Desserts":
+                    itemType = 4;
+                    break;
+                case "Soft drinks":
+                    itemType = 5;
+                    break;
+                case "Beer":
+                    itemType = 6;
+                    break;
+                case "Wine":
+                    itemType = 7;
+                    break;
+                case "Spirit drinks":
+                    itemType = 8;
+                    break;
+                case "Coffee/Tea":
+                    itemType = 9;
+                    break;
+            }
+
+            LoadMenu(itemType, btnLunchMenu.Checked);
+        }
+
+        private void CloseWindow()
+        {
+            lstCurrentOrder.Items.Clear();
+            currentItems.Clear();
+            this.Close();
+        }
+
+        private void btnLunchMenu_CheckedChanged(object sender, EventArgs e)
+        {
+            if(btnLunchMenu.Checked == true)
+                btnDinnerMenu.Checked = false;
+        }
+
+        private void btnDinnerMenu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (btnDinnerMenu.Checked == true)
+                btnLunchMenu.Checked = false;
         }
     }
 }
