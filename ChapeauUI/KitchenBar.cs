@@ -79,6 +79,8 @@ namespace ChapeauUI
             ShowHeadline();
 
             btn_mrkready.Enabled = ((lvOrders.SelectedItems.Count > 0));
+            btn_Preparing.Enabled = ((lvOrders.SelectedItems.Count > 0));
+            btn_Undo.Enabled = ((lvOrders.SelectedItems.Count > 0));
 
             if (lvOrders.SelectedItems.Count > 0)
             {
