@@ -154,8 +154,14 @@ namespace ChapeauDAL
 
             foreach (DataRow dr in dataTable.Rows)
             {
-                OrderItem orderItem = new OrderItem();
                 MenuItem item = new MenuItem();
+
+                item.ID = (int)(dr["ID"]);
+                item.Name = (string)(dr["name"]);
+                item.Price = (double)(dr["price"]);
+                item.Type = (ItemType)(dr["Mealtype"]);
+
+                OrderItem orderItem = new OrderItem(item);
 
                 orderItem.OrderID = (int)(dr["OrderID"]);
                 orderItem.Quantity = (int)(dr["Quantity"]);
@@ -169,12 +175,6 @@ namespace ChapeauDAL
                 }
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
                 orderItem.Status = (OrderStatus)(dr["Status"]);
-
-                item.ID = (int)(dr["ID"]);
-                item.Name = (string)(dr["name"]);
-                item.Price = (double)(dr["price"]);
-                item.Type = (ItemType)(dr["Mealtype"]);
-                orderItem.Item = item;
 
                 if (currentOrdernr != (int)(dr["orderID"]))
                 {
