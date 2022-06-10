@@ -29,6 +29,8 @@ namespace ChapeauUI
             lblUser.Text = $"User: {employee.Name}";
 
             btn_mrkready.Enabled = false;
+            btn_Preparing.Enabled = false;
+            btn_Undo.Enabled = false;
             LoadOrders(drinks);
         }
         private void LoadOrders(bool drinks)
@@ -37,6 +39,7 @@ namespace ChapeauUI
             {
                 ShowHeadline();
                 btn_mrkready.Show();
+                btn_Preparing.Show();
                 lvOrderDetail.Items.Clear();
 
                 List<Order> ordersList = orderService.GetOrders(drinks);
@@ -51,6 +54,7 @@ namespace ChapeauUI
         {
             try
             {
+                btn_Undo.Show();
                 lvOrders.Items.Clear();
                 foreach (Order order in orders)
                 {
@@ -117,11 +121,6 @@ namespace ChapeauUI
                 this.Text = "Kitchen";
                 lblwhat.Text = "Kitchen";
             }
-            //if (AllOrders)
-            //{
-            //    this.Text += " All Orders";
-            //    lblwhat.Text += " All Orders";
-            //}
         }
 
         private void btn_mrkready_Click(object sender, EventArgs e)
@@ -202,11 +201,9 @@ namespace ChapeauUI
 
         }
 
-        private void btn_AllOrders_Click(object sender, EventArgs e)
+        private void lblUser_Click(object sender, EventArgs e)
         {
 
         }
-
-
     }
 }
