@@ -176,15 +176,12 @@ namespace ChapeauDAL
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
                 orderItem.Status = (OrderStatus)(dr["Status"]);
 
-<<<<<<< HEAD
                 item.ID = (int)(dr["ID"]);
                 item.Name = (string)(dr["name"]);
                 item.Price = (double)(dr["price"]);
                 item.Type = (ItemType)(dr["Mealtype"]);
                // orderItem.Item = item;
 
-=======
->>>>>>> d44931dd66dcd84914a3658fbd5784ae9534852c
                 if (currentOrdernr != (int)(dr["orderID"]))
                 {
                     Order order = new Order();
