@@ -215,12 +215,16 @@ namespace ChapeauUI
         {
             if(btnLunchMenu.Checked == true)
                 btnDinnerMenu.Checked = false;
+
+            LoadMenu(1, btnLunchMenu.Checked);
         }
 
         private void btnDinnerMenu_CheckedChanged(object sender, EventArgs e)
         {
             if (btnDinnerMenu.Checked == true)
                 btnLunchMenu.Checked = false;
+
+            LoadMenu(1, btnLunchMenu.Checked);
         }
     }
 }
