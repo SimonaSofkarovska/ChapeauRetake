@@ -99,7 +99,7 @@ namespace ChapeauUI
                     //order.orderItems = OrderItemService.GetOrderItems(order);
 
                     // listViewTableOrder.Items.Clear();
-                    // foreach (MenuItem item in order.menuItems)
+                    // foreach (orderItem item in order.orderItems)
                     // {
                     //     ListViewItem listViewItem = new ListViewItem(item.Name.ToString());
                     //     listViewItem.SubItems.Add(item.ID.ToString());
