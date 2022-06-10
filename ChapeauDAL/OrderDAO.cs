@@ -156,7 +156,7 @@ namespace ChapeauDAL
             {
                 MenuItem item = new MenuItem();
 
-                item.ID = (int)(dr["ID"]);
+                item.ID = (int)(dr["MenuID"]);
                 item.Name = (string)(dr["name"]);
                 item.Price = (double)(dr["price"]);
                 item.Type = (ItemType)(dr["Mealtype"]);
