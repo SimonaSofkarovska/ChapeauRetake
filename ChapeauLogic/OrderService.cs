@@ -42,5 +42,9 @@ namespace ChapeauLogic
         {
             orderDAO.UpdateStatus(orderItem, order);
         }
+        public void AddOrder(int employeeid, int tablenumber)
+        {
+            orderDAO.AddOrder(employeeid, tablenumber);
+        }
     }
 }
