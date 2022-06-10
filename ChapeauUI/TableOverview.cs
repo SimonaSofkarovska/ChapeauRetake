@@ -81,7 +81,7 @@ namespace ChapeauUI
                 listViewTableOrder.Items.Clear();
 
 
-                 order = orderService.GetOrderByTableNR(tableNr);
+                 order = orderService.GetTablesCurrentOrder(tableNr);
 
 
                 if (order != null)
