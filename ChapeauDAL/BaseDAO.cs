@@ -26,8 +26,11 @@ namespace ChapeauDAL
                     connection.Open();
                 }
             }
-            catch 
+            catch (Exception e)
             {
+                //Print.ErrorLog(e);
+                WriteToErrorLog(e.Message);
+
                 throw;
             }
             return connection;
@@ -37,8 +40,6 @@ namespace ChapeauDAL
         {
             connection.Close();
         }
-
-
 
         /* For Insert/Update/Delete Queries */
         protected void ExecuteEditQuery(string query, SqlParameter[] sqlParameters)
@@ -55,6 +56,7 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
+                // Print.ErrorLog(e);
                 throw;
             }
             finally
@@ -82,6 +84,8 @@ namespace ChapeauDAL
             }
             catch (SqlException e)
             {
+                //Print.ErrorLog(e);
+                //return null;
                 throw;
             }
             finally
@@ -102,7 +106,15 @@ namespace ChapeauDAL
             return number;
         }
 
+        protected void WriteToErrorLog(string messege)
+        {
+            StreamWriter sw = File.AppendText("..\\..\\..\\Error Log.txt");
+            sw.WriteLine($"Error occured at: {DateTime.Now}:");
+            sw.WriteLine($"{messege}\n");
+            sw.Close();
+        }
     }
+
 }
 
 

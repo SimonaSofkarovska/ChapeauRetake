@@ -166,7 +166,7 @@ namespace ChapeauUI
                         preparingIcons[o.TableNumber - 1].Show();
                     
 
-                    if (item.Status == OrderStatus.Done)
+                    if (item.Status == OrderStatus.Ready)
                         readyIcons[o.TableNumber - 1].Show();
                 }
                 i++;

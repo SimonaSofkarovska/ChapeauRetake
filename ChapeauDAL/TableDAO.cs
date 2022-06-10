@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using ChapeauModel;
 using System.Collections.Generic;
+using ChapeauDAL;
 
 namespace ChapeauDAL
 {
@@ -67,6 +68,5 @@ namespace ChapeauDAL
 
             return tables;
         }
-
     }
 }

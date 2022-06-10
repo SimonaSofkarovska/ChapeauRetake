@@ -12,11 +12,11 @@ namespace ChapeauModel
     }
     public enum OrderStatus
     {
-        New = 1, Preparing, Done, Served, Paid
+        New = 1, Preparing, Ready, Served, Paid
     }
     public enum Payment
     {
-
+        Cash, Card
     }
     public enum TableStatus
     {

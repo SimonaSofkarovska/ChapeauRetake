@@ -25,6 +25,148 @@ Login failed for user 'group_retake1'.
 Error occured at: 03/06/2022 09:33:48:
 Incorrect syntax near the keyword 'Order'.
 
-Error occured at: 03/06/2022 17:11:31:
-Cannot insert explicit value for identity column in table 'Orders' when IDENTITY_INSERT is set to OFF.
+Error occured at: 6/3/2022 3:46:07 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:46:07 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:47:48 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:47:48 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:59:56 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 3:59:56 PM:
+A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: TCP Provider, error: 0 - No such host is known.)
+
+Error occured at: 6/3/2022 4:35:21 PM:
+Incorrect syntax near the keyword 'Order'.
+
+Error occured at: 6/3/2022 5:39:51 PM:
+Incorrect syntax near the keyword 'Order'.
+
+Error occured at: 6/6/2022 7:45:12 PM:
+Incorrect syntax near the keyword 'on'.
+
+Error occured at: 6/6/2022 7:57:56 PM:
+Incorrect syntax near the keyword 'on'.
+
+Error occured at: 6/6/2022 8:08:19 PM:
+System.ArgumentException: Column 'order_id' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at ChapeauDAL.OrderDAO.ReadOrders(DataTable dataTable) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 57
+   at ChapeauDAL.OrderDAO.GetOrders(Boolean drinks, Boolean allOrders) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 40
+
+Error occured at: 6/6/2022 8:14:21 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 8:19:22 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 8:22:19 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 8:42:32 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 9:08:32 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:07:51 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:10:08 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:13:20 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:16:15 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:30:21 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:32:06 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:33:32 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:38:55 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:47:56 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:51:37 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/6/2022 10:52:42 PM:
+Incorrect syntax near 'OrderItem'.
+
+Error occured at: 6/7/2022 8:09:42 PM:
+Must declare the scalar variable "@TimeStamp".
+
+Error occured at: 6/8/2022 6:32:02 PM:
+Must declare the scalar variable "@TimeStamp".
+
+Error occured at: 6/8/2022 6:43:18 PM:
+Must declare the scalar variable "@Timetaken".
+
+Error occured at: 6/8/2022 6:48:49 PM:
+Must declare the scalar variable "@Timetaken".
+
+Error occured at: 6/9/2022 10:22:38 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '<'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 157
+   at ChapeauDAL.OrderDAO.GetOrders() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 167
+ClientConnectionId:5baf36b4-3aad-4a4b-b5b9-c3eeab22172e
+Error Number:102,State:1,Class:15
+ClientConnectionId before routing:a00fea94-6553-41bb-bdc4-e0b4a9af9052
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/10/2022 7:30:52 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '<'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 80
+   at ChapeauDAL.OrderDAO.GetOrders(Boolean drinks) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 169
+ClientConnectionId:05c92109-ac10-4855-af7e-a71aab114708
+Error Number:102,State:1,Class:15
+ClientConnectionId before routing:35133a30-1528-403b-b0bb-a40cf92e622a
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/10/2022 7:32:30 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near '<'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 80
+   at ChapeauDAL.OrderDAO.GetOrders(Boolean drinks) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 169
+ClientConnectionId:e1506361-7d15-4822-8d6b-7117e9cee9d6
+Error Number:102,State:1,Class:15
+ClientConnectionId before routing:90e8a99d-5e8b-4307-b32e-3eb274ce913a
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
 
