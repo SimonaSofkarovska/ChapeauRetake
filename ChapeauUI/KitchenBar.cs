@@ -57,6 +57,7 @@ namespace ChapeauUI
             try
             {
                 btn_Undo.Show();
+                btn_Preparing.Show();
                 lvOrders.Items.Clear();
                 foreach (Order order in orders)
                 {
@@ -165,7 +166,7 @@ namespace ChapeauUI
         }
         private void btn_Undo_Click(object sender, EventArgs e)
         {
-            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as WAITING.\nProceed?", OrderStatus.New);
+            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as NEW.\nProceed?", OrderStatus.New);
         }
         private void btn_Logout_Click(object sender, EventArgs e)
         {
@@ -176,7 +177,7 @@ namespace ChapeauUI
         }
         private void btn_Preparing_Click(object sender, EventArgs e)
         {
-            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as WAITING.\nProceed?", OrderStatus.Preparing);
+            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as PREPARING.\nProceed?", OrderStatus.Preparing);
         }
         private void ChangeItemStatus(string headline, string message, OrderStatus orderStatus)
         {
