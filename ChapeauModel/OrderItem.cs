@@ -14,6 +14,8 @@ namespace ChapeauModel
 
         public int Quantity { get; set; }
         public DateTime OrderTime { get; set; }
+        public string Comment { get; set; }
+
         public OrderItem() {    /*  :)  */  }
         public OrderItem(int OrderID, OrderStatus Status, string Requests, int Quantity, int ID, string Name, ItemType Type, MealType Mealtype, double Price, DateTime OrderTime)
             :base(ID, Name, Type, Mealtype, Price)
