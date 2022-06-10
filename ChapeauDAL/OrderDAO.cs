@@ -36,7 +36,7 @@ namespace ChapeauDAL
                 orderID = (Int32)cmd.ExecuteScalar();
             }
         }
-        // written by Simona
+        // written by Simonaa
         public Order GetOrderByTableNr(int tableNr)
         {
             string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, Status, Requests FROM[Order] JOIN Orderitem ON[Order].orderID = Orderitem.orderID JOIN Orderitems ON[Orderitems].itemID = OrderItem.itemID WHERE Tablenumber=@Tablenumber AND Status = 0";
@@ -54,7 +54,7 @@ namespace ChapeauDAL
                 return orders[0];
             }
         }
-
+        
         public Order GetTablesCurrentOrder(int tableNumber)
         {
             string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
