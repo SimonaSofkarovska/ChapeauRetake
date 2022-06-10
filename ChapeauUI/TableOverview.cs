@@ -67,7 +67,7 @@ namespace ChapeauUI
                     tableService.UpdateStateTableToTrue(tableNr);
                     button.BackColor = Color.Red;
                     RefreshTables();
-                    WaiterView waiterView = new WaiterView(/*employee,tableNr*/);
+                    WaiterView waiterView = new WaiterView(employee, selectedTable);
                     waiterView.Show();
                 }
                 else if (dialogResult == DialogResult.No)
@@ -154,6 +154,9 @@ namespace ChapeauUI
             OrderService orderService = new OrderService();
             List<Order> runningOrders = orderService.GetAllRunningOrders();
 
+            if (runningOrders.Count == 0)
+                return;
+
             order = runningOrders[0];
 
             int i = 0;
@@ -190,6 +193,11 @@ namespace ChapeauUI
                 orderItemService.UpdateOrderState(4, order.OrderID);
                 icon.Hide();
             }
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

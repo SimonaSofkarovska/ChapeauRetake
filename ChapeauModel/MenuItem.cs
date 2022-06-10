@@ -12,7 +12,6 @@ namespace ChapeauModel
         public ItemType Type { get; set; }
         public MealType MealType { get; set; }
         public double Price { get; set; }
-        public MenuItem Item { get; set; }
         public MenuItem() { /*  :)  */ }
 
         public MenuItem(int ID, string Name, ItemType Type, MealType Mealtype, double Price)

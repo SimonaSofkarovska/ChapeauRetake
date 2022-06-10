@@ -55,13 +55,14 @@ namespace ChapeauDAL
 
         public Order GetTablesCurrentOrder(int tableNumber)
         {
-            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
+            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5 AND Tablenumber = @Tablenumber";
 
-            SqlParameter[] parameters = new SqlParameter[0];
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("Tablenumber", tableNumber);
 
             List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
 
-            if (orders[0] != null)
+            if (orders.Count > 0)
                 return orders[0];
 
             return null;
@@ -90,11 +91,11 @@ namespace ChapeauDAL
 
                 if (dr["Requests"] == DBNull.Value)
                 {
-                    orderItem.Comment = "";
+                    orderItem.Requests = "";
                 }
                 else
                 {
-                    orderItem.Comment = (string)(dr["Requests"]);
+                    orderItem.Requests = (string)(dr["Requests"]);
                 }
 
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
@@ -166,11 +167,11 @@ namespace ChapeauDAL
                 orderItem.Quantity = (int)(dr["Quantity"]);
                 if (dr["Requests"] == DBNull.Value)
                 {
-                    orderItem.Comment = "";
+                    orderItem.Requests = "";
                 }
                 else
                 {
-                    orderItem.Comment = (string)(dr["Requests"]);
+                    orderItem.Requests = (string)(dr["Requests"]);
                 }
                 orderItem.OrderTime = (DateTime)(dr["Timetaken"]);
                 orderItem.Status = (OrderStatus)(dr["Status"]);
@@ -386,6 +387,14 @@ JOIN [Status] ON Orderitem.Status=Status.ID
                 new SqlParameter("TableID", table.TableId),
             };
             return ReadOrder(ExecuteSelectQuery(query, sqlParameters));
+        }
+
+        public void UpdateOrderPrice(Order order)
+        {
+            string query = "UPDATE Orders SET Totalprice = @Totalprice WHERE OrderID = @OrderID";
+            SqlParameter[] parameters= new SqlParameter[2];
+            parameters[0] = new SqlParameter("Totalprice", order.TotalPrice);
+            parameters[1] = new SqlParameter("OrderID", order.OrderID);
         }
     }
 }
