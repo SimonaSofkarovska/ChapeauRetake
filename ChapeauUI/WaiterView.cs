@@ -29,12 +29,10 @@ namespace ChapeauUI
             orderService = new OrderService();
             orderItemService = new OrderItemService();
             currentItems = new List<OrderItem>();
-
-            CreateOrder();
             currentOrder = orderService.GetTablesCurrentOrder(tablenumber);
 
-           /* if (currentOrder == null)
-                CreateOrder();*/
+            if (currentOrder == null)
+                orderService.AddOrder(/*employee.Id, table.TableNumber*/employeeid, tablenumber);
 
             /*this.employee = employee;
             this.table = table;*/
@@ -54,27 +52,27 @@ namespace ChapeauUI
 
         private void btnAddItem_Click(object sender, EventArgs e)
         {
-            MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
-            currentItems.Add(new OrderItem(currentOrder.OrderID, OrderStatus.New, txtComments.Text, int.Parse(cmbAmount.SelectedItem.ToString()), menuItem.ID, menuItem.Name, menuItem.Type, menuItem.MealType, menuItem.Price, DateTime.Now));
+            try
+            {
+                MenuItem menuItem = (MenuItem)cmbMenu.SelectedItem;
+                currentItems.Add(new OrderItem(currentOrder.OrderID, OrderStatus.New, txtComments.Text, int.Parse(cmbAmount.SelectedItem.ToString()), menuItem.ID, menuItem.Name, menuItem.Type, menuItem.MealType, menuItem.Price, DateTime.Now));
 
-            ListViewItem listItem = new ListViewItem(menuItem.Name);
-            listItem.SubItems.Add(cmbAmount.SelectedItem.ToString());
-            listItem.SubItems.Add(txtComments.Text);
+                ListViewItem listItem = new ListViewItem(menuItem.Name);
+                listItem.SubItems.Add(cmbAmount.SelectedItem.ToString());
+                listItem.SubItems.Add(txtComments.Text);
 
-            lstCurrentOrder.Items.Add(listItem);
+                lstCurrentOrder.Items.Add(listItem);
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Error: ", ex.Message);
+            }
+            
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            Order currentOrder = new Order(DateTime.Now, employeeid, tablenumber/*employee.Id, table.TableNumber*/, OrderStatus.New);
-
             foreach(OrderItem orderItem in currentItems)
                 orderItemService.AddOrderItem(orderItem);
-            
-
-            
-
-            //orderService.AddOrder(currentOrder);
 
             MessageBox.Show("The order was sent to the kitchen");
 
@@ -93,11 +91,6 @@ namespace ChapeauUI
 
             foreach (ListViewItem li in lstCurrentOrder.SelectedItems)
                 lstCurrentOrder.Items.Remove(li);
-        }
-
-        private void CreateOrder()
-        {
-            
         }
     }
 }

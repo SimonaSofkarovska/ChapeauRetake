@@ -15,10 +15,10 @@ namespace ChapeauLogic
             orderDAO = new OrderDAO();
         }
 
-        //public void AddOrder(Order order)
-        //{
-        //    orderDAO.AddOrder(order);
-        //}
+        public void AddOrder(int employeeid, int tablenumber)
+        {
+            orderDAO.AddOrder(employeeid, tablenumber);
+        }
         public Order GetOrderByTableNR(int tablenr)
         {
             Order order = orderDAO.GetOrderByTableNr(tablenr);
