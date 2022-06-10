@@ -65,15 +65,17 @@ namespace ChapeauUI
                 if (dialogResult == DialogResult.Yes)
                 {
                     tableService.UpdateStateTableToTrue(tableNr);
-                    button.BackColor = Color.PaleTurquoise;
+                    button.BackColor = Color.Red;
                     RefreshTables();
+                    WaiterView waiterView = new WaiterView(/*employee,tableNr*/);
+                    waiterView.Show();
                 }
                 else if (dialogResult == DialogResult.No)
                 {
-                    button.BackColor = Color.Gainsboro;
+                    button.BackColor = Color.Green;
                 }
             }
-            else
+            else if (selectedTable.Status == TableStatus.Occupied)
             {
                 btnAddItem.Show();
                 btnPayForOrder.Show();

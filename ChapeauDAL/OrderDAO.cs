@@ -142,7 +142,7 @@ namespace ChapeauDAL
                 "WHERE Orders.Status < 5";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
-            List<Order> orders = ReadTablesRunningOrder(ExecuteSelectQuery(query, sqlParameters));
+            List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
             return orders;
         }
@@ -176,7 +176,7 @@ namespace ChapeauDAL
                 item.Name = (string)(dr["name"]);
                 item.Price = (double)(dr["price"]);
                 item.Type = (ItemType)(dr["Mealtype"]);
-                orderItem.Item = item;
+               // orderItem.Item = item;
 
                 if (currentOrdernr != (int)(dr["orderID"]))
                 {
@@ -186,15 +186,10 @@ namespace ChapeauDAL
                     order.EmployeeID = (int)(dr["employeeID"]);
                     order.TableNumber = (int)(dr["Tablenumber"]);
 
-                    if (dr["startTime"] != DBNull.Value)
+                    if (dr["Timetaken"] != DBNull.Value)
                     {
                         order.timeTaken = (DateTime)(dr["Timetaken"]);
                     }
-                    else
-                    {
-                        //order.timeTaken = null;
-                    }
-
 
                     order.orderItems.Add(orderItem);
                     currentOrdernr = order.OrderID;
