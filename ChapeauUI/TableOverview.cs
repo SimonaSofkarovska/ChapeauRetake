@@ -93,8 +93,9 @@ namespace ChapeauUI
                     foreach (OrderItem orderItem in order.orderItems)
                     {
                         ListViewItem li = new ListViewItem(orderItem.Name);
-                        li.SubItems.Add(orderItem.Quantity.ToString());
+                        li.SubItems.Add(orderItem.Status.ToString());
                         li.SubItems.Add(orderItem.OrderTime.ToString("HH:mm:ss"));
+                        li.SubItems.Add(order.TableNumber.ToString());
                         listViewTableOrder.Items.Add(li);
                         listViewTableOrder.Show();
                         Console.WriteLine();

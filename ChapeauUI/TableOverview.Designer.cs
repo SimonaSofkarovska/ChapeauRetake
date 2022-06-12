@@ -47,6 +47,9 @@ namespace ChapeauUI
             this.btnPayForOrder = new System.Windows.Forms.Button();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.listViewTableOrder = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
             this.readyTable1 = new System.Windows.Forms.PictureBox();
             this.preparingTable1 = new System.Windows.Forms.PictureBox();
             this.preparingTable2 = new System.Windows.Forms.PictureBox();
@@ -67,6 +70,7 @@ namespace ChapeauUI
             this.preparingTable7 = new System.Windows.Forms.PictureBox();
             this.readyTable7 = new System.Windows.Forms.PictureBox();
             this.readyTable6 = new System.Windows.Forms.PictureBox();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readyTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preparingTable1)).BeginInit();
@@ -284,12 +288,34 @@ namespace ChapeauUI
             // 
             // listViewTableOrder
             // 
+            this.listViewTableOrder.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4});
             this.listViewTableOrder.HideSelection = false;
-            this.listViewTableOrder.Location = new System.Drawing.Point(24, 57);
+            this.listViewTableOrder.Location = new System.Drawing.Point(3, 57);
             this.listViewTableOrder.Name = "listViewTableOrder";
-            this.listViewTableOrder.Size = new System.Drawing.Size(236, 329);
+            this.listViewTableOrder.Size = new System.Drawing.Size(277, 329);
             this.listViewTableOrder.TabIndex = 0;
             this.listViewTableOrder.UseCompatibleStateImageBehavior = false;
+            this.listViewTableOrder.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Item";
+            this.columnHeader1.Width = 90;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "status";
+            this.columnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeader2.Width = 70;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = " time";
+            this.columnHeader3.Width = 70;
             // 
             // readyTable1
             // 
@@ -512,6 +538,11 @@ namespace ChapeauUI
             this.readyTable6.TabStop = false;
             this.readyTable6.Tag = "6";
             // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "table";
+            this.columnHeader4.Width = 40;
+            // 
             // TableOverview
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -620,5 +651,9 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox readyTable7;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox readyTable6;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
