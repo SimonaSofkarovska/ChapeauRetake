@@ -1,3 +1,7 @@
 is_global = true
 build_property.RootNamespace = ChapeauUI
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\simon\source\repos\ChapeauRetake\ChapeauUI\
+=======
+build_property.ProjectDir = C:\UnivPrograms\1.4ProjectRetakke\ChapeauUI\
+>>>>>>> ee846926de5514c0ce583a62dad0d7bca8a34f13
