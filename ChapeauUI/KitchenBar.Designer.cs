@@ -62,6 +62,7 @@ namespace ChapeauUI
             this.columnHeader7,
             this.columnHeader8,
             this.columnHeader9});
+            this.lvOrderDetail.FullRowSelect = true;
             this.lvOrderDetail.GridLines = true;
             this.lvOrderDetail.HideSelection = false;
             this.lvOrderDetail.Location = new System.Drawing.Point(61, 455);
@@ -108,6 +109,7 @@ namespace ChapeauUI
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.lvOrders.FullRowSelect = true;
             this.lvOrders.GridLines = true;
             this.lvOrders.HideSelection = false;
             this.lvOrders.Location = new System.Drawing.Point(61, 191);

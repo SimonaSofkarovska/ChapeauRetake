@@ -15,7 +15,6 @@ namespace ChapeauUI
     public partial class KitchenBar : Form
     {
         OrderService orderService = new OrderService();
-        //private bool drinks = false;
         private Employee employee;
 
         public KitchenBar(Employee employee)
@@ -23,10 +22,6 @@ namespace ChapeauUI
             InitializeComponent();
             this.employee = employee;
 
-            //if (employee.Role == Role.Barman)
-            //{
-            //    drinks = true;
-            //}
 
             lblUser.Text = $"User: {employee.Name}";
 
@@ -63,7 +58,7 @@ namespace ChapeauUI
                 {
                     ListViewItem lv = new ListViewItem(order.OrderID.ToString());
                     lv.SubItems.Add(order.TableNumber.ToString());
-                    lv.SubItems.Add(order.timeTaken.ToString("HH:mm"));//maybe add the diff between time.now and timetaken
+                    lv.SubItems.Add(order.timeTaken.ToString("HH:mm"));//maybe add the diff between time.now and timetaken had problems while subtracting time.now cu timetaken
                     lv.SubItems.Add(order.EmployeeID.ToString());
                     lv.Tag = order;
                     lvOrders.Items.Add(lv);
@@ -209,7 +204,6 @@ namespace ChapeauUI
                     OrderItem item = (OrderItem)lvOrderDetail.SelectedItems[i].Tag;
                     item.Status = orderStatus;
                     orderService.UpdateStatus(item, order);
-                    
                 }
             }
             LoadOrders();
