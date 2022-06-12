@@ -206,8 +206,9 @@ namespace ChapeauUI
 
         private void CloseWindow()
         {
-            lstCurrentOrder.Items.Clear();
-            currentItems.Clear();
+            if (currentOrder.orderItems.Count == 0)
+                orderService.CancelOrder(currentOrder);
+
             this.Close();
         }
 

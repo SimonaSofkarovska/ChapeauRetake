@@ -50,5 +50,10 @@ namespace ChapeauLogic
         {
             orderDAO.UpdateOrderPrice(order);
         }
+
+        public void CancelOrder(Order order)
+        {
+            orderDAO.CancelOrder(order);
+        }
     }
 }

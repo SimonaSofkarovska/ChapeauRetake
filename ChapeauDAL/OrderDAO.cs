@@ -320,5 +320,13 @@ namespace ChapeauDAL
 
             ExecuteEditQuery(query, parameters);
         }
+        public void CancelOrder(Order order)
+        {
+            string query = "DELETE FROM Orders WHERE OrderID = @OrderID";
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("OrderID", order.OrderID);
+
+            ExecuteSelectQuery(query, parameters);
+        }
     }
 }
