@@ -26,7 +26,7 @@ namespace ChapeauDAL
         {
             string query = $"UPDATE OrderItem SET status = @status WHERE orderID = @orderID";
             SqlParameter[] sqlParameters = new SqlParameter[2];
-            sqlParameters[0] = new SqlParameter("state", orderStatus);
+            sqlParameters[0] = new SqlParameter("status", orderStatus);
             sqlParameters[1] = new SqlParameter("orderID", orderID);
 
             ExecuteEditQuery(query, sqlParameters);
