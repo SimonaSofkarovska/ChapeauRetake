@@ -92,6 +92,7 @@ namespace ChapeauDAL
         }
         public Order GetTablesCurrentOrder(int tableNumber)
         {
+
             string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
 
             SqlParameter[] parameters = new SqlParameter[0];
@@ -137,11 +138,6 @@ namespace ChapeauDAL
             return orders;
         }
 
-        /*SELECT Orderitem.OrderID, [Menu].name, [Status].Status, Orderitem.Quantity, Orders.Tablenumber, Orders.Timetaken, Orders.Tablenumber, Orders.EmployeeID FROM Orders
-JOIN Orderitem ON Orderitem.OrderID=Orders.OrderID
-JOIN Menu ON OrderItem.MenuID=Menu.ID
-JOIN [Status] ON Orderitem.Status=Status.ID
-        */
 
         public List<Order> GetOrders() // ordernr table, employee time
         {
@@ -161,20 +157,20 @@ JOIN [Status] ON Orderitem.Status=Status.ID
             }
 
         }
-        //public bool CheckOrderItemStatusOfOrder(int id)
-        //{
-        //    string query = $"SELECT * FROM OrderItem WHERE OrderID = @OrderID AND Status < 3";
-        //    SqlParameter[] sqlParameters = new SqlParameter[1];
-        //    sqlParameters[0] = new SqlParameter("@OrderID", id);
-        //    DataTable result = ExecuteSelectQuery(query, sqlParameters);
+        public bool CheckOrderItemStatusOfOrder(int id)
+        {
+            string query = $"SELECT * FROM OrderItem WHERE OrderID = @OrderID AND Status < 3";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@OrderID", id);
+            DataTable result = ExecuteSelectQuery(query, sqlParameters);
 
-        //    if (result == null || result.Rows.Count < 1) // need to check for empty query
-        //    {
-        //        return true;
-        //    }
+            if (result == null || result.Rows.Count < 1) // need to check for empty query
+            {
+                return true;
+            }
 
-        //    return false;
-        //}
+            return false;
+        }
 
         // this methode will help to update the status of an order  ruben needs to use this one
         public void UpdateOrderStatus(Order order)
