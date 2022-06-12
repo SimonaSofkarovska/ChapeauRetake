@@ -118,9 +118,9 @@ namespace ChapeauUI
             this.Quantity,
             this.Requests});
             this.lstCurrentOrder.HideSelection = false;
-            this.lstCurrentOrder.Location = new System.Drawing.Point(-1, 603);
+            this.lstCurrentOrder.Location = new System.Drawing.Point(0, 584);
             this.lstCurrentOrder.Name = "lstCurrentOrder";
-            this.lstCurrentOrder.Size = new System.Drawing.Size(812, 281);
+            this.lstCurrentOrder.Size = new System.Drawing.Size(810, 281);
             this.lstCurrentOrder.TabIndex = 9;
             this.lstCurrentOrder.UseCompatibleStateImageBehavior = false;
             this.lstCurrentOrder.View = System.Windows.Forms.View.Details;
@@ -133,7 +133,7 @@ namespace ChapeauUI
             // Quantity
             // 
             this.Quantity.Text = "Quantity";
-            this.Quantity.Width = 100;
+            this.Quantity.Width = 80;
             // 
             // Requests
             // 
