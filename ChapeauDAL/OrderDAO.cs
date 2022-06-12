@@ -100,7 +100,7 @@ namespace ChapeauDAL
 
             List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
 
-            if (orders[0] != null)
+            if (orders.Count <0)
                 return orders[0];
 
             return null;
