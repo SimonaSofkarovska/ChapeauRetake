@@ -178,13 +178,15 @@ namespace ChapeauDAL
             try
             {
                 //if (CheckOrderItemStatusOfOrder(order.OrderID))
-                    order.Status = OrderStatus.Ready;
-                    string query = $"UPDATE Orders set  Status = @Status  WHERE OrderID=@OrderID";
-                    SqlParameter[] sqlParameters = new SqlParameter[2];
-                    sqlParameters[0] = new SqlParameter("@OrderID", order.OrderID);
-                    sqlParameters[1] = new SqlParameter("@Status", order.Status);
+                
+                order.Status = OrderStatus.Ready;
+                string query = $"UPDATE Orders set  Status = @Status  WHERE OrderID=@OrderID";
+                SqlParameter[] sqlParameters = new SqlParameter[2];
+                sqlParameters[0] = new SqlParameter("@OrderID", order.OrderID);
+                sqlParameters[1] = new SqlParameter("@Status", order.Status);
 
-                    ExecuteEditQuery(query, sqlParameters);
+                ExecuteEditQuery(query, sqlParameters);
+                
             }
             catch (Exception)
             {

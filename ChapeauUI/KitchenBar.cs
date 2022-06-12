@@ -185,10 +185,12 @@ namespace ChapeauUI
                 DialogResult dialogResult = MessageBox.Show(message, headline, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    List<OrderItem> orderItems = orderService.GetOrderDetails(order);
+                    order.orderItems = orderService.GetOrderDetails(order);
+                    List<OrderItem> orderItems = Filter(order);
                     foreach (OrderItem item in orderItems)
                     {
                         item.Status = orderStatus;
+
                         orderService.UpdateStatus(item, order);
                     }
                 }
