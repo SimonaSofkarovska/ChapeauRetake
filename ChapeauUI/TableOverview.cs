@@ -89,6 +89,7 @@ namespace ChapeauUI
 
                 if (order != null)
                 {
+                    listViewTableOrder.Items.Clear();
                     foreach (OrderItem orderItem in order.orderItems)
                     {
                         ListViewItem li = new ListViewItem(orderItem.Name);
