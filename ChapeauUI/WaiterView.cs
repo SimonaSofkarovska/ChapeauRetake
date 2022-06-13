@@ -79,7 +79,8 @@ namespace ChapeauUI
                 currentOrder.orderItems.Add(orderItem);
             }
 
-
+            if (currentOrder.Status == OrderStatus.Ready)      //This method is only required when the current order was marked as ready
+                orderService.UpdateOrderStatus(currentOrder);
 
             CloseWindow();
         }

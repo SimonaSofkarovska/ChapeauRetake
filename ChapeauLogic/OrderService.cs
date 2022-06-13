@@ -42,6 +42,10 @@ namespace ChapeauLogic
         {
             orderDAO.UpdateStatus(orderItem, order);
         }
+        public void UpdateOrderStatus(Order order)   //update the status of the order when a new item is added after completing the order
+        {
+            orderDAO.UpdateOrderStatus(order);
+        }
         public void AddOrder(int employeeid, int tablenumber)
         {
             orderDAO.AddOrder(employeeid, tablenumber);
