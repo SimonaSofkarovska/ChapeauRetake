@@ -143,8 +143,8 @@ namespace ChapeauDAL
         {
             try
             {
-                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders ";
-                               //"WHERE Status < 3 ";
+                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
+                               "WHERE Status < 3 ";
                 //query += (drinks ? "> 21 " : "< 21 ");//changed this
 
 
@@ -177,16 +177,16 @@ namespace ChapeauDAL
         {
             try
             {
-                //if (CheckOrderItemStatusOfOrder(order.OrderID))
-                
-                order.Status = OrderStatus.Ready;
-                string query = $"UPDATE Orders set  Status = @Status  WHERE OrderID=@OrderID";
-                SqlParameter[] sqlParameters = new SqlParameter[2];
-                sqlParameters[0] = new SqlParameter("@OrderID", order.OrderID);
-                sqlParameters[1] = new SqlParameter("@Status", order.Status);
+                if (CheckOrderItemStatusOfOrder(order.OrderID))
+                {
+                    order.Status = OrderStatus.Ready;
+                    string query = $"UPDATE Orders set  Status = @Status  WHERE OrderID=@OrderID";
+                    SqlParameter[] sqlParameters = new SqlParameter[2];
+                    sqlParameters[0] = new SqlParameter("@OrderID", order.OrderID);
+                    sqlParameters[1] = new SqlParameter("@Status", order.Status);
 
-                ExecuteEditQuery(query, sqlParameters);
-                
+                    ExecuteEditQuery(query, sqlParameters);
+                }
             }
             catch (Exception)
             {
