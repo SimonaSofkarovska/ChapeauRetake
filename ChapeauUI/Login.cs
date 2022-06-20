@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ChapeauModel;
 using ChapeauLogic;
-
+using System.Security.Cryptography;
 
 namespace ChapeauUI
 {
@@ -23,30 +23,6 @@ namespace ChapeauUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            CheckUser(txtboxUsername.Text, txtboxPassword.Text);
-        }
-        //verify user
-        private void CheckUser(string username, string password)
-        {
-            Employee employee;
-            EmployeeService employeeService = new EmployeeService();
-
-            try
-            {
-                employee = employeeService.GetEmployee(username, password);
-            }
-            catch (Exception e)
-            {
-                Console.BackgroundColor = ConsoleColor.Red;
-                MessageBox.Show($"Oops, something went wrong!", e.Message); //think of error handling, username might not exist, database might not be connected
-                Console.ResetColor();
-                ActiveControl = txtboxPassword;
-                txtboxUsername.Text = string.Empty;
-                txtboxPassword.Text = string.Empty;
-                return;
-            }
-            
-
             CheckRole(txtboxUsername.Text, txtboxPassword.Text);
         }
 
@@ -55,10 +31,8 @@ namespace ChapeauUI
         {
             Employee employee ;
             EmployeeService employeeService = new EmployeeService();
-            employee = employeeService.GetEmployee(username, password);
+            employee = employeeService.Login(username, password);
 
-            if (employee != null)
-            {
                 if (employee.Role == Role.Manager || employee.Role == Role.Waiter)
                 {
                     Form tableOverview = new TableOverview(employee);
@@ -73,9 +47,13 @@ namespace ChapeauUI
                 }
                 else
                 {
-                    throw new Exception("Incorrect username or password, please,try again");
+                MessageBox.Show($"User does not exist!");
+                txtboxUsername.Text = string.Empty;
+                txtboxPassword.Text = string.Empty;
+                return;
                 }
-            }        
-        }
+
+        }    
+      
     }
 }

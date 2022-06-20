@@ -649,7 +649,6 @@ namespace ChapeauUI
         private System.Windows.Forms.PictureBox readyTable8;
         private System.Windows.Forms.PictureBox preparingTable7;
         private System.Windows.Forms.PictureBox readyTable7;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox readyTable6;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
