@@ -47,13 +47,13 @@ namespace ChapeauUI
             }
             
 
-            CheckRole(txtboxUsername.Text, txtboxPassword.Text);
+            //CheckRole(txtboxUsername.Text, txtboxPassword.Text);
         }
 
         //open the right forms according to the employee role
         private void CheckRole(string username, string password)
         {
-            Employee employee ;
+            Employee employee;
             EmployeeService employeeService = new EmployeeService();
             employee = employeeService.GetEmployee(username, password);
 
@@ -75,7 +75,7 @@ namespace ChapeauUI
                 {
                     throw new Exception("Incorrect username or password, please,try again");
                 }
-            }        
+            }
         }
     }
 }

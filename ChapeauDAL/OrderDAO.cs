@@ -155,7 +155,25 @@ namespace ChapeauDAL
                 WriteToErrorLog(ex.ToString());
                 return null;
             }
+        }
+        public List<Order> GetOrdersHistory() 
+        {
+            try
+            {
+                DateTime today = DateTime.Today;
+                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
+                               "WHERE Timetaken >= @Today ";
 
+                SqlParameter[] sqlParameters = new SqlParameter[1];
+                sqlParameters[0] = new SqlParameter("@Today", today);
+
+                return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
+            }
+            catch (Exception ex)
+            {
+                WriteToErrorLog(ex.ToString());
+                return null;
+            }
         }
         public bool CheckOrderItemStatusOfOrder(int id)
         {
@@ -211,14 +229,25 @@ namespace ChapeauDAL
             return orders;
         }
 
-        public List<OrderItem> GetOrderDetails(Order order)
+        public List<OrderItem> GetOrderDetails(Order order, string type)
         {
-            string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
+            string query = null;
+            if (type == "food")
+            {
+                query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
                             "FROM OrderItem " +
                             "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 ";
-                //query += (drinks ? "> 21 " : "< 21 ");//change this (to put it here)
-
+                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 AND Menu.Mealtype != 3 ";
+            }
+            else if (type == "drinks")
+            {
+                query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
+                            "FROM OrderItem " +
+                            "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 AND Menu.Mealtype = 3";
+            }
+            
+                //and history
 
             SqlParameter[] sqlParameters = new SqlParameter[1];
 
