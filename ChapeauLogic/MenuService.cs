@@ -19,5 +19,13 @@ namespace ChapeauLogic
         {
             return menuDAO.GetMenu();
         }
+        public List<MenuItem> GetFilteredMenu(ItemType itemType, MealType mealType)
+        {
+            return menuDAO.GetFilteredMenu(itemType, mealType);
+        }
+        public List<ItemType> GetItemTypes()
+        {
+            return menuDAO.GetItemTypes();
+        }
     }
 }

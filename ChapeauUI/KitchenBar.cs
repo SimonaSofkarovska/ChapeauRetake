@@ -16,12 +16,20 @@ namespace ChapeauUI
     {
         OrderService orderService = new OrderService();
         private Employee employee;
+        private string type = "";
 
         public KitchenBar(Employee employee)
         {
             InitializeComponent();
             this.employee = employee;
-
+            if (employee.Role == Role.Barman)
+                {
+                    this.type = "drinks";
+                }
+                else if (employee.Role == Role.Chef)
+                {
+                    this.type = "food";
+                }
 
             lblUser.Text = $"User: {employee.Name}";
 
@@ -30,6 +38,7 @@ namespace ChapeauUI
             btn_Undo.Enabled = false;
             LoadOrders();
         }
+        
         private void LoadOrders()
         {
             try
@@ -59,7 +68,7 @@ namespace ChapeauUI
                     ListViewItem lv = new ListViewItem(order.OrderID.ToString());
                     lv.SubItems.Add(order.TableNumber.ToString());
                     lv.SubItems.Add(order.timeTaken.ToString("HH:mm"));//maybe add the diff between time.now and timetaken had problems while subtracting time.now cu timetaken
-                    lv.SubItems.Add(order.EmployeeID.ToString());
+                    lv.SubItems.Add(order.EmployeeID.ToString());  //timespan
                     lv.Tag = order;
                     lvOrders.Items.Add(lv);
                 }
@@ -77,17 +86,18 @@ namespace ChapeauUI
             btn_Preparing.Enabled = ((lvOrders.SelectedItems.Count > 0));
             btn_Undo.Enabled = ((lvOrders.SelectedItems.Count > 0));
 
+
             if (lvOrders.SelectedItems.Count > 0)
             {
-                Order order = (Order)lvOrders.SelectedItems[0].Tag;
-                ShowOrderDetailes(order);
+                    Order order = (Order)lvOrders.SelectedItems[0].Tag;
+                ShowOrderDetailes(order, type);
             }
         }
-        private void ShowOrderDetailes(Order order)
+        private void ShowOrderDetailes(Order order, string type)
         {
             try
             {
-                List<OrderItem> orderItems = Filter(order);
+                List<OrderItem> orderItems = orderService.GetOrderDetails(order, type);
                 lvOrderDetail.Items.Clear();
 
                 foreach (OrderItem item in orderItems)
@@ -106,34 +116,34 @@ namespace ChapeauUI
                 ErrorProcess(exeption, "Something went wrong while loading the orders");
             }
         }
-        public List<OrderItem> Filter(Order order)
-        {
-            List<OrderItem> filterOI = new List<OrderItem>();
-            List<OrderItem> orderItems = orderService.GetOrderDetails(order);
-            if (employee.Role==Role.Barman)
-            {
-                foreach (OrderItem item in orderItems)
-                {
-                    if (item.MealType == MealType.Other)
-                    {
-                        filterOI.Add(item);
-                    }
-                }
+        //public List<OrderItem> Filter(Order order)
+        //{
+        //    List<OrderItem> filterOI = new List<OrderItem>();
+        //    List<OrderItem> orderItems = orderService.GetOrderDetails(order);
+        //    if (employee.Role==Role.Barman)
+        //    {
+        //        foreach (OrderItem item in orderItems)
+        //        {
+        //            if (item.MealType == MealType.Other)
+        //            {
+        //                filterOI.Add(item);
+        //            }
+        //        }
 
-            }
-            else
-            {
-                foreach(OrderItem item in orderItems)
-                {
-                    if (item.MealType != MealType.Other)
-                    {
-                        filterOI.Add(item);
-                    }
-                }
-            }
-            return filterOI;
+        //    }
+        //    else 
+        //    {
+        //        foreach(OrderItem item in orderItems)
+        //        {
+        //            if (item.MealType != MealType.Other)
+        //            {
+        //                filterOI.Add(item);
+        //            }
+        //        }
+        //    }
+        //    return filterOI;
 
-        }
+        //}
 
         private void ShowHeadline()
         {
@@ -144,7 +154,7 @@ namespace ChapeauUI
                 this.Text = "Bar";
                 lblwhat.Text = "Bar";
             }
-            else
+            else if (employee.Role == Role.Chef)
             {
                 this.Text = "Kitchen";
                 lblwhat.Text = "Kitchen";
@@ -179,14 +189,13 @@ namespace ChapeauUI
         private void ChangeItemStatus(string headline, string message, OrderStatus orderStatus)
         {
             Order order = (Order)lvOrders.SelectedItems[0].Tag;
-
             if (lvOrderDetail.SelectedItems.Count == 0)
             {
                 DialogResult dialogResult = MessageBox.Show(message, headline, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    order.orderItems = orderService.GetOrderDetails(order);
-                    List<OrderItem> orderItems = Filter(order);
+                    order.orderItems = orderService.GetOrderDetails(order, type);
+                    List<OrderItem> orderItems = orderService.GetOrderDetails(order, type);
                     foreach (OrderItem item in orderItems)
                     {
                         item.Status = orderStatus;
@@ -232,6 +241,26 @@ namespace ChapeauUI
 
         private void lblUser_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void btn_History_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Order> history = orderService.GetOrdersHistory();
+                if (history != null)
+                {
+                    //ErrorProcess("Something went wrong while loading the order history"); //throw exection for null orders
+                    ShowOrders(history);
+                }
+                
+            }
+            catch (Exception exeption)
+            {
+
+                ErrorProcess(exeption, "Something went wrong while loading the order history");
+            }
 
         }
     }

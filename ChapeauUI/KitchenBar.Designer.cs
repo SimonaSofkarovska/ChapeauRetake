@@ -51,6 +51,7 @@ namespace ChapeauUI
             this.btn_Undo = new System.Windows.Forms.Button();
             this.btn_Logout = new System.Windows.Forms.Button();
             this.btn_Preparing = new System.Windows.Forms.Button();
+            this.btn_History = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -199,7 +200,7 @@ namespace ChapeauUI
             // 
             this.btn_Refresh.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btn_Refresh.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_Refresh.Location = new System.Drawing.Point(446, 243);
+            this.btn_Refresh.Location = new System.Drawing.Point(446, 268);
             this.btn_Refresh.Name = "btn_Refresh";
             this.btn_Refresh.Size = new System.Drawing.Size(188, 63);
             this.btn_Refresh.TabIndex = 28;
@@ -243,11 +244,22 @@ namespace ChapeauUI
             this.btn_Preparing.UseVisualStyleBackColor = false;
             this.btn_Preparing.Click += new System.EventHandler(this.btn_Preparing_Click);
             // 
+            // btn_History
+            // 
+            this.btn_History.Location = new System.Drawing.Point(478, 191);
+            this.btn_History.Name = "btn_History";
+            this.btn_History.Size = new System.Drawing.Size(145, 58);
+            this.btn_History.TabIndex = 33;
+            this.btn_History.Text = "History";
+            this.btn_History.UseVisualStyleBackColor = true;
+            this.btn_History.Click += new System.EventHandler(this.btn_History_Click);
+            // 
             // KitchenBar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 821);
+            this.Controls.Add(this.btn_History);
             this.Controls.Add(this.btn_Preparing);
             this.Controls.Add(this.btn_Logout);
             this.Controls.Add(this.btn_Undo);
@@ -290,5 +302,6 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btn_Undo;
         private System.Windows.Forms.Button btn_Logout;
         private System.Windows.Forms.Button btn_Preparing;
+        private System.Windows.Forms.Button btn_History;
     }
 }

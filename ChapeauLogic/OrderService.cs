@@ -33,10 +33,13 @@ namespace ChapeauLogic
         {
             return orderDAO.GetOrders();
         }
-
-        public List<OrderItem> GetOrderDetails(Order order)
+        public List<Order> GetOrdersHistory()
         {
-            return orderDAO.GetOrderDetails(order);
+            return orderDAO.GetOrdersHistory();
+        }
+        public List<OrderItem> GetOrderDetails(Order order, string type)
+        {
+            return orderDAO.GetOrderDetails(order, type);
         }
         public void UpdateStatus(OrderItem orderItem, Order order)
         {

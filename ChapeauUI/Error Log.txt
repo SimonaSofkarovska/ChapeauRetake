@@ -170,3 +170,793 @@ Error Number:102,State:1,Class:15
 ClientConnectionId before routing:90e8a99d-5e8b-4307-b32e-3eb274ce913a
 Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
 
+Error occured at: 6/20/2022 5:28:26 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:dee37181-49b7-45e2-8ea5-05b2daa43f8f
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:3397f33a-c092-432c-9777-db63b3ae216b
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:30:27 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:99f7a6ba-e51f-4e26-958a-7f4331b8f25e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:d16d6e06-7cd3-45fc-858c-bcfa82a67384
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:31:44 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:86a6f40e-37b0-49c5-bf65-d667869372d8
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:b611eb9c-4ad7-4c61-a34e-f2aa404a469a
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:49 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:50 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:51 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:52 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:52 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:52 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:54 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:54 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:54 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:54 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:55 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:55 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:56 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:56 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:57 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:57 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:57 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:58 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:58 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:58 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:33:59 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:56692e1d-c20c-4005-9e4b-45746ddbf06e
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:0e4514ff-6c12-41e5-87aa-cec0e3f55c47
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:27 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:28 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:29 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:29 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:29 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:29 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:30 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:30 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:31 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:31 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:32 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:33 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:33 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:35 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:35 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:47 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:48 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:49 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:49 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:50 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:50 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:51 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:51 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:35:51 PM:
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@Today".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrdersHistory() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 170
+ClientConnectionId:f69e7efc-2144-43b8-b17d-742c47f14bd1
+Error Number:137,State:2,Class:15
+ClientConnectionId before routing:977a7cd4-30e0-49f0-94b3-f911c24db59f
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/20/2022 5:50:59 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 5:51:09 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 5:52:11 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 5:52:22 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 5:52:25 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 5:52:27 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 5:53:29 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 5:57:44 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 7:45:01 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 7:45:04 PM:
+Something went wrong while loading the orders
+Error occured at: 6/20/2022 7:45:27 PM:
+Something went wrong while loading the orders
