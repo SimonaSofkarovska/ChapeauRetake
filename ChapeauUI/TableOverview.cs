@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ChapeauLogic;
 using ChapeauModel;
 
+
 namespace ChapeauUI
 {
     public partial class TableOverview : Form
@@ -31,9 +32,10 @@ namespace ChapeauUI
 
             //create timer 
             Timer timer = new Timer();
-            timer.Interval = 5000;
+            timer.Interval = 2000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
+           
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -52,6 +54,7 @@ namespace ChapeauUI
             }
             btnAddItem.Tag = tableNr;
 
+            //get table from db
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
             if (selectedTable.Status != TableStatus.Occupied)
@@ -69,6 +72,7 @@ namespace ChapeauUI
                 {
                     button.BackColor = Color.Green;
                 }
+                
             }
             else if (selectedTable.Status == TableStatus.Occupied)
             {
@@ -84,9 +88,10 @@ namespace ChapeauUI
                     timerWaitTime.Start();
                 }
 
-                List<Order> orders = orderService.GetAllRunningOrders();
+                //List<Order> orders = orderService.GetAllRunningOrders();
+                selectedTable = tableService.GetTableByTableNR(tableNr);
 
-                if (order != null)
+                if (selectedTable != null)
                 {
                     listViewTableOrder.Items.Clear();
                     foreach (OrderItem orderItem in order.orderItems)
@@ -104,9 +109,7 @@ namespace ChapeauUI
         }
        
         void timer_Tick(object sender, EventArgs e)
-        {
-           
-
+        {           
             RefreshIcons();
             RefreshTables();
         }

@@ -26,7 +26,7 @@ namespace ChapeauDAL
         // written by Simona, getting the table by a number
         public Order GetOrderByTableNr(int tableNr)
         {
-            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Tablenumber=@Tablenumber AND Orders.Status = 1";
+            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE tableNR=@tableNR AND Orders.Status = 1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
 
