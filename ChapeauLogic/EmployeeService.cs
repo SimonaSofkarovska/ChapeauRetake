@@ -14,10 +14,9 @@ namespace ChapeauLogic
             employeeDAO = new EmployeeDAO();
         }
 
-        public Employee GetEmployee(string username, string password)
+        public Employee Login(string givenUsername, string givenPassword)
         {
-            Employee employee = employeeDAO.GetEmployee(username, password);
-            return employee;
+            return employeeDAO.Login(givenUsername, givenPassword);
         }
     }
 }

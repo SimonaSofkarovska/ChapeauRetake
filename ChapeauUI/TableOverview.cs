@@ -30,7 +30,7 @@ namespace ChapeauUI
             lblEmployee.Text = $"Signed in: {employee.Name} ({employee.Role})";
 
             //create timer 
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            Timer timer = new Timer();
             timer.Interval = 5000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
@@ -51,7 +51,6 @@ namespace ChapeauUI
                 tableNr = 1;
             }
             btnAddItem.Tag = tableNr;
-            btnSpecificTableOverview.Text = $"Table {tableNr}";
 
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
 
@@ -81,7 +80,7 @@ namespace ChapeauUI
                 {
                     Timer timerWaitTime = new Timer();
                     timerWaitTime.Tick += timer_Tick;
-                    timerWaitTime.Interval = 1000;
+                    timerWaitTime.Interval = 3000;
                     timerWaitTime.Start();
                 }
 
@@ -106,6 +105,8 @@ namespace ChapeauUI
        
         void timer_Tick(object sender, EventArgs e)
         {
+           
+
             RefreshIcons();
             RefreshTables();
         }
@@ -116,23 +117,29 @@ namespace ChapeauUI
             List<Table> tables = tableService.GetAllTables();
             Button[] buttons = new Button[] { btnTable1, btnSpecificTableOverview, btnTable3, btnTable4, btnTable5, btnTable6, btnTable7, btnTable8, btnTable9, btnTable10 };
 
-            int i = 0;
             foreach (Table table in tables)
             {
-                if (table.Status==TableStatus.Occupied)
+                foreach (Button button in buttons)
                 {
-                    buttons[i].BackColor = Color.Red;
-                }
-                else if (table.Status == TableStatus.Reserved)
-                {
-                    buttons[i].BackColor = Color.Orange;
-                }
-                else 
-                {
-                    buttons[i].BackColor = Color.Green;
-                }
+                    // Check if the button Tag matches the table number in the database
 
-                i++;
+                    if (button.Tag == table.TableNumber.ToString())
+                    {
+                        if (table.Status == TableStatus.Occupied)
+                        {
+                            button.BackColor = Color.Red;
+                        }
+                        else if (table.Status == TableStatus.Reserved)
+                        {
+                            button.BackColor = Color.Orange;
+                        }
+                        else
+                        {
+                            button.BackColor = Color.Green;
+                        }
+                    }                   
+                    
+                }
             }
         }
         //refresh the icons
@@ -166,10 +173,10 @@ namespace ChapeauUI
             catch
             {
                 Console.WriteLine("Could not refresh!");
-            }            
+            }
         }
 
-        private void readyButton_Click(object sender, EventArgs e)
+            private void readyButton_Click(object sender, EventArgs e)
         {
             //when the readyicon is clicked menas that the orderItem is ready to be served
 

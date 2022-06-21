@@ -23,59 +23,36 @@ namespace ChapeauUI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            CheckUser(txtboxUsername.Text, txtboxPassword.Text);
+            CheckRole(txtboxUsername.Text, txtboxPassword.Text);
         }
         //verify user
-        private void CheckUser(string username, string password)
+        //open the right forms according to the employee role
+        private void CheckRole(string username, string password)
         {
             Employee employee;
             EmployeeService employeeService = new EmployeeService();
+            employee = employeeService.Login(username, password);
 
-            try
+            if (employee.Role == Role.Manager || employee.Role == Role.Waiter)
             {
-                employee = employeeService.GetEmployee(username, password);
+                Form tableOverview = new TableOverview(employee);
+                this.Hide();
+                tableOverview.ShowDialog();
             }
-            catch (Exception e)
+            else if (employee.Role == Role.Barman || employee.Role == Role.Chef)
             {
-                Console.BackgroundColor = ConsoleColor.Red;
-                MessageBox.Show($"Oops, something went wrong!", e.Message); //think of error handling, username might not exist, database might not be connected
-                Console.ResetColor();
-                ActiveControl = txtboxPassword;
+                KitchenBar kitchenBarView = new KitchenBar(employee);
+                this.Hide();
+                kitchenBarView.Show();
+            }
+            else
+            {
+                MessageBox.Show($"User does not exist!");
                 txtboxUsername.Text = string.Empty;
                 txtboxPassword.Text = string.Empty;
                 return;
             }
-            
 
-            CheckRole(txtboxUsername.Text, txtboxPassword.Text);
-        }
-
-        //open the right forms according to the employee role
-        private void CheckRole(string username, string password)
-        {
-            Employee employee ;
-            EmployeeService employeeService = new EmployeeService();
-            employee = employeeService.GetEmployee(username, password);
-
-            if (employee != null)
-            {
-                if (employee.Role == Role.Manager || employee.Role == Role.Waiter)
-                {
-                    Form tableOverview = new TableOverview(employee);
-                    this.Hide();
-                    tableOverview.ShowDialog();
-                }
-                else if (employee.Role == Role.Barman || employee.Role == Role.Chef)
-                {
-                    KitchenBar kitchenBarView = new KitchenBar(employee);
-                    this.Hide();
-                    kitchenBarView.Show();
-                }
-                else
-                {
-                    throw new Exception("Incorrect username or password, please,try again");
-                }
-            }        
         }
     }
 }
