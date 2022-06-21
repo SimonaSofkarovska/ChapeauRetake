@@ -64,7 +64,7 @@ namespace ChapeauUI
                 {
                     tableService.UpdateStateTableToTrue(tableNr);
                     button.BackColor = Color.Red;                    
-                    WaiterView waiterView = new WaiterView(/*employee, selectedTable*/);
+                    WaiterView waiterView = new WaiterView(employee, selectedTable);
                     waiterView.Show();
                     RefreshTables();
                 }
