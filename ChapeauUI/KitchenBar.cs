@@ -154,7 +154,7 @@ namespace ChapeauUI
                 this.Text = "Bar";
                 lblwhat.Text = "Bar";
             }
-            else
+            else if (employee.Role == Role.Chef)
             {
                 this.Text = "Kitchen";
                 lblwhat.Text = "Kitchen";

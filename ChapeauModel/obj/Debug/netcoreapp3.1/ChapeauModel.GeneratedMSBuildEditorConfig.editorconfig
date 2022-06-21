@@ -1,7 +1,3 @@
 is_global = true
 build_property.RootNamespace = ChapeauModel
-<<<<<<< HEAD
 build_property.ProjectDir = C:\UnivPrograms\1.4ProjectRetakke\ChapeauModel\
-=======
-build_property.ProjectDir = C:\Users\ruben\Documents\GitHub\ChapeauRetake\ChapeauModel\
->>>>>>> 34f6ee05e683542b3b480474c62e20a065b88a08
