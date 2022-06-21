@@ -31,7 +31,6 @@ namespace ChapeauUI
         {
             this.cmbMenu = new System.Windows.Forms.ComboBox();
             this.txtComments = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnAddItem = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,50 +42,33 @@ namespace ChapeauUI
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCloseWindow = new System.Windows.Forms.Button();
             this.btnEditItem = new System.Windows.Forms.Button();
-            this.menuFilter = new System.Windows.Forms.MenuStrip();
-            this.startersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.entrementsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mainsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dessertsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.drinksToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.beerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.wineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.spiritdrinkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.coffeaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmbQuantity = new System.Windows.Forms.ComboBox();
             this.btnLunchMenu = new System.Windows.Forms.RadioButton();
             this.btnDinnerMenu = new System.Windows.Forms.RadioButton();
-            this.menuFilter.SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbMenuFilter = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // cmbMenu
             // 
             this.cmbMenu.FormattingEnabled = true;
-            this.cmbMenu.Location = new System.Drawing.Point(154, 235);
+            this.cmbMenu.Location = new System.Drawing.Point(48, 279);
             this.cmbMenu.Name = "cmbMenu";
-            this.cmbMenu.Size = new System.Drawing.Size(347, 28);
+            this.cmbMenu.Size = new System.Drawing.Size(453, 28);
             this.cmbMenu.TabIndex = 1;
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(154, 349);
+            this.txtComments.Location = new System.Drawing.Point(48, 396);
             this.txtComments.Name = "txtComments";
-            this.txtComments.Size = new System.Drawing.Size(347, 27);
+            this.txtComments.Size = new System.Drawing.Size(453, 27);
             this.txtComments.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 238);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Select menu item:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(560, 238);
+            this.label2.Location = new System.Drawing.Point(559, 256);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 7;
@@ -94,7 +76,7 @@ namespace ChapeauUI
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(333, 453);
+            this.btnAddItem.Location = new System.Drawing.Point(333, 485);
             this.btnAddItem.Name = "btnAddItem";
             this.btnAddItem.Size = new System.Drawing.Size(168, 77);
             this.btnAddItem.TabIndex = 0;
@@ -105,7 +87,7 @@ namespace ChapeauUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 352);
+            this.label3.Location = new System.Drawing.Point(48, 373);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(123, 20);
             this.label3.TabIndex = 8;
@@ -118,7 +100,7 @@ namespace ChapeauUI
             this.Quantity,
             this.Requests});
             this.lstCurrentOrder.HideSelection = false;
-            this.lstCurrentOrder.Location = new System.Drawing.Point(0, 584);
+            this.lstCurrentOrder.Location = new System.Drawing.Point(0, 599);
             this.lstCurrentOrder.Name = "lstCurrentOrder";
             this.lstCurrentOrder.Size = new System.Drawing.Size(810, 281);
             this.lstCurrentOrder.TabIndex = 9;
@@ -162,7 +144,7 @@ namespace ChapeauUI
             // 
             // btnCloseWindow
             // 
-            this.btnCloseWindow.Location = new System.Drawing.Point(18, 143);
+            this.btnCloseWindow.Location = new System.Drawing.Point(48, 31);
             this.btnCloseWindow.Name = "btnCloseWindow";
             this.btnCloseWindow.Size = new System.Drawing.Size(129, 43);
             this.btnCloseWindow.TabIndex = 13;
@@ -180,84 +162,10 @@ namespace ChapeauUI
             this.btnEditItem.UseVisualStyleBackColor = true;
             this.btnEditItem.Click += new System.EventHandler(this.btnEditItem_Click);
             // 
-            // menuFilter
-            // 
-            this.menuFilter.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuFilter.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.startersToolStripMenuItem,
-            this.entrementsToolStripMenuItem,
-            this.mainsToolStripMenuItem,
-            this.dessertsToolStripMenuItem,
-            this.drinksToolStripMenuItem,
-            this.beerToolStripMenuItem,
-            this.wineToolStripMenuItem,
-            this.spiritdrinkToolStripMenuItem,
-            this.coffeaToolStripMenuItem});
-            this.menuFilter.Location = new System.Drawing.Point(0, 0);
-            this.menuFilter.Name = "menuFilter";
-            this.menuFilter.Size = new System.Drawing.Size(810, 28);
-            this.menuFilter.TabIndex = 16;
-            this.menuFilter.Text = "menuStrip1";
-            this.menuFilter.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuFilter_ItemClicked);
-            // 
-            // startersToolStripMenuItem
-            // 
-            this.startersToolStripMenuItem.Name = "startersToolStripMenuItem";
-            this.startersToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
-            this.startersToolStripMenuItem.Text = "Starters";
-            // 
-            // entrementsToolStripMenuItem
-            // 
-            this.entrementsToolStripMenuItem.Name = "entrementsToolStripMenuItem";
-            this.entrementsToolStripMenuItem.Size = new System.Drawing.Size(97, 24);
-            this.entrementsToolStripMenuItem.Text = "Entrements";
-            // 
-            // mainsToolStripMenuItem
-            // 
-            this.mainsToolStripMenuItem.Name = "mainsToolStripMenuItem";
-            this.mainsToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
-            this.mainsToolStripMenuItem.Text = "Mains";
-            // 
-            // dessertsToolStripMenuItem
-            // 
-            this.dessertsToolStripMenuItem.Name = "dessertsToolStripMenuItem";
-            this.dessertsToolStripMenuItem.Size = new System.Drawing.Size(78, 24);
-            this.dessertsToolStripMenuItem.Text = "Desserts";
-            // 
-            // drinksToolStripMenuItem
-            // 
-            this.drinksToolStripMenuItem.Name = "drinksToolStripMenuItem";
-            this.drinksToolStripMenuItem.Size = new System.Drawing.Size(93, 24);
-            this.drinksToolStripMenuItem.Text = "Soft drinks";
-            // 
-            // beerToolStripMenuItem
-            // 
-            this.beerToolStripMenuItem.Name = "beerToolStripMenuItem";
-            this.beerToolStripMenuItem.Size = new System.Drawing.Size(53, 24);
-            this.beerToolStripMenuItem.Text = "Beer";
-            // 
-            // wineToolStripMenuItem
-            // 
-            this.wineToolStripMenuItem.Name = "wineToolStripMenuItem";
-            this.wineToolStripMenuItem.Size = new System.Drawing.Size(57, 24);
-            this.wineToolStripMenuItem.Text = "Wine";
-            // 
-            // spiritdrinkToolStripMenuItem
-            // 
-            this.spiritdrinkToolStripMenuItem.Name = "spiritdrinkToolStripMenuItem";
-            this.spiritdrinkToolStripMenuItem.Size = new System.Drawing.Size(101, 24);
-            this.spiritdrinkToolStripMenuItem.Text = "Spirit drinks";
-            // 
-            // coffeaToolStripMenuItem
-            // 
-            this.coffeaToolStripMenuItem.Name = "coffeaToolStripMenuItem";
-            this.coffeaToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
-            this.coffeaToolStripMenuItem.Text = "Coffee/Tea";
-            // 
             // cmbQuantity
             // 
             this.cmbQuantity.FormattingEnabled = true;
-            this.cmbQuantity.Location = new System.Drawing.Point(660, 235);
+            this.cmbQuantity.Location = new System.Drawing.Point(559, 279);
             this.cmbQuantity.Name = "cmbQuantity";
             this.cmbQuantity.Size = new System.Drawing.Size(48, 28);
             this.cmbQuantity.TabIndex = 17;
@@ -265,7 +173,7 @@ namespace ChapeauUI
             // btnLunchMenu
             // 
             this.btnLunchMenu.AutoSize = true;
-            this.btnLunchMenu.Location = new System.Drawing.Point(210, 64);
+            this.btnLunchMenu.Location = new System.Drawing.Point(559, 169);
             this.btnLunchMenu.Name = "btnLunchMenu";
             this.btnLunchMenu.Size = new System.Drawing.Size(109, 24);
             this.btnLunchMenu.TabIndex = 18;
@@ -277,7 +185,7 @@ namespace ChapeauUI
             // btnDinnerMenu
             // 
             this.btnDinnerMenu.AutoSize = true;
-            this.btnDinnerMenu.Location = new System.Drawing.Point(423, 64);
+            this.btnDinnerMenu.Location = new System.Drawing.Point(559, 128);
             this.btnDinnerMenu.Name = "btnDinnerMenu";
             this.btnDinnerMenu.Size = new System.Drawing.Size(115, 24);
             this.btnDinnerMenu.TabIndex = 19;
@@ -286,15 +194,44 @@ namespace ChapeauUI
             this.btnDinnerMenu.UseVisualStyleBackColor = true;
             this.btnDinnerMenu.CheckedChanged += new System.EventHandler(this.btnDinnerMenu_CheckedChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 256);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 20);
+            this.label1.TabIndex = 20;
+            this.label1.Text = "Menu";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(48, 130);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(83, 20);
+            this.label4.TabIndex = 22;
+            this.label4.Text = "Filter menu";
+            // 
+            // cmbMenuFilter
+            // 
+            this.cmbMenuFilter.FormattingEnabled = true;
+            this.cmbMenuFilter.Location = new System.Drawing.Point(48, 168);
+            this.cmbMenuFilter.Name = "cmbMenuFilter";
+            this.cmbMenuFilter.Size = new System.Drawing.Size(151, 28);
+            this.cmbMenuFilter.TabIndex = 23;
+            this.cmbMenuFilter.SelectedIndexChanged += new System.EventHandler(this.cmbMenuFilter_SelectedIndexChanged);
+            // 
             // WaiterView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(810, 1055);
+            this.Controls.Add(this.cmbMenuFilter);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDinnerMenu);
             this.Controls.Add(this.btnLunchMenu);
             this.Controls.Add(this.cmbQuantity);
-            this.Controls.Add(this.menuFilter);
             this.Controls.Add(this.btnEditItem);
             this.Controls.Add(this.btnCloseWindow);
             this.Controls.Add(this.btnSubmit);
@@ -305,12 +242,9 @@ namespace ChapeauUI
             this.Controls.Add(this.txtComments);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbMenu);
-            this.Controls.Add(this.label1);
             this.Name = "WaiterView";
             this.Text = "WaiterView";
             this.Load += new System.EventHandler(this.WaiterView_Load);
-            this.menuFilter.ResumeLayout(false);
-            this.menuFilter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -319,7 +253,6 @@ namespace ChapeauUI
         #endregion
         private System.Windows.Forms.ComboBox cmbMenu;
         private System.Windows.Forms.TextBox txtComments;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAddItem;
         private System.Windows.Forms.Label label3;
@@ -331,18 +264,11 @@ namespace ChapeauUI
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCloseWindow;
         private System.Windows.Forms.Button btnEditItem;
-        private System.Windows.Forms.MenuStrip menuFilter;
-        private System.Windows.Forms.ToolStripMenuItem startersToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem entrementsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mainsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem dessertsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem drinksToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem beerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem wineToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem spiritdrinkToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem coffeaToolStripMenuItem;
         private System.Windows.Forms.ComboBox cmbQuantity;
         private System.Windows.Forms.RadioButton btnLunchMenu;
         private System.Windows.Forms.RadioButton btnDinnerMenu;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbMenuFilter;
     }
 }

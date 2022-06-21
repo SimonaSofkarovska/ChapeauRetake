@@ -19,7 +19,7 @@ namespace ChapeauUI
         private List<OrderItem> currentItems;
         private Order currentOrder;
 
-        public WaiterView(Employee employee, Table table)
+        public WaiterView(/*Employee employee, Table table*/)
         {
             InitializeComponent();
             menuService = new MenuService();
@@ -27,13 +27,13 @@ namespace ChapeauUI
             orderItemService = new OrderItemService();
             currentItems = new List<OrderItem>();
 
-            if (orderService.GetTablesCurrentOrder(table.TableNumber) == null)
-                orderService.AddOrder(employee.Id, table.TableNumber);
+            if (orderService.GetTablesCurrentOrder(/*table.TableNumber*/ 1) == null)
+                orderService.AddOrder(/*employee.Id, table.TableNumber*/1, 1);
 
-            currentOrder = orderService.GetTablesCurrentOrder(table.TableNumber);
+            currentOrder = orderService.GetTablesCurrentOrder(/*table.TableNumber*/ 1);
 
-            this.employee = employee;
-            this.table = table;
+            /*this.employee = employee;
+            this.table = table;*/
         }
 
         private void WaiterView_Load(object sender, EventArgs e)
@@ -43,11 +43,13 @@ namespace ChapeauUI
             for (int i = 1; i <= 10; i++)
                 cmbQuantity.Items.Add($"{i}");
 
+            cmbMenuFilter.DataSource = Enum.GetValues(typeof(ItemType));
+
             cmbQuantity.SelectedIndex = 0;
 
             btnLunchMenu.Checked = true;
 
-            LoadMenu(1);
+            LoadMenu();
         }
 
         private void btnAddItem_Click(object sender, EventArgs e)
@@ -149,60 +151,23 @@ namespace ChapeauUI
             lstCurrentOrder.Items.Add(listItem);
         }
 
-        private void LoadMenu(int menuItemType)
+        private void LoadMenu()
         {
-            List<MenuItem> menu = menuService.GetMenu();
-            List<MenuItem> filteredMenu = new List<MenuItem>();
-            int mealType = 0;
+            MealType mealType;
             if (btnLunchMenu.Checked)
-                mealType = 2;
+                mealType = MealType.Dinner;
             else
-                mealType = 1;
+                mealType = MealType.Lunch;
 
-            for (int i = 0; i < menu.Count; i++)
+            cmbMenu.DataSource = menuService.GetFilteredMenu((ItemType)cmbMenuFilter.SelectedItem, mealType);
+
+            /*for (int i = 0; i < menu.Count; i++)
             {
-                if (menu[i].Type == (ItemType)menuItemType && menu[i].MealType != (MealType)mealType)   //Mealtype has three values, 1 lunch, 2 dinner and 3 others (drinks). if lunch menu is checked, items with mealtype 2 (dinner items) are not added
+                if (menu[i].Type == (ItemType)menuItemType && menu[i].MealType != (MealType)mealType)   //Mealtype has three values, lunch, dinner and others (drinks). If lunch menu is checked, items with mealtype dinner are not added
                     filteredMenu.Add(menu[i]);
             }
 
-            cmbMenu.DataSource = filteredMenu;
-        }
-
-        private void menuFilter_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            int itemType = 0;
-            switch (e.ClickedItem.Text)
-            {
-                case "Starters":
-                    itemType = 1;
-                    break;
-                case "Entrements":
-                    itemType = 2;
-                    break;
-                case "Mains":
-                    itemType = 3;
-                    break;
-                case "Desserts":
-                    itemType = 4;
-                    break;
-                case "Soft drinks":
-                    itemType = 5;
-                    break;
-                case "Beer":
-                    itemType = 6;
-                    break;
-                case "Wine":
-                    itemType = 7;
-                    break;
-                case "Spirit drinks":
-                    itemType = 8;
-                    break;
-                case "Coffee/Tea":
-                    itemType = 9;
-                    break;
-            }
-
-            LoadMenu(itemType);
+            cmbMenu.DataSource = filteredMenu;*/
         }
 
         private void CloseWindow()
@@ -218,7 +183,7 @@ namespace ChapeauUI
             if(btnLunchMenu.Checked == true)
                 btnDinnerMenu.Checked = false;
 
-            LoadMenu(1);
+            LoadMenu();
         }
 
         private void btnDinnerMenu_CheckedChanged(object sender, EventArgs e)
@@ -226,7 +191,47 @@ namespace ChapeauUI
             if (btnDinnerMenu.Checked == true)
                 btnLunchMenu.Checked = false;
 
-            LoadMenu(1);
+            LoadMenu();
+        }
+
+        private void cmbMenuFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*ItemType itemType;
+            switch (cmbMenuFilter.SelectedItem)
+            {
+                case "Starters":
+                    itemType = ItemType.Starters;
+                    break;
+                case "Entrements":
+                    itemType = ItemType.Entremet;
+                    break;
+                case "Mains":
+                    itemType = ItemType.Main;
+                    break;
+                case "Desserts":
+                    itemType = ItemType.Desert;
+                    break;
+                case "Soft drinks":
+                    itemType = ItemType.Softdrink;
+                    break;
+                case "Beer":
+                    itemType = ItemType.Beer;
+                    break;
+                case "Wine":
+                    itemType = ItemType.wine;
+                    break;
+                case "Spirit drinks":
+                    itemType = ItemType.Spiritdrink;
+                    break;
+                case "Coffee/Tea":
+                    itemType = ItemType.CoffeeTea;
+                    break;
+                default:
+                    itemType = ItemType.Starters;
+                    break;
+            }*/
+
+            LoadMenu();
         }
     }
 }
