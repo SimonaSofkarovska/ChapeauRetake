@@ -24,7 +24,7 @@ namespace ChapeauModel
     }
     public enum ItemType
     {
-        Starters = 1, Main, Entremet, Desert, Softdrink, Beer, wine, Spiritdrink, CoffeeTea
+        Starters = 1, Main, Entremets, Desserts, Softdrinks, Beers, wines, Spiritdrinks, CoffeeTea
     }
     public enum MealType
     {

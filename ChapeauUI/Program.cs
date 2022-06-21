@@ -17,8 +17,13 @@ namespace ChapeauUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+<<<<<<< HEAD
             Application.Run(new Login());
             //Application.Run(new KitchenBar());
+=======
+            //Application.Run(new Login());
+            Application.Run(new WaiterView());
+>>>>>>> 34f6ee05e683542b3b480474c62e20a065b88a08
         }
     }
 }

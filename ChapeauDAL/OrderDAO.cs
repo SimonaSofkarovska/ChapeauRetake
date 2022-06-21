@@ -12,29 +12,16 @@ namespace ChapeauDAL
        
         public void AddOrder(int employeeid, int tablenumber)
         {
-            Int32 orderID = 0;
-            string sql =
+            string query =
                 "INSERT INTO Orders(Timetaken, EmployeeID, Totalprice, Status, Tablenumber) " +
-                "VALUES(@Timetaken, @EmployeeID, @Totalprice, @Status, @Tablenumber)" +
-                "SELECT CAST(scope_identity() AS int) ";
+                "VALUES(@Timetaken, @EmployeeID, 0, 1, @Tablenumber)";
 
-            using (SqlConnection conn = new SqlConnection("Data Source=2122chapeau.database.windows.net; Initial Catalog = db_retake1; User = group_retake1; Password = vQj?(jK8uN19"))
-            {
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.Add("@Timetaken", SqlDbType.DateTime);
-                cmd.Parameters["@Timetaken"].Value = DateTime.Now;
-                cmd.Parameters.Add("@EmployeeID", SqlDbType.Int);
-                cmd.Parameters["@EmployeeID"].Value = employeeid;
-                cmd.Parameters.Add("@Totalprice", SqlDbType.Float);
-                cmd.Parameters["@Totalprice"].Value = 0;
-                cmd.Parameters.Add("@Status", SqlDbType.Int);
-                cmd.Parameters["@Status"].Value = 1;
-                cmd.Parameters.Add("@Tablenumber", SqlDbType.Int);
-                cmd.Parameters["@Tablenumber"].Value = tablenumber;
+            SqlParameter[] parameters = new SqlParameter[3];
+            parameters[0] = new SqlParameter("Timetaken", DateTime.Now);
+            parameters[1] = new SqlParameter("EmployeeID", employeeid);
+            parameters[2] = new SqlParameter("Tablenumber", tablenumber);
 
-                conn.Open();
-                orderID = (Int32)cmd.ExecuteScalar();
-            }
+            ExecuteEditQuery(query, parameters);
         }
         // written by Simona, getting the table by a number
         public Order GetOrderByTableNr(int tableNr)
