@@ -21,10 +21,10 @@ namespace ChapeauDAL
         public List<MenuItem> GetFilteredMenu(ItemType itemType, MealType mealType)
         {
             string query =
-                "SELECT Menu.ID, Menu.name, Itemtype.type, menu.price, Mealtype.type FROM Menu" +
-                "JOIN Itemtype ON Menu.[type] = Itemtype.ID" +
-                "JOIN Mealtype ON Menu.Mealtype = Mealtype.ID" +
-                "WHERE Itemtype.type = @itemType AND Mealtype.type != mealType";    //Mealtype has three values, lunch, dinner and others (drinks). If lunch menu is checked, items with mealtype dinner are not added
+                "SELECT Menu.ID, Menu.name, Itemtype.type, Menu.price, Mealtype.Mealtype FROM Menu " +
+                "JOIN Itemtype ON Menu.type = Itemtype.ID " +
+                "JOIN Mealtype ON Menu.Mealtype = Mealtype.ID " +
+                "WHERE Itemtype.type = @itemType AND Mealtype.Mealtype != @mealType ";    //Mealtype has three values, lunch, dinner and others (drinks). If lunch menu is checked, items with mealtype dinner are not added
 
             SqlParameter[] parameters = new SqlParameter[2];
             parameters[0] = new SqlParameter("itemType", itemType.ToString());
@@ -59,8 +59,8 @@ namespace ChapeauDAL
 
                 item.ID = (int)(dr["ID"]);
                 item.Name = (string)(dr["name"]);
-                item.Type = (ItemType)dr["type"];
-                item.MealType = (MealType)(dr["Mealtype"]);
+                item.Type = Enum.Parse<ItemType>(dr["type"].ToString());
+                item.MealType = Enum.Parse<MealType>(dr["Mealtype"].ToString());
                 item.Price = (double)dr["price"];
 
                 Menu.Add(item);

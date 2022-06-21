@@ -173,7 +173,7 @@ namespace ChapeauUI
             // btnLunchMenu
             // 
             this.btnLunchMenu.AutoSize = true;
-            this.btnLunchMenu.Location = new System.Drawing.Point(559, 169);
+            this.btnLunchMenu.Location = new System.Drawing.Point(559, 128);
             this.btnLunchMenu.Name = "btnLunchMenu";
             this.btnLunchMenu.Size = new System.Drawing.Size(109, 24);
             this.btnLunchMenu.TabIndex = 18;
@@ -185,7 +185,7 @@ namespace ChapeauUI
             // btnDinnerMenu
             // 
             this.btnDinnerMenu.AutoSize = true;
-            this.btnDinnerMenu.Location = new System.Drawing.Point(559, 128);
+            this.btnDinnerMenu.Location = new System.Drawing.Point(559, 169);
             this.btnDinnerMenu.Name = "btnDinnerMenu";
             this.btnDinnerMenu.Size = new System.Drawing.Size(115, 24);
             this.btnDinnerMenu.TabIndex = 19;

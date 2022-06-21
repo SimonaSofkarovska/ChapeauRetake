@@ -19,7 +19,7 @@ namespace ChapeauUI
         private List<OrderItem> currentItems;
         private Order currentOrder;
 
-        public WaiterView(/*Employee employee, Table table*/)
+        public WaiterView(Employee employee, Table table)
         {
             InitializeComponent();
             menuService = new MenuService();
@@ -27,13 +27,13 @@ namespace ChapeauUI
             orderItemService = new OrderItemService();
             currentItems = new List<OrderItem>();
 
-            if (orderService.GetTablesCurrentOrder(/*table.TableNumber*/ 1) == null)
-                orderService.AddOrder(/*employee.Id, table.TableNumber*/1, 1);
+            if (orderService.GetTablesCurrentOrder(table.TableNumber) == null)
+                orderService.AddOrder(employee.Id, table.TableNumber);
 
-            currentOrder = orderService.GetTablesCurrentOrder(/*table.TableNumber*/ 1);
+            currentOrder = orderService.GetTablesCurrentOrder(table.TableNumber);
 
-            /*this.employee = employee;
-            this.table = table;*/
+            this.employee = employee;
+            this.table = table;
         }
 
         private void WaiterView_Load(object sender, EventArgs e)
@@ -160,14 +160,6 @@ namespace ChapeauUI
                 mealType = MealType.Lunch;
 
             cmbMenu.DataSource = menuService.GetFilteredMenu((ItemType)cmbMenuFilter.SelectedItem, mealType);
-
-            /*for (int i = 0; i < menu.Count; i++)
-            {
-                if (menu[i].Type == (ItemType)menuItemType && menu[i].MealType != (MealType)mealType)   //Mealtype has three values, lunch, dinner and others (drinks). If lunch menu is checked, items with mealtype dinner are not added
-                    filteredMenu.Add(menu[i]);
-            }
-
-            cmbMenu.DataSource = filteredMenu;*/
         }
 
         private void CloseWindow()
@@ -196,41 +188,6 @@ namespace ChapeauUI
 
         private void cmbMenuFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*ItemType itemType;
-            switch (cmbMenuFilter.SelectedItem)
-            {
-                case "Starters":
-                    itemType = ItemType.Starters;
-                    break;
-                case "Entrements":
-                    itemType = ItemType.Entremet;
-                    break;
-                case "Mains":
-                    itemType = ItemType.Main;
-                    break;
-                case "Desserts":
-                    itemType = ItemType.Desert;
-                    break;
-                case "Soft drinks":
-                    itemType = ItemType.Softdrink;
-                    break;
-                case "Beer":
-                    itemType = ItemType.Beer;
-                    break;
-                case "Wine":
-                    itemType = ItemType.wine;
-                    break;
-                case "Spirit drinks":
-                    itemType = ItemType.Spiritdrink;
-                    break;
-                case "Coffee/Tea":
-                    itemType = ItemType.CoffeeTea;
-                    break;
-                default:
-                    itemType = ItemType.Starters;
-                    break;
-            }*/
-
             LoadMenu();
         }
     }
