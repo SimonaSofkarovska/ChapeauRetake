@@ -53,35 +53,32 @@ namespace ChapeauUI
             // cmbMenu
             // 
             this.cmbMenu.FormattingEnabled = true;
-            this.cmbMenu.Location = new System.Drawing.Point(42, 209);
-            this.cmbMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbMenu.Location = new System.Drawing.Point(48, 279);
             this.cmbMenu.Name = "cmbMenu";
-            this.cmbMenu.Size = new System.Drawing.Size(397, 23);
+            this.cmbMenu.Size = new System.Drawing.Size(453, 28);
             this.cmbMenu.TabIndex = 1;
             // 
             // txtComments
             // 
-            this.txtComments.Location = new System.Drawing.Point(42, 297);
-            this.txtComments.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtComments.Location = new System.Drawing.Point(48, 396);
             this.txtComments.Name = "txtComments";
-            this.txtComments.Size = new System.Drawing.Size(397, 23);
+            this.txtComments.Size = new System.Drawing.Size(453, 27);
             this.txtComments.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(489, 192);
+            this.label2.Location = new System.Drawing.Point(559, 256);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 15);
+            this.label2.Size = new System.Drawing.Size(69, 20);
             this.label2.TabIndex = 7;
             this.label2.Text = "Amount: ";
             // 
             // btnAddItem
             // 
-            this.btnAddItem.Location = new System.Drawing.Point(291, 364);
-            this.btnAddItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAddItem.Location = new System.Drawing.Point(333, 485);
             this.btnAddItem.Name = "btnAddItem";
-            this.btnAddItem.Size = new System.Drawing.Size(147, 58);
+            this.btnAddItem.Size = new System.Drawing.Size(168, 77);
             this.btnAddItem.TabIndex = 0;
             this.btnAddItem.Text = "Add item";
             this.btnAddItem.UseVisualStyleBackColor = true;
@@ -90,9 +87,9 @@ namespace ChapeauUI
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(42, 280);
+            this.label3.Location = new System.Drawing.Point(48, 373);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(97, 15);
+            this.label3.Size = new System.Drawing.Size(123, 20);
             this.label3.TabIndex = 8;
             this.label3.Text = "Special requests: ";
             // 
@@ -104,10 +101,9 @@ namespace ChapeauUI
             this.Requests});
             this.lstCurrentOrder.GridLines = true;
             this.lstCurrentOrder.HideSelection = false;
-            this.lstCurrentOrder.Location = new System.Drawing.Point(0, 449);
-            this.lstCurrentOrder.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstCurrentOrder.Location = new System.Drawing.Point(12, 599);
             this.lstCurrentOrder.Name = "lstCurrentOrder";
-            this.lstCurrentOrder.Size = new System.Drawing.Size(709, 212);
+            this.lstCurrentOrder.Size = new System.Drawing.Size(786, 281);
             this.lstCurrentOrder.TabIndex = 9;
             this.lstCurrentOrder.UseCompatibleStateImageBehavior = false;
             this.lstCurrentOrder.View = System.Windows.Forms.View.Details;
@@ -115,7 +111,7 @@ namespace ChapeauUI
             // ItemName
             // 
             this.ItemName.Text = "Item name";
-            this.ItemName.Width = 300;
+            this.ItemName.Width = 250;
             // 
             // Quantity
             // 
@@ -129,10 +125,9 @@ namespace ChapeauUI
             // 
             // btnRemove
             // 
-            this.btnRemove.Location = new System.Drawing.Point(287, 692);
-            this.btnRemove.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRemove.Location = new System.Drawing.Point(328, 923);
             this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(136, 63);
+            this.btnRemove.Size = new System.Drawing.Size(155, 84);
             this.btnRemove.TabIndex = 10;
             this.btnRemove.Text = "Remove item";
             this.btnRemove.UseVisualStyleBackColor = true;
@@ -140,10 +135,9 @@ namespace ChapeauUI
             // 
             // btnSubmit
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(522, 692);
-            this.btnSubmit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnSubmit.Location = new System.Drawing.Point(597, 923);
             this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(136, 63);
+            this.btnSubmit.Size = new System.Drawing.Size(155, 84);
             this.btnSubmit.TabIndex = 11;
             this.btnSubmit.Text = "Submit order";
             this.btnSubmit.UseVisualStyleBackColor = true;
@@ -151,10 +145,9 @@ namespace ChapeauUI
             // 
             // btnCloseWindow
             // 
-            this.btnCloseWindow.Location = new System.Drawing.Point(42, 23);
-            this.btnCloseWindow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCloseWindow.Location = new System.Drawing.Point(48, 31);
             this.btnCloseWindow.Name = "btnCloseWindow";
-            this.btnCloseWindow.Size = new System.Drawing.Size(113, 32);
+            this.btnCloseWindow.Size = new System.Drawing.Size(129, 43);
             this.btnCloseWindow.TabIndex = 13;
             this.btnCloseWindow.Text = "Close ";
             this.btnCloseWindow.UseVisualStyleBackColor = true;
@@ -162,10 +155,9 @@ namespace ChapeauUI
             // 
             // btnEditItem
             // 
-            this.btnEditItem.Location = new System.Drawing.Point(65, 692);
-            this.btnEditItem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnEditItem.Location = new System.Drawing.Point(74, 923);
             this.btnEditItem.Name = "btnEditItem";
-            this.btnEditItem.Size = new System.Drawing.Size(136, 63);
+            this.btnEditItem.Size = new System.Drawing.Size(155, 84);
             this.btnEditItem.TabIndex = 14;
             this.btnEditItem.Text = "Edit";
             this.btnEditItem.UseVisualStyleBackColor = true;
@@ -174,19 +166,17 @@ namespace ChapeauUI
             // cmbQuantity
             // 
             this.cmbQuantity.FormattingEnabled = true;
-            this.cmbQuantity.Location = new System.Drawing.Point(489, 209);
-            this.cmbQuantity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbQuantity.Location = new System.Drawing.Point(559, 279);
             this.cmbQuantity.Name = "cmbQuantity";
-            this.cmbQuantity.Size = new System.Drawing.Size(42, 23);
+            this.cmbQuantity.Size = new System.Drawing.Size(47, 28);
             this.cmbQuantity.TabIndex = 17;
             // 
             // btnLunchMenu
             // 
             this.btnLunchMenu.AutoSize = true;
-            this.btnLunchMenu.Location = new System.Drawing.Point(489, 96);
-            this.btnLunchMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLunchMenu.Location = new System.Drawing.Point(559, 128);
             this.btnLunchMenu.Name = "btnLunchMenu";
-            this.btnLunchMenu.Size = new System.Drawing.Size(92, 19);
+            this.btnLunchMenu.Size = new System.Drawing.Size(109, 24);
             this.btnLunchMenu.TabIndex = 18;
             this.btnLunchMenu.TabStop = true;
             this.btnLunchMenu.Text = "Lunch menu";
@@ -196,10 +186,9 @@ namespace ChapeauUI
             // btnDinnerMenu
             // 
             this.btnDinnerMenu.AutoSize = true;
-            this.btnDinnerMenu.Location = new System.Drawing.Point(489, 127);
-            this.btnDinnerMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDinnerMenu.Location = new System.Drawing.Point(559, 169);
             this.btnDinnerMenu.Name = "btnDinnerMenu";
-            this.btnDinnerMenu.Size = new System.Drawing.Size(94, 19);
+            this.btnDinnerMenu.Size = new System.Drawing.Size(115, 24);
             this.btnDinnerMenu.TabIndex = 19;
             this.btnDinnerMenu.TabStop = true;
             this.btnDinnerMenu.Text = "Dinner menu";
@@ -209,36 +198,35 @@ namespace ChapeauUI
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(42, 192);
+            this.label1.Location = new System.Drawing.Point(48, 256);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.Size = new System.Drawing.Size(46, 20);
             this.label1.TabIndex = 20;
             this.label1.Text = "Menu";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 98);
+            this.label4.Location = new System.Drawing.Point(48, 131);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.Size = new System.Drawing.Size(83, 20);
             this.label4.TabIndex = 22;
             this.label4.Text = "Filter menu";
             // 
             // cmbMenuFilter
             // 
             this.cmbMenuFilter.FormattingEnabled = true;
-            this.cmbMenuFilter.Location = new System.Drawing.Point(42, 126);
-            this.cmbMenuFilter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbMenuFilter.Location = new System.Drawing.Point(48, 168);
             this.cmbMenuFilter.Name = "cmbMenuFilter";
-            this.cmbMenuFilter.Size = new System.Drawing.Size(133, 23);
+            this.cmbMenuFilter.Size = new System.Drawing.Size(151, 28);
             this.cmbMenuFilter.TabIndex = 23;
             this.cmbMenuFilter.SelectedIndexChanged += new System.EventHandler(this.cmbMenuFilter_SelectedIndexChanged);
             // 
             // WaiterView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(709, 791);
+            this.ClientSize = new System.Drawing.Size(810, 1055);
             this.Controls.Add(this.cmbMenuFilter);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label1);
@@ -255,7 +243,6 @@ namespace ChapeauUI
             this.Controls.Add(this.txtComments);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.cmbMenu);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "WaiterView";
             this.Text = "WaiterView";
             this.Load += new System.EventHandler(this.WaiterView_Load);

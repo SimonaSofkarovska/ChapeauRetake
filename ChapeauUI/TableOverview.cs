@@ -18,7 +18,8 @@ namespace ChapeauUI
         private OrderService orderService;
         private Order order;
         private OrderItemService orderItemService;
-        private Table selectedTable;
+        private Table selectedTable;    //Made it a private field so btnAddItem can access the selected table
+
         public TableOverview(Employee employee)
         {
             tableService = new TableService();
@@ -60,7 +61,7 @@ namespace ChapeauUI
             //btnAddItem.Tag = tableNr;
 
             //get table from db
-             selectedTable = tableService.GetTableByTableNR(tableNr);
+            this.selectedTable = tableService.GetTableByTableNR(tableNr);
             Console.WriteLine(selectedTable);
             if (selectedTable.Status != TableStatus.Occupied)
             {
@@ -221,6 +222,16 @@ namespace ChapeauUI
                 order = orderService.GetOrderByTableNR(tableNR);
                 orderItemService.UpdateOrderState(tableNR, order.OrderID);
                 icon.Hide();
+            }
+        }
+
+        private void btnAddItem_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show($"Do you want to add new items to the order for table {this.selectedTable.TableNumber}", "Add item", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                WaiterView waiterView = new WaiterView(employee, this.selectedTable);
+                waiterView.Show();
             }
         }
     }
