@@ -960,3 +960,37 @@ Error occured at: 6/20/2022 7:45:04 PM:
 Something went wrong while loading the orders
 Error occured at: 6/20/2022 7:45:27 PM:
 Something went wrong while loading the orders
+Error occured at: 6/22/2022 10:16:38 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'RIGHT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrders() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 140
+ClientConnectionId:5995d289-90e5-44b7-ac65-86a5933692de
+Error Number:156,State:1,Class:15
+ClientConnectionId before routing:53b85b73-a7f5-46ef-9709-201f3fb6a88c
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/22/2022 10:17:22 PM:
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near the keyword 'LEFT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at ChapeauDAL.BaseDAO.ExecuteSelectQuery(String query, SqlParameter[] sqlParameters) in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\BaseDAO.cs:line 76
+   at ChapeauDAL.OrderDAO.GetOrders() in C:\UnivPrograms\1.4ProjectRetakke\ChapeauDAL\OrderDAO.cs:line 139
+ClientConnectionId:c148e7ce-7f9a-4954-a495-84d1d5d07e25
+Error Number:156,State:1,Class:15
+ClientConnectionId before routing:07e2c89a-b78f-44fc-a916-71f119af0876
+Routing Destination:d50a1335697d.tr22123.westeurope1-a.worker.database.windows.net,11027
+
+Error occured at: 6/22/2022 10:25:21 PM:
+Something went wrong while loading the orders

@@ -37,6 +37,10 @@ namespace ChapeauLogic
         {
             return orderDAO.GetOrdersHistory();
         }
+        public List<OrderItem> GetOrderDetailsHistory(Order order, string type)
+        {
+            return orderDAO.GetOrderDetailsHistory(order, type);
+        }
         public List<OrderItem> GetOrderDetails(Order order, string type)
         {
             return orderDAO.GetOrderDetails(order, type);
