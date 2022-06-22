@@ -18,7 +18,7 @@ namespace ChapeauUI
         private OrderService orderService;
         private Order order;
         private OrderItemService orderItemService;
-        private Table selectedTable;
+        private Table selectedTable;    //Made it a private field so btnAddItem can access the selected table
 
         public TableOverview(Employee employee)
         {
