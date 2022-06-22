@@ -78,7 +78,7 @@ namespace ChapeauUI
             if (currentOrder.Status == OrderStatus.Ready)      //This method is only required when the current order was marked as ready
                 orderService.UpdateOrderStatus(currentOrder);
 
-            CloseWindow();
+            this.Close();
         }
 
         private void btnRemove_Click(object sender, EventArgs e)
