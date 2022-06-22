@@ -283,6 +283,7 @@ namespace ChapeauUI
             this.columnHeader2,
             this.columnHeader3,
             this.columnHeader4});
+            this.listViewTableOrder.GridLines = true;
             this.listViewTableOrder.HideSelection = false;
             this.listViewTableOrder.Location = new System.Drawing.Point(3, 57);
             this.listViewTableOrder.Name = "listViewTableOrder";
