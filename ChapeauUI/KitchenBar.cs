@@ -17,6 +17,7 @@ namespace ChapeauUI
         OrderService orderService = new OrderService();
         private Employee employee;
         private string type = "";
+        private bool isShowingHistory = false;
 
         public KitchenBar(Employee employee)
         {
@@ -41,6 +42,7 @@ namespace ChapeauUI
         
         private void LoadOrders()
         {
+            isShowingHistory = false;
             try
             {
                 ShowHeadline();
@@ -86,7 +88,6 @@ namespace ChapeauUI
             btn_Preparing.Enabled = ((lvOrders.SelectedItems.Count > 0));
             btn_Undo.Enabled = ((lvOrders.SelectedItems.Count > 0));
 
-
             if (lvOrders.SelectedItems.Count > 0)
             {
                     Order order = (Order)lvOrders.SelectedItems[0].Tag;
@@ -97,7 +98,16 @@ namespace ChapeauUI
         {
             try
             {
-                List<OrderItem> orderItems = orderService.GetOrderDetails(order, type);
+                List<OrderItem> orderItems = null;
+                if (isShowingHistory)
+                {
+                    orderItems = orderService.GetOrderDetailsHistory(order, type);
+                }
+                else
+                {
+                    orderItems = orderService.GetOrderDetails(order, type);
+                }
+
                 lvOrderDetail.Items.Clear();
 
                 foreach (OrderItem item in orderItems)
@@ -182,10 +192,12 @@ namespace ChapeauUI
             this.Hide();
             login.Closed += (s, args) => this.Close();
         }
+
         private void btn_Preparing_Click(object sender, EventArgs e)
         {
             ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as PREPARING.\nProceed?", OrderStatus.Preparing);
         }
+
         private void ChangeItemStatus(string headline, string message, OrderStatus orderStatus)
         {
             Order order = (Order)lvOrders.SelectedItems[0].Tag;
@@ -249,6 +261,7 @@ namespace ChapeauUI
             try
             {
                 List<Order> history = orderService.GetOrdersHistory();
+                isShowingHistory = true;
                 if (history != null)
                 {
                     //ErrorProcess("Something went wrong while loading the order history"); //throw exection for null orders
@@ -261,6 +274,7 @@ namespace ChapeauUI
 
                 ErrorProcess(exeption, "Something went wrong while loading the order history");
             }
+
 
         }
     }

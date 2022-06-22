@@ -246,12 +246,14 @@ namespace ChapeauUI
             // 
             // btn_History
             // 
-            this.btn_History.Location = new System.Drawing.Point(478, 191);
+            this.btn_History.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btn_History.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_History.Location = new System.Drawing.Point(446, 191);
             this.btn_History.Name = "btn_History";
-            this.btn_History.Size = new System.Drawing.Size(145, 58);
+            this.btn_History.Size = new System.Drawing.Size(188, 52);
             this.btn_History.TabIndex = 33;
             this.btn_History.Text = "History";
-            this.btn_History.UseVisualStyleBackColor = true;
+            this.btn_History.UseVisualStyleBackColor = false;
             this.btn_History.Click += new System.EventHandler(this.btn_History_Click);
             // 
             // KitchenBar

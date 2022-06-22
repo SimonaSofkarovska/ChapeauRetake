@@ -113,7 +113,7 @@ namespace ChapeauDAL
             return orders;
         }
         // written by Simona
-        public List<Order> GetAllRunningOrders(int tableNr)
+        public Order GetTablesRunningOrder(int tableNr)
         {
             string query = "SELECT Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
                 "JOIN OrderItem ON Orders.Orderid = OrderItem.OrderID " +
@@ -124,7 +124,10 @@ namespace ChapeauDAL
             sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
             List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
-            return orders;
+            if (orders.Count > 0)
+                return orders[0];
+
+            return null;
         }
         public List<Order> GetRunningOrders()
         {
@@ -147,7 +150,6 @@ namespace ChapeauDAL
             {
                 string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
                                "WHERE Status < 3 ";
-                //query += (drinks ? "> 21 " : "< 21 ");//changed this
 
 
                 return ReadOrders(ExecuteSelectQuery(query));
@@ -162,12 +164,13 @@ namespace ChapeauDAL
         {
             try
             {
-                DateTime today = DateTime.Today;
-                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID FROM Orders " +
-                               "WHERE Timetaken >= @Today ";
+                string query = "SELECT Orderid, Tablenumber, Timetaken, EmployeeID, Status FROM Orders " +
+                               "WHERE Timetaken >= @today AND STATUS >= 3";
 
-                SqlParameter[] sqlParameters = new SqlParameter[1];
-                sqlParameters[0] = new SqlParameter("@Today", today);
+                SqlParameter[] sqlParameters =
+                {
+                    new SqlParameter("@today", DateTime.Today)
+                };
 
                 return ReadOrders(ExecuteSelectQuery(query, sqlParameters));
             }
@@ -246,14 +249,39 @@ namespace ChapeauDAL
                 query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
                             "FROM OrderItem " +
                             "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 AND Menu.Mealtype = 3";
+                            "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 AND Menu.Mealtype = 3 ";
             }
-            
                 //and history
 
             SqlParameter[] sqlParameters = new SqlParameter[1];
 
             sqlParameters[0] = new SqlParameter("@ID", order.OrderID);
+            return ReadOrderItem(ExecuteSelectQuery(query, sqlParameters));
+        }
+        public List<OrderItem> GetOrderDetailsHistory(Order order, string type)
+        {
+            string query = null;
+            if (type == "food")
+            {
+                query = $"SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
+                            "FROM OrderItem " +
+                            "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                            "WHERE OrderItem.OrderID = @ID AND Menu.Mealtype != 3";
+            }
+            else if (type == "drinks")
+            {
+                query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, Menu.Type, Menu.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
+                            "FROM OrderItem " +
+                            "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                            "WHERE OrderItem.OrderID = @ID AND Menu.Mealtype = 3 ";
+            }
+            //and history
+
+            SqlParameter[] sqlParameters =
+            {
+                new SqlParameter("@ID", order.OrderID)
+            };
+
             return ReadOrderItem(ExecuteSelectQuery(query, sqlParameters));
         }
 
