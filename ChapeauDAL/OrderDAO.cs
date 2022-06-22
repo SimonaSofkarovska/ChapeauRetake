@@ -302,7 +302,7 @@ namespace ChapeauDAL
         //    ExecuteEditQuery(query, sqlParameters);
         //}
 
-        public List<OrderItem> GetRunningOrder(int tableNr)
+        public List<OrderItem> GetRunningOrder()
         {
             //string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, OrderItem.Type, OrderItem.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
             //    "FROM OrderItem " +
@@ -314,11 +314,12 @@ namespace ChapeauDAL
             //    new SqlParameter("OrderID", order.OrderID),
             //};
             
-            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Tablenumber=@Tablenumber AND Orders.Status = 1";
-            SqlParameter[] sqlParameters = new SqlParameter[1];
-            sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
-            return OrderItem(ExecuteSelectQuery(query, sqlParameters));
-           // List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+            string query = $"select  Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Orders.Status < 5";
+            SqlParameter[] sqlParameters = new SqlParameter[0];
+            //sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
+            List<OrderItem> order =  OrderItem(ExecuteSelectQuery(query, sqlParameters));
+            return order;
+
         }
         private List<OrderItem> OrderItem(DataTable dataTable)
         {
@@ -333,7 +334,6 @@ namespace ChapeauDAL
                     orderItem.Requests = (string)dr["Requests"].ToString();
                     orderItem.OrderTime = (DateTime)dr["Timetaken"];
                     orderItem.ID = (int)dr["MenuID"];
-                    orderItem.MealType = (MealType)((int)dr["Mealtype"]);
                 };
                 OrderItems.Add(orderItem);
             }

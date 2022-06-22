@@ -52,11 +52,11 @@ namespace ChapeauUI
             Console.WriteLine(button.Tag); 
             int tableNr = Convert.ToInt32(button.Tag);
             Console.WriteLine(tableNr);
-            //if (tableNr < 1)
-            //{
-            //    tableNr = 1;
-            //}
-            //btnAddItem.Tag = tableNr;
+            if (tableNr < 1)
+            {
+                tableNr = 1;
+            }
+            btnAddItem.Tag = tableNr;
 
             //get table from db
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
@@ -95,24 +95,25 @@ namespace ChapeauUI
                 List<Order> orders = orderService.GetAllRunningOrders();
                 selectedTable = tableService.GetTableByTableNR(tableNr);
 
-                if (selectedTable != null)
+               // if (selectedTable != null)
                 {
-                    List<OrderItem> orderItems = new List<OrderItem>();
-                    // Get order from the tableNr.
-                    orderItems = orderService.GetRunningOrder(tableNr);
 
+                    List<Order> orderOfTable = orderService.GetAllRunningOrders();
                     listViewTableOrder.Items.Clear();
 
                     // Show the orderedItems from the Order class.
-                    foreach (OrderItem o in orderItems)
+                    //if (order != null)
                     {
-                        ListViewItem li = new ListViewItem(o.Name);
-                        li.SubItems.Add(o.Status.ToString());
-                        li.SubItems.Add(o.OrderID.ToString("HH:mm:ss"));
-                        li.SubItems.Add(o.TableNumber.ToString());
-                        listViewTableOrder.Items.Add(li);
-                        listViewTableOrder.Show();
-                        Console.WriteLine();
+                        foreach (OrderItem o in order.orderItems)
+                        {
+                            ListViewItem li = new ListViewItem(o.Name);
+                            li.SubItems.Add(o.Status.ToString());
+                            li.SubItems.Add(o.OrderTime.ToString("HH:mm:ss"));
+                            li.SubItems.Add(o.TableNumber.ToString());
+                            listViewTableOrder.Items.Add(li);
+                            listViewTableOrder.Show();
+                            Console.WriteLine();
+                        }
                     }
                     
                 }
