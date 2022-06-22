@@ -94,24 +94,23 @@ namespace ChapeauUI
                     timerWaitTime.Start();
                 }
 
-                List<Order> orders = orderService.GetAllRunningOrders(tableNr);
                 selectedTable = tableService.GetTableByTableNR(tableNr);
 
                 if (selectedTable != null)
                 {
 
-                    List<Order> orderOfTable = orderService.GetAllRunningOrders(tableNr);
+                    Order orderOfTable = orderService.GetTablesRunningOrder(tableNr);
                     listViewTableOrder.Items.Clear();
 
                     // Show the orderedItems from the Order class.
-                    if (order != null)
+                    if (orderOfTable != null)
                     {
-                        foreach (OrderItem o in order.orderItems)
+                        foreach (OrderItem o in orderOfTable.orderItems)
                         {
                             ListViewItem li = new ListViewItem(o.Name);
                             li.SubItems.Add(o.Status.ToString());
                             li.SubItems.Add(o.OrderTime.ToString("HH:mm:ss"));
-                            li.SubItems.Add(order.TableNumber.ToString());
+                            li.SubItems.Add(orderOfTable.TableNumber.ToString());
                             listViewTableOrder.Items.Add(li);
                             listViewTableOrder.Show();
                             Console.WriteLine();

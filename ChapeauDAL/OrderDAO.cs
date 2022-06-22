@@ -113,7 +113,7 @@ namespace ChapeauDAL
             return orders;
         }
         // written by Simona
-        public List<Order> GetAllRunningOrders(int tableNr)
+        public Order GetTablesRunningOrder(int tableNr)
         {
             string query = "SELECT Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
                 "JOIN OrderItem ON Orders.Orderid = OrderItem.OrderID " +
@@ -124,7 +124,10 @@ namespace ChapeauDAL
             sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
             List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
-            return orders;
+            if (orders.Count > 0)
+                return orders[0];
+
+            return null;
         }
         public List<Order> GetRunningOrders()
         {
