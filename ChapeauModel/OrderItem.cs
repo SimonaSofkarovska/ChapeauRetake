@@ -14,8 +14,6 @@ namespace ChapeauModel
 
         public int Quantity { get; set; }
         public DateTime OrderTime { get; set; }
-        public string Comment { get; set; }
-        public int TableNumber { get; set; }
         public List<OrderItem> orderItems { get; set; }
 
         public OrderItem() {    /*  :)  */  }

@@ -18,7 +18,7 @@ namespace ChapeauUI
         private OrderService orderService;
         private Order order;
         private OrderItemService orderItemService;
-        private Table selectedTable;
+        private Table selectedTable;    //Made it a private field so btnAddItem can access the selected table
 
         public TableOverview(Employee employee)
         {
@@ -54,11 +54,11 @@ namespace ChapeauUI
             Console.WriteLine(button.Tag); 
             int tableNr = Convert.ToInt32(button.Tag);
             Console.WriteLine(tableNr);
-            if (tableNr < 1)
-            {
-                tableNr = 1;
-            }
-            btnAddItem.Tag = tableNr;
+            //if (tableNr < 1)
+            //{
+            //    tableNr = 1;
+            //}
+            //btnAddItem.Tag = tableNr;
 
             //get table from db
             this.selectedTable = tableService.GetTableByTableNR(tableNr);
@@ -94,24 +94,23 @@ namespace ChapeauUI
                     timerWaitTime.Start();
                 }
 
-                List<Order> orders = orderService.GetAllRunningOrders();
                 selectedTable = tableService.GetTableByTableNR(tableNr);
 
                 if (selectedTable != null)
                 {
 
-                    List<Order> orderOfTable = orderService.GetAllRunningOrders();
+                    Order orderOfTable = orderService.GetTablesRunningOrder(tableNr);
                     listViewTableOrder.Items.Clear();
 
                     // Show the orderedItems from the Order class.
-                    if (order != null)
+                    if (orderOfTable != null)
                     {
-                        foreach (OrderItem o in order.orderItems)
+                        foreach (OrderItem o in orderOfTable.orderItems)
                         {
                             ListViewItem li = new ListViewItem(o.Name);
                             li.SubItems.Add(o.Status.ToString());
                             li.SubItems.Add(o.OrderTime.ToString("HH:mm:ss"));
-                            li.SubItems.Add(o.TableNumber.ToString());
+                            li.SubItems.Add(orderOfTable.TableNumber.ToString());
                             listViewTableOrder.Items.Add(li);
                             listViewTableOrder.Show();
                             Console.WriteLine();
@@ -172,10 +171,13 @@ namespace ChapeauUI
             PictureBox[] readyIcons = new PictureBox[] { readyTable1, readyTable2, readyTable3, readyTable4, readyTable5, readyTable6, readyTable7, readyTable8, readyTable9, readyTable10 };
             PictureBox[] preparingIcons = new PictureBox[] { preparingTable1, preparingTable2, preparingTable3, preparingTable4, preparingTable5, preparingTable6, preparingTable7, preparingTable8, preparingTable9, preparingTable10 };
 
+           
+
             //get all orders from db 
             OrderService orderService = new OrderService();
-            List<Order> runningOrders = orderService.GetAllRunningOrders();
-            
+            // List<Order> runningOrders = orderService.GetAllRunningOrders(selectedTable.TableNumber);
+            List<Order> runningOrders = orderService.GetRunningOrders();
+
             try
             {
                 order = runningOrders[0];
