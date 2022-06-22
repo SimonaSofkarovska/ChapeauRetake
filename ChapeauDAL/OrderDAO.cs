@@ -113,14 +113,28 @@ namespace ChapeauDAL
             return orders;
         }
         // written by Simona
-        public List<Order> GetAllRunningOrders()
+        public List<Order> GetAllRunningOrders(int tableNr)
         {
             string query = "SELECT Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
                 "JOIN OrderItem ON Orders.Orderid = OrderItem.OrderID " +
                 "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                "WHERE Orders.Status < 5";
+                "WHERE Tablenumber = @Tablenumber AND Orders.Status < 5";
+
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
+            List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+
+            return orders;
+        }
+        public List<Order> GetRunningOrders()
+        {
+            string query = "SELECT Orderitem.OrderID, Orders.EmployeeID, Orders.Tablenumber, Orders.Timetaken, Orderitem.MenuID, Orderitem.Quantity, Orderitem.Status, Orderitem.Requests, Menu.name, Menu.type, Menu.Mealtype, Menu.price FROM Orders " +
+                "JOIN OrderItem ON Orders.Orderid = OrderItem.OrderID " +
+                "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+                "WHERE  Orders.Status < 5";
 
             SqlParameter[] sqlParameters = new SqlParameter[0];
+
             List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
 
             return orders;
