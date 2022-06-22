@@ -62,5 +62,10 @@ namespace ChapeauLogic
         {
             orderDAO.CancelOrder(order);
         }
+
+        public List<OrderItem> GetRunningOrder(int tableNR)
+        {
+            return orderDAO.GetRunningOrder(tableNR);
+        }
     }
 }

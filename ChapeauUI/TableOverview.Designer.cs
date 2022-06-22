@@ -50,6 +50,7 @@ namespace ChapeauUI
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.readyTable1 = new System.Windows.Forms.PictureBox();
             this.preparingTable1 = new System.Windows.Forms.PictureBox();
             this.preparingTable2 = new System.Windows.Forms.PictureBox();
@@ -70,7 +71,6 @@ namespace ChapeauUI
             this.preparingTable7 = new System.Windows.Forms.PictureBox();
             this.readyTable7 = new System.Windows.Forms.PictureBox();
             this.readyTable6 = new System.Windows.Forms.PictureBox();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.readyTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.preparingTable1)).BeginInit();
@@ -103,7 +103,6 @@ namespace ChapeauUI
             this.btnTable1.Size = new System.Drawing.Size(120, 70);
             this.btnTable1.TabIndex = 11;
             this.btnTable1.Tag = "1";
-            this.btnTable1.Text = "1";
             this.btnTable1.UseVisualStyleBackColor = false;
             this.btnTable1.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -116,7 +115,6 @@ namespace ChapeauUI
             this.btnSpecificTableOverview.Size = new System.Drawing.Size(120, 70);
             this.btnSpecificTableOverview.TabIndex = 21;
             this.btnSpecificTableOverview.Tag = "2";
-            this.btnSpecificTableOverview.Text = "2";
             this.btnSpecificTableOverview.UseVisualStyleBackColor = false;
             this.btnSpecificTableOverview.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -129,7 +127,6 @@ namespace ChapeauUI
             this.btnTable3.Size = new System.Drawing.Size(120, 70);
             this.btnTable3.TabIndex = 22;
             this.btnTable3.Tag = "3";
-            this.btnTable3.Text = "3";
             this.btnTable3.UseVisualStyleBackColor = false;
             this.btnTable3.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -142,7 +139,6 @@ namespace ChapeauUI
             this.btnTable4.Size = new System.Drawing.Size(120, 70);
             this.btnTable4.TabIndex = 23;
             this.btnTable4.Tag = "4";
-            this.btnTable4.Text = "4";
             this.btnTable4.UseVisualStyleBackColor = false;
             this.btnTable4.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -155,7 +151,6 @@ namespace ChapeauUI
             this.btnTable5.Size = new System.Drawing.Size(120, 70);
             this.btnTable5.TabIndex = 24;
             this.btnTable5.Tag = "5";
-            this.btnTable5.Text = "5";
             this.btnTable5.UseVisualStyleBackColor = false;
             this.btnTable5.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -168,7 +163,6 @@ namespace ChapeauUI
             this.btnTable10.Size = new System.Drawing.Size(120, 70);
             this.btnTable10.TabIndex = 29;
             this.btnTable10.Tag = "10";
-            this.btnTable10.Text = "10";
             this.btnTable10.UseVisualStyleBackColor = false;
             this.btnTable10.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -181,7 +175,6 @@ namespace ChapeauUI
             this.btnTable9.Size = new System.Drawing.Size(120, 70);
             this.btnTable9.TabIndex = 28;
             this.btnTable9.Tag = "9";
-            this.btnTable9.Text = "9";
             this.btnTable9.UseVisualStyleBackColor = false;
             this.btnTable9.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -194,7 +187,6 @@ namespace ChapeauUI
             this.btnTable8.Size = new System.Drawing.Size(120, 70);
             this.btnTable8.TabIndex = 27;
             this.btnTable8.Tag = "8";
-            this.btnTable8.Text = "8";
             this.btnTable8.UseVisualStyleBackColor = false;
             this.btnTable8.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -207,7 +199,6 @@ namespace ChapeauUI
             this.btnTable7.Size = new System.Drawing.Size(120, 70);
             this.btnTable7.TabIndex = 26;
             this.btnTable7.Tag = "7";
-            this.btnTable7.Text = "7";
             this.btnTable7.UseVisualStyleBackColor = false;
             this.btnTable7.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -220,7 +211,6 @@ namespace ChapeauUI
             this.btnTable6.Size = new System.Drawing.Size(120, 70);
             this.btnTable6.TabIndex = 25;
             this.btnTable6.Tag = "6";
-            this.btnTable6.Text = "6";
             this.btnTable6.UseVisualStyleBackColor = false;
             this.btnTable6.Click += new System.EventHandler(this.btnSpecificTableOverview_Click);
             // 
@@ -316,6 +306,11 @@ namespace ChapeauUI
             // 
             this.columnHeader3.Text = " time";
             this.columnHeader3.Width = 70;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "table";
+            this.columnHeader4.Width = 40;
             // 
             // readyTable1
             // 
@@ -537,11 +532,6 @@ namespace ChapeauUI
             this.readyTable6.TabIndex = 54;
             this.readyTable6.TabStop = false;
             this.readyTable6.Tag = "6";
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "table";
-            this.columnHeader4.Width = 40;
             // 
             // TableOverview
             // 

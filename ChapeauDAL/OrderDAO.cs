@@ -26,7 +26,7 @@ namespace ChapeauDAL
         // written by Simona, getting the table by a number
         public Order GetOrderByTableNr(int tableNr)
         {
-            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE tableNR=@tableNR AND Orders.Status = 1";
+            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Tablenumber=@Tablenumber AND Orders.Status = 1";
             SqlParameter[] sqlParameters = new SqlParameter[1];
             sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
 
@@ -302,18 +302,42 @@ namespace ChapeauDAL
         //    ExecuteEditQuery(query, sqlParameters);
         //}
 
-        public List<OrderItem> GetRunningOrder(Order order)
+        public List<OrderItem> GetRunningOrder(int tableNr)
         {
-            string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, OrderItem.Type, OrderItem.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
-                "FROM OrderItem " +
-                "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
-                "WHERE OrderItem.OrderID = @ID";
+            //string query = "SELECT Menu.name, OrderItem.Quantity, OrderItem.Status, OrderItem.Type, OrderItem.Mealtype, OrderItem.Requests, OrderItem.MenuID " +
+            //    "FROM OrderItem " +
+            //    "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
+            //    "WHERE OrderItem.OrderID = @ID";
 
-            SqlParameter[] sqlParameters =
+            //SqlParameter[] sqlParameters =
+            //{
+            //    new SqlParameter("OrderID", order.OrderID),
+            //};
+            
+            string query = $"select Orderitem.orderID, employeeID, Tablenumber,Timetaken, [Orders].Status, Requests FROM [Orders] JOIN Orderitem ON[Orders].orderID = Orderitem.orderID WHERE Tablenumber=@Tablenumber AND Orders.Status = 1";
+            SqlParameter[] sqlParameters = new SqlParameter[1];
+            sqlParameters[0] = new SqlParameter("@Tablenumber", tableNr);
+            return OrderItem(ExecuteSelectQuery(query, sqlParameters));
+           // List<Order> orders = ReadTables(ExecuteSelectQuery(query, sqlParameters));
+        }
+        private List<OrderItem> OrderItem(DataTable dataTable)
+        {
+            List<OrderItem> OrderItems = new List<OrderItem>();
+            foreach (DataRow dr in dataTable.Rows)
             {
-                new SqlParameter("OrderID", order.OrderID),
-            };
-            return ReadOrderItem(ExecuteSelectQuery(query, sqlParameters));
+                OrderItem orderItem = new OrderItem();
+                {
+                    orderItem.Name = (string)dr["name"];
+                    orderItem.Quantity = (int)dr["Quantity"];
+                    orderItem.Status = (OrderStatus)((int)dr["Status"]);
+                    orderItem.Requests = (string)dr["Requests"].ToString();
+                    orderItem.OrderTime = (DateTime)dr["Timetaken"];
+                    orderItem.ID = (int)dr["MenuID"];
+                    orderItem.MealType = (MealType)((int)dr["Mealtype"]);
+                };
+                OrderItems.Add(orderItem);
+            }
+            return OrderItems;
         }
 
         public Order GetByTable(Table table)

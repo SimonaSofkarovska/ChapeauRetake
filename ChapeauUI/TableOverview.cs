@@ -35,8 +35,10 @@ namespace ChapeauUI
             timer.Interval = 2000;
             timer.Tick += new EventHandler(timer_Tick);
             timer.Start();
-           
+
         }
+
+       
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
@@ -47,16 +49,18 @@ namespace ChapeauUI
         private void btnSpecificTableOverview_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
+            Console.WriteLine(button.Tag); 
             int tableNr = Convert.ToInt32(button.Tag);
-            if (tableNr < 1)
-            {
-                tableNr = 1;
-            }
-            btnAddItem.Tag = tableNr;
+            Console.WriteLine(tableNr);
+            //if (tableNr < 1)
+            //{
+            //    tableNr = 1;
+            //}
+            //btnAddItem.Tag = tableNr;
 
             //get table from db
             Table selectedTable = tableService.GetTableByTableNR(tableNr);
-
+            Console.WriteLine(selectedTable);
             if (selectedTable.Status != TableStatus.Occupied)
             {
                 DialogResult dialogResult = MessageBox.Show($"Do you want to seat guests at table {tableNr}", "Seat guests", MessageBoxButtons.YesNo);
@@ -88,28 +92,37 @@ namespace ChapeauUI
                     timerWaitTime.Start();
                 }
 
-                //List<Order> orders = orderService.GetAllRunningOrders();
+                List<Order> orders = orderService.GetAllRunningOrders();
                 selectedTable = tableService.GetTableByTableNR(tableNr);
 
                 if (selectedTable != null)
                 {
+                    List<OrderItem> orderItems = new List<OrderItem>();
+                    // Get order from the tableNr.
+                    orderItems = orderService.GetRunningOrder(tableNr);
+
                     listViewTableOrder.Items.Clear();
-                    foreach (OrderItem orderItem in order.orderItems)
+
+                    // Show the orderedItems from the Order class.
+                    foreach (OrderItem o in orderItems)
                     {
-                        ListViewItem li = new ListViewItem(orderItem.Name);
-                        li.SubItems.Add(orderItem.Status.ToString());
-                        li.SubItems.Add(orderItem.OrderTime.ToString("HH:mm:ss"));
-                        li.SubItems.Add(order.TableNumber.ToString());
+                        ListViewItem li = new ListViewItem(o.Name);
+                        li.SubItems.Add(o.Status.ToString());
+                        li.SubItems.Add(o.OrderID.ToString("HH:mm:ss"));
+                        li.SubItems.Add(o.TableNumber.ToString());
                         listViewTableOrder.Items.Add(li);
                         listViewTableOrder.Show();
                         Console.WriteLine();
-                    }                   
+                    }
+                    
                 }
+                
             }
         }
        
-        void timer_Tick(object sender, EventArgs e)
+    void timer_Tick(object sender, EventArgs e)
         {           
+            // If problems occure with unwanted updates of the table, comment out the RefreshIcons();
             RefreshIcons();
             RefreshTables();
         }
@@ -126,8 +139,13 @@ namespace ChapeauUI
                 {
                     // Check if the button Tag matches the table number in the database
 
-                    if (button.Tag == table.TableNumber.ToString())
+                    if (button.Tag.ToString() == table.TableNumber.ToString())
                     {
+                        // For optimasation create a load method, that adds the corresponding table number to the button once.
+                        // Using the line below like this updates the button text of the table every 2.5s.
+                        // Make the Button text values equal to the TableNumber from the database.
+                        button.Text = table.TableNumber.ToString();
+
                         if (table.Status == TableStatus.Occupied)
                         {
                             button.BackColor = Color.Red;
@@ -202,3 +220,44 @@ namespace ChapeauUI
         }
     }
 }
+//private void createTableButtons()
+//{
+//    List<Table> tables = tableService.GetAllTables();
+//    // the location is an array of points that are the position for all the buttons.
+//    var locations = new Point[] { new Point(25, 212) };
+
+
+
+//    int index = 0;
+//    foreach (Table table in tables)
+//    {
+//        // To make the buttons not hardcoded anymore we create them in this method, we loop over the table data and add the tableNr as the button text and the Tag.
+//        // Thevalues below are the styling of the button, and the names should be equal to the once used in the funciton below for refreshing
+//        // The Click object should be equal to the function btnSpecficTablesOverviewClick to fire the needed functionality.
+
+//        // We could have used a FlowLayoutPanel to add the button withouteed to specify the locations,
+//        // but this would mean we had to remove the icons next to it, or create subgroup to keep the icons next to the buttons.
+//        // Due to limitted time we decided to try to keep the application close to the design of the Figma prototype.
+
+//        /*
+//        this.newButton.BackColor = System.Drawing.SystemColors.AppWorkspace;
+//        this.newButton.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+//        this.newButton.Location = new System.Drawing.Point(25, 212);
+//        this.newButton.Name = "btnTable1";
+//        this.newButton.Size = new System.Drawing.Size(120, 70);
+//        this.newButton.TabIndex = 11;
+//        this.newButton.Tag = "table.TableNumber";
+//        this.newButton.Text = "table.TableNumber";
+//        this.newButton.UseVisualStyleBackColor = false;
+//        this.newButton.Click += new System.EventHandler(this.btnSpecificTableOverview_Click); */
+//        Button newButton = new Button();
+//        newButton.Text = "test " + table.TableNumber.ToString();
+//        // newButton.Click += btnSpecificTableOverview_Click
+//        newButton.Size = new Size(70, 120);
+//        newButton.Location = locations[0];
+
+//        // Add buttons to the Control so they show up on the page.
+//        this.Controls.Add(newButton);
+//        ++index;
+//    }
+//}
