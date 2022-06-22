@@ -95,14 +95,14 @@ namespace ChapeauUI
                 List<Order> orders = orderService.GetAllRunningOrders();
                 selectedTable = tableService.GetTableByTableNR(tableNr);
 
-               // if (selectedTable != null)
+                if (selectedTable != null)
                 {
 
                     List<Order> orderOfTable = orderService.GetAllRunningOrders();
                     listViewTableOrder.Items.Clear();
 
                     // Show the orderedItems from the Order class.
-                    //if (order != null)
+                    if (order != null)
                     {
                         foreach (OrderItem o in order.orderItems)
                         {
@@ -170,13 +170,14 @@ namespace ChapeauUI
             PictureBox[] readyIcons = new PictureBox[] { readyTable1, readyTable2, readyTable3, readyTable4, readyTable5, readyTable6, readyTable7, readyTable8, readyTable9, readyTable10 };
             PictureBox[] preparingIcons = new PictureBox[] { preparingTable1, preparingTable2, preparingTable3, preparingTable4, preparingTable5, preparingTable6, preparingTable7, preparingTable8, preparingTable9, preparingTable10 };
 
+            //get all orders from db 
             OrderService orderService = new OrderService();
             List<Order> runningOrders = orderService.GetAllRunningOrders();
-
+            
             try
             {
                 order = runningOrders[0];
-                int i = 0;
+
                 foreach (Order o in runningOrders)
                 {
 
@@ -189,7 +190,6 @@ namespace ChapeauUI
                         if (item.Status == OrderStatus.Ready)
                             readyIcons[o.TableNumber - 1].Show();
                     }
-                    i++;
                 }
             }
             catch

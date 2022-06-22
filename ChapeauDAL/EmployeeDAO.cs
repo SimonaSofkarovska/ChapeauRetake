@@ -44,6 +44,7 @@ namespace ChapeauDAL
 
                 // Hash the given password with the salt that was saved in the database, and save the result in the hash array
                 Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt, 10000);
+                //place the string in the byte array
                 byte[] hash = pbkdf2.GetBytes(20);
 
 

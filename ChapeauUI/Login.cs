@@ -47,7 +47,7 @@ namespace ChapeauUI
             }
             else
             {
-                MessageBox.Show($"User does not exist!");
+                MessageBox.Show($"Incorrect username or password!");
                 txtboxUsername.Text = string.Empty;
                 txtboxPassword.Text = string.Empty;
                 return;
