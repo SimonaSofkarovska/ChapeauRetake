@@ -80,9 +80,10 @@ namespace ChapeauDAL
         public Order GetTablesCurrentOrder(int tableNumber)
         {
 
-            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5";
+            string query = "SELECT OrderID, Timetaken, EmployeeID, Tablenumber, Totalprice, [Status] FROM Orders WHERE [Status] < 5 AND Tablenumber = @Tablenumber ";
 
-            SqlParameter[] parameters = new SqlParameter[0];
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("Tablenumber", tableNumber);
 
 
             List<Order> orders = ReadTables2(ExecuteSelectQuery(query, parameters));
@@ -366,7 +367,7 @@ namespace ChapeauDAL
             SqlParameter[] parameters = new SqlParameter[1];
             parameters[0] = new SqlParameter("OrderID", order.OrderID);
 
-            ExecuteSelectQuery(query, parameters);
+            ExecuteEditQuery(query, parameters);
         }
     }
 }

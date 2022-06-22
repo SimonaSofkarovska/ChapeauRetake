@@ -3,7 +3,6 @@ using System;
 using System.Windows.Forms;
 using ChapeauModel;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Data;
 
 namespace ChapeauUI
@@ -14,8 +13,6 @@ namespace ChapeauUI
         public OrderService orderService;
         public OrderItemService orderItemService;
 
-        private Employee employee;
-        private Table table;
         private List<OrderItem> currentItems;
         private Order currentOrder;
 
@@ -31,9 +28,6 @@ namespace ChapeauUI
                 orderService.AddOrder(employee.Id, table.TableNumber);
 
             currentOrder = orderService.GetTablesCurrentOrder(table.TableNumber);
-
-            this.employee = employee;
-            this.table = table;
         }
 
         private void WaiterView_Load(object sender, EventArgs e)
