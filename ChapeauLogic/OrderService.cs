@@ -20,9 +20,10 @@ namespace ChapeauLogic
             Order order = orderDAO.GetOrderByTableNr(tablenr);
             return order;
         }
-        public Order GetTablesRunningOrder(int tablenr)
+        public List<Order> GetAllRunningOrders(int tablenr)
         {
-            return orderDAO.GetTablesRunningOrder(tablenr);
+            List<Order> orders = orderDAO.GetAllRunningOrders(tablenr);
+            return orders;
         }
         public List<Order> GetRunningOrders()
         {
