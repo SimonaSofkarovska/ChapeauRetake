@@ -54,17 +54,13 @@ namespace ChapeauUI
             Console.WriteLine(button.Tag); 
             int tableNr = Convert.ToInt32(button.Tag);
             Console.WriteLine(tableNr);
-            //if (tableNr < 1)
-            //{
-            //    tableNr = 1;
-            //}
-            //btnAddItem.Tag = tableNr;
 
             //get table from db
             this.selectedTable = tableService.GetTableByTableNR(tableNr);
             Console.WriteLine(selectedTable);
             if (selectedTable.Status != TableStatus.Occupied)
             {
+                //making sure that the table is beeing occupied before adding the order of a table
                 DialogResult dialogResult = MessageBox.Show($"Do you want to seat guests at table {tableNr}", "Seat guests", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
@@ -90,7 +86,7 @@ namespace ChapeauUI
                 {
                     Timer timerWaitTime = new Timer();
                     timerWaitTime.Tick += timer_Tick;
-                    timerWaitTime.Interval = 3000;
+                    timerWaitTime.Interval = 2000;
                     timerWaitTime.Start();
                 }
 
@@ -98,21 +94,23 @@ namespace ChapeauUI
 
                 if (selectedTable != null)
                 {
-
-                    Order orderOfTable = orderService.GetTablesRunningOrder(tableNr);
+                    List<Order> orderOfTable = orderService.GetAllRunningOrders(tableNr);
                     listViewTableOrder.Items.Clear();
-
-                    // Show the orderedItems from the Order class.
-                    if (orderOfTable != null)
+                    listViewTableOrder.Show();
+                    //check if order aray has orders
+                    if (orderOfTable.Count != 0) // If List is empty no orders are present
                     {
-                        foreach (OrderItem o in orderOfTable.orderItems)
+                        // if there are, Show the orderedItems from the Order. If we also loop over the orderOfTable we get duplicate orders in the menu.
+                        // So we use [0] to prevent that.
+                        Console.WriteLine(orderOfTable);
+                        foreach (OrderItem o in orderOfTable[0].orderItems)
                         {
-                            ListViewItem li = new ListViewItem(o.Name);
+                            Console.WriteLine(o);
+                            ListViewItem li = new ListViewItem(o.Name.ToString());
                             li.SubItems.Add(o.Status.ToString());
                             li.SubItems.Add(o.OrderTime.ToString("HH:mm:ss"));
-                            li.SubItems.Add(orderOfTable.TableNumber.ToString());
+                            li.SubItems.Add(selectedTable.TableNumber.ToString());
                             listViewTableOrder.Items.Add(li);
-                            listViewTableOrder.Show();
                             Console.WriteLine();
                         }
                     }
@@ -124,7 +122,6 @@ namespace ChapeauUI
        
     void timer_Tick(object sender, EventArgs e)
         {           
-            // If problems occure with unwanted updates of the table, comment out the RefreshIcons();
             RefreshIcons();
             RefreshTables();
         }
@@ -171,16 +168,12 @@ namespace ChapeauUI
             PictureBox[] readyIcons = new PictureBox[] { readyTable1, readyTable2, readyTable3, readyTable4, readyTable5, readyTable6, readyTable7, readyTable8, readyTable9, readyTable10 };
             PictureBox[] preparingIcons = new PictureBox[] { preparingTable1, preparingTable2, preparingTable3, preparingTable4, preparingTable5, preparingTable6, preparingTable7, preparingTable8, preparingTable9, preparingTable10 };
 
-           
-
             //get all orders from db 
             OrderService orderService = new OrderService();
-            // List<Order> runningOrders = orderService.GetAllRunningOrders(selectedTable.TableNumber);
             List<Order> runningOrders = orderService.GetRunningOrders();
 
             try
             {
-                order = runningOrders[0];
 
                 foreach (Order o in runningOrders)
                 {
@@ -201,7 +194,6 @@ namespace ChapeauUI
                 Console.WriteLine("Could not refresh!");
             }
         }
-
             private void readyButton_Click(object sender, EventArgs e)
         {
             //when the readyicon is clicked menas that the orderItem is ready to be served
