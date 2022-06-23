@@ -24,13 +24,13 @@ namespace ChapeauUI
             InitializeComponent();
             this.employee = employee;
             if (employee.Role == Role.Barman)
-                {
-                    this.type = "drinks";
-                }
-                else if (employee.Role == Role.Chef)
-                {
-                    this.type = "food";
-                }
+            {
+                this.type = "drinks";
+            }
+            else if (employee.Role == Role.Chef)
+            {
+                this.type = "food";
+            }
 
             lblUser.Text = $"User: {employee.Name}";
 
@@ -69,8 +69,8 @@ namespace ChapeauUI
                 {
                     ListViewItem lv = new ListViewItem(order.OrderID.ToString());
                     lv.SubItems.Add(order.TableNumber.ToString());
-                    lv.SubItems.Add(order.timeTaken.ToString("HH:mm"));//maybe add the diff between time.now and timetaken had problems while subtracting time.now cu timetaken
-                    lv.SubItems.Add(order.EmployeeID.ToString());  //timespan
+                    lv.SubItems.Add(order.timeTaken.ToString("HH:mm"));
+                    lv.SubItems.Add(order.EmployeeID.ToString());  
                     lv.Tag = order;
                     lvOrders.Items.Add(lv);
                 }
@@ -195,7 +195,7 @@ namespace ChapeauUI
 
         private void btn_Preparing_Click(object sender, EventArgs e)
         {
-            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked back as PREPARING.\nProceed?", OrderStatus.Preparing);
+            ChangeItemStatus("Attention!", $"No specific items were selected, Therefore all items in the order will be marked as PREPARING.\nProceed?", OrderStatus.Preparing);
         }
 
         private void ChangeItemStatus(string headline, string message, OrderStatus orderStatus)
@@ -274,8 +274,6 @@ namespace ChapeauUI
 
                 ErrorProcess(exeption, "Something went wrong while loading the order history");
             }
-
-
         }
     }
 }

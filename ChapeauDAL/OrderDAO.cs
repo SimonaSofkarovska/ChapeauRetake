@@ -195,7 +195,7 @@ namespace ChapeauDAL
             return false;
         }
 
-        // this methode will help to update the status of an order  ruben needs to use this one
+        // this methode will help to update the status of an order
         public void UpdateOrderStatus(Order order)
         {
             try
@@ -251,7 +251,6 @@ namespace ChapeauDAL
                             "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
                             "WHERE OrderItem.OrderID = @ID AND OrderItem.Status < 3 AND Menu.Mealtype = 3 ";
             }
-                //and history
 
             SqlParameter[] sqlParameters = new SqlParameter[1];
 
@@ -275,7 +274,6 @@ namespace ChapeauDAL
                             "JOIN Menu ON OrderItem.MenuID = Menu.ID " +
                             "WHERE OrderItem.OrderID = @ID AND Menu.Mealtype = 3 ";
             }
-            //and history
 
             SqlParameter[] sqlParameters =
             {
